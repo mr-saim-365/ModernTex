@@ -64,9 +64,7 @@ const Navbar = () => {
             </button>
             <div>
               <img
-                className={`w-[70px] h-[70px] ${
-                  isScrolled ? "filter invert" : "bg-transparent"
-                }`}
+                className="w-[70px] h-[70px]"
                 src={logo}
                 alt="Logo"
               />
@@ -79,7 +77,7 @@ const Navbar = () => {
           >
             <Link to="/">Home</Link>
             <Link to="/AboutUS">About Us</Link>
-            <Link to="/ContactUS">Contact Us</Link>
+            <Link to="/Contact">Contact Us</Link>
             <Link to="/#faq" onClick={handleFAQClick}>
               FAQ
             </Link>
@@ -102,7 +100,7 @@ const Navbar = () => {
           <Link to="/AboutUS" className="block p-4">
             About Us
           </Link>
-          <Link to="/ContactUs" className="block p-4">
+          <Link to="/Contact" className="block p-4">
             Contact US
           </Link>
         </div>

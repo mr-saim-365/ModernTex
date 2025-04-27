@@ -44,7 +44,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="bg-[#262626] text-[#FFFFFF] text-sm relative mt-[50%]">
+    <footer id="footer" className="bg-[#262626] text-[#FFFFFF] text-sm relative">
       <div ref={ref} className="w-full flex flex-col items-center">
         <motion.div
           className="py-[40px] md:w-[90%] px-8 md:px-0 flex items-center justify-center"
@@ -62,32 +62,13 @@ const Footer = () => {
             >
               <Link href="index.html" className="flex items-center mb-6">
                 <span className="text-3xl md:text-4xl  font-bold tracking-wide">
-                  CLI-X
+                  Modern-Tex
                 </span>
               </Link>
               <p className="text-sm text-white/60">
                 Cross Layer Information Exchange
               </p>
-              <div className="flex mt-4 space-x-3">
-                <Link
-                  to="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full border hover:text-white/100 hover:border-white/60 transition"
-                >
-                  <FaXTwitter size={20} />
-                </Link>
-                <Link
-                  to="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full border hover:text-blue-700 hover:border-white/60 transition"
-                >
-                  <MdOutlineFacebook size={20} />
-                </Link>
-                <Link
-                  to="#"
-                  className="flex items-center justify-center w-10 h-10 rounded-full border hover:text-pink-500 hover:border-white/60 transition"
-                >
-                  <IoLogoInstagram size={20} />
-                </Link>
-              </div>
+
             </motion.div>
 
             <motion.div
@@ -168,19 +149,34 @@ const Footer = () => {
         </motion.div>
 
         <motion.div
-          className="text-center mt-8 border-t py-8 border-white/20 text-white/60 w-full px-4 md:px-0"
+          className="text-center mt-8 bg-[#000000] py-4  text-white/60 w-full px-4 md:px-0"
           initial="hidden"
           animate={controls}
           variants={itemVariants}
         >
-          <motion.div className="w-[90%] mx-auto">
+          <motion.div className="mx-auto md:w-[90%] w-full px-4 md:px-0 flex flex-col gap-5 md:gap-0 justify-between items-center">
             <p className="mb-1">
               © <span>Copyright</span> <strong className="px-1">Impact</strong>{" "}
-              <span>All Rights Reserved</span>
+              <span>All Rights Reserved Designed by <Link to="#">CLI-X</Link></span>
+           
             </p>
-            <div className="text-sm mt-1">
-              Designed by <Link to="#">CLI-X</Link>
-            </div>
+            <div className="flex space-x-3 items-center">
+              <div className='font-bold'>Follow us</div>
+
+                <Link
+                  to="#"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border hover:text-blue-700 hover:border-white/60 transition"
+                >
+                  <MdOutlineFacebook size={20} />
+                </Link>
+                <Link
+                  to="#"
+                  className="flex items-center justify-center w-10 h-10 rounded-full border hover:text-pink-500 hover:border-white/60 transition"
+                >
+                  <IoLogoInstagram size={20} />
+                </Link>
+              </div>
+
           </motion.div>
         </motion.div>
       </div>
