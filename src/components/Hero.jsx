@@ -3,9 +3,10 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <section className="bg-[linear-gradient(to_top_left,_#f48221_50%,_#faa749_95%)]  mt-[70px] ">
-        <div className=" p-6 flex flex-col md:flex-row gap-5 justify-between overflow-hidden px-4">
-          <div className="flex flex-col gap-10">
+      <section className=" mt-[70px]  bg-[linear-gradient(to_top_left,_#f48221_50%,_#faa749_95%)]">
+        <div className="  flex flex-col md:flex-row gap-5 justify-between overflow-hidden ">
+          <div className="flex flex-col gap-10  w-[60%] py-20 px-6">
+       
             <div>
 
               <svg
@@ -50,7 +51,7 @@ const Hero = () => {
               <p className="text-5xl font-bold text-[#ffffff]">40% OFF</p>
             </div>
 
-            <div className="w-full">
+            <div className="w-full flex  justify-center">
 
               <svg
                 width="100"
@@ -58,7 +59,7 @@ const Hero = () => {
                 viewBox="0 0 100 60"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
-                    className="float-right"
+
               >
                 <path
                   d="M0 10 Q 10 0, 20 10 T 40 10 T 60 10 T 80 10 T 100 10"
@@ -88,8 +89,8 @@ const Hero = () => {
             </div>
           </div>
 
-          <div className="flex gap-4 items-center">
-            <div>
+          <div className="flex gap-4 bg-gray-100 items-center w-[40%] justify-center">
+            <div className="mt-[6rem]"> 
               <img
                 src="/images/image1.jpeg"
                 alt="Model 1"
@@ -97,7 +98,7 @@ const Hero = () => {
               />
             </div>
 
-            <div>
+            <div className="mb-[6rem]">
               <img
                 src="/images/image2.jpeg"
                 alt="Model 2"

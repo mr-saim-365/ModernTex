@@ -4,10 +4,10 @@ import OurWorkImage from '/images/OurWork.jpg';
 const Whoarewe = () => {
   return (
     <>
-      <div className="flex flex-col md:flex-row md:gap-[60px] gap-10 md:px-5 px-3 2xl:mx-auto py-16 md:justify-between bg-[linear-gradient(to_bottom_left,_#f48221_50%,_#faa749_95%)]">
+      <div className="flex flex-col md:flex-row md:gap-[60px] gap-10 md:px-0 px-4  2xl:mx-auto py-16 md:justify-between w-[90%] mx-auto">
         {/* Text Section */}
         <div className="text-[#4D4D4D] flex flex-col md:w-[60%] lg:px-0 lg:w-[50%]">
-          <div className="flex flex-col gap-4 md:gap-5 text-[#ffffff]">
+          <div className="flex flex-col gap-4 md:gap-5 ">
             <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] text-center font-semibold not-italic">
               Who are we
             </h2>

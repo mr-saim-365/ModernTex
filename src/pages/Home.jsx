@@ -8,11 +8,17 @@ import Hero from "../components/Hero";
 const Home = () => {
   return (
     <>
-      <Navbar />
-     <Hero/>
-      <Whoarewe/>
-      <MissionandVission/>
-      <Footer/>
+      <div className=" h-screen">
+        <Navbar />
+ 
+        <Hero />
+
+      
+        <Whoarewe />
+        <MissionandVission />
+        <Footer />
+      </div>
+ 
     </>
   );
 };

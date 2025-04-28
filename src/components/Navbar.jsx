@@ -3,7 +3,7 @@ import React from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { IoMenuOutline } from "react-icons/io5";
 import { X } from "lucide-react";
-import logo from "/images/logo.jpeg";
+import logo from "/images/logo.png";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 
@@ -49,14 +49,14 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0 w-full backdrop-blur-md z-50 shadow-lg bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]
+      className="fixed top-0 left-0 right-0  backdrop-blur-md z-50 shadow-lg bg-white text-[#4D4D4D] w-[90%] mx-auto
       "
     >
       <div className="px-4 sm:px-6 h-18 lg:px-8">
         <div className="flex items-center">
           <div className="flex justify-between md:justify-normal w-full md:w-auto items-center">
             <button
-              className="md:hidden -ml-2 p-2 flex order-2 text-[#ffffff]"
+              className="md:hidden -ml-2 p-2 flex order-2"
             
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
@@ -72,7 +72,7 @@ const Navbar = () => {
           </div>
 
           <div
-            className="hidden md:flex md:w-full md:justify-center font-normal space-x-9 lg:space-x-12 2xl:space-x-20 md:text-[#ffffff]"
+            className="hidden md:flex md:w-full md:justify-center font-normal space-x-9 lg:space-x-12 2xl:space-x-20"
             
           >
             <Link to="/">Home</Link>
@@ -81,6 +81,10 @@ const Navbar = () => {
             <Link to="/#faq" onClick={handleFAQClick}>
               FAQ
             </Link>
+          </div>
+
+          <div>
+            
           </div>
         </div>
       </div>

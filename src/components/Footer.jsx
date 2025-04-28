@@ -44,7 +44,7 @@ const Footer = () => {
   };
 
   return (
-    <footer id="footer" className="bg-[#262626] text-[#FFFFFF] text-sm relative">
+    <footer id="footer" className=" text-[#4D4D4D] text-sm relative w-[90%] mx-auto">
       <div ref={ref} className="w-full flex flex-col items-center">
         <motion.div
           className="py-[40px] md:w-[90%] px-8 md:px-0 flex items-center justify-center"
@@ -62,11 +62,11 @@ const Footer = () => {
             >
               <Link href="index.html" className="flex items-center mb-6">
                 <span className="text-3xl md:text-4xl  font-bold tracking-wide">
-                  Modern-Tex
+                  MT
                 </span>
               </Link>
-              <p className="text-sm text-white/60">
-                Cross Layer Information Exchange
+              <p className="text-sm">
+              Modern-Tex
               </p>
 
             </motion.div>
@@ -76,7 +76,7 @@ const Footer = () => {
               variants={itemVariants}
             >
               <h4 className="text-base font-bold pb-3 uppercase">Useful Links</h4>
-              <ul className="space-y-2 text-white/60">
+              <ul className="space-y-2">
                 <li>
                   <Link to="/">Home</Link>
                 </li>
@@ -111,7 +111,7 @@ const Footer = () => {
               variants={itemVariants}
             >
               <h4 className="text-base font-bold pb-3 uppercase">Our Services</h4>
-              <ul className="space-y-2 text-white/60">
+              <ul className="space-y-2">
                 <li>
                   <Link to="#">Web Development</Link>
                 </li>
@@ -134,10 +134,10 @@ const Footer = () => {
             </motion.div>
 
             <motion.div
-              className="flex-1 min-w-[250px] text-white/60"
+              className="flex-1 min-w-[250px]"
               variants={itemVariants}
             >
-              <h4 className="text-base font-bold pb-3 text-[#ffffff] uppercase">Contact Us</h4>
+              <h4 className="text-base font-bold pb-3 uppercase">Contact Us</h4>
               <p className="mt-4">
                 <strong>Phone:</strong> <span>0321-2427626</span>
               </p>
@@ -149,12 +149,12 @@ const Footer = () => {
         </motion.div>
 
         <motion.div
-          className="text-center mt-8 bg-[#000000] py-4  text-white/60 w-full px-4 md:px-0"
+          className="text-center mt-8  py-4  w-full px-4 md:px-0"
           initial="hidden"
           animate={controls}
           variants={itemVariants}
         >
-          <motion.div className="mx-auto md:w-[90%] w-full px-4 md:px-0 flex flex-col gap-5 md:gap-0 justify-between items-center">
+          <motion.div className="mx-auto md:w-[90%] w-full px-4 md:px-0 flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
             <p className="mb-1">
               © <span>Copyright</span> <strong className="px-1">Impact</strong>{" "}
               <span>All Rights Reserved Designed by <Link to="#">CLI-X</Link></span>
