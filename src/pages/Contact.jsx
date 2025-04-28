@@ -57,12 +57,12 @@ const ContactUs = () => {
       <div className="w-[90%] mx-auto">
         <div className="h-[70vh]">
           <img
-            src="/images/contactus1.jpg"
+            src="/images/contactus.jpeg"
             alt=""
             className="w-full h-full object-cover"
           />
 
-          <div className="absolute bottom-[45%] left-[10%]">
+          <div className="absolute top-[13%] left-[10%]">
             <h1 className="text-center text-5xl font-bold text-[#ffffff] z-10">
               Contact Us
             </h1>
