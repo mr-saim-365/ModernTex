@@ -1,5 +1,5 @@
 import React from "react";
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
 const Hero = () => {
   const AnimatedCounter = ({ target, label, duration = 2000 }) => {
@@ -24,9 +24,7 @@ const Hero = () => {
 
     return (
       <div className="text-center text-[#ffffff]">
-        <div className="text-5xl font-bold  mb-2">
-          {count.toLocaleString()}
-        </div>
+        <div className="text-5xl font-bold  mb-2">{count.toLocaleString()}</div>
         <div className="text-md font-medium">{label}</div>
       </div>
     );
@@ -36,7 +34,7 @@ const Hero = () => {
     <>
       <section className="bg-[linear-gradient(to_top_left,_#f48221_50%,_#faa749_95%)]">
         <div className="">
-          <div className="  flex flex-col md:flex-row gap-5 overflow-hidden  h-[75vh]">
+          <div className="  flex flex-col md:flex-row gap-5 overflow-hidden h-[90vh]">
             <div className="lg:ml-[5rem] 2xl:ml-[10rem] w-[60%] mt-28">
               <div className="flex flex-col gap-10 ">
                 <div>
@@ -131,19 +129,19 @@ const Hero = () => {
 
             <div className=" bg-white  w-[40%]">
               <div className="relative right-[30%] flex gap-10 justify-center items-center">
-                <div className="mt-[12rem]">
+                <div className="mt-[9rem]">
                   <img
                     src="/images/image1.jpeg"
                     alt="Model 1"
-                    className="w-64 h-[50vh] object-cover "
+                    className="w-64 h-full object-cover "
                   />
                 </div>
 
-                <div className="">
+                <div className="mt-[4rem]">
                   <img
                     src="/images/image2.jpeg"
                     alt="Model 2"
-                    className="w-64  h-[50vh] object-cover "
+                    className="w-64  h-full object-cover "
                   />
                 </div>
               </div>
