@@ -4,6 +4,8 @@ import React from "react";
 import MissionandVission from "../components/MissionandVission";
 import Whoarewe from "../components/Whoarewe";
 import Hero from "../components/Hero";
+import DivisionsSection from "../components/Divisions";
+import OurClients from "../components/OurClients";
 
 const Home = () => {
   return (
@@ -12,10 +14,13 @@ const Home = () => {
         <Navbar />
  
         <Hero />
-
+     
       
         <Whoarewe />
+        
         <MissionandVission />
+        <DivisionsSection/>
+        <OurClients/>
         <Footer />
       </div>
  
