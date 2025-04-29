@@ -35,8 +35,8 @@ const Hero = () => {
       <section className="bg-[linear-gradient(to_top_left,_#f48221_50%,_#faa749_95%)]">
         <div className="">
           <div className="  flex flex-col md:flex-row gap-5 overflow-hidden h-[90vh]">
-            <div className="lg:ml-[5rem] 2xl:ml-[10rem] w-[60%] mt-28">
-              <div className="flex flex-col gap-10 ">
+            <div className="lg:ml-[7rem] 2xl:ml-[10rem] w-[60%] mt-28">
+              <div className="flex flex-col gap-2 ">
                 <div>
                   <svg
                     width="100"
@@ -44,7 +44,7 @@ const Hero = () => {
                     viewBox="0 0 100 60"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
-                    className="mb-6"
+                    className="mb-3"
                   >
                     <path
                       d="M0 10 Q 10 0, 20 10 T 40 10 T 60 10 T 80 10 T 100 10"
@@ -77,11 +77,11 @@ const Hero = () => {
                   <p className="text-2xl text-[#ffffff] mb-2">
                     New Fashion Item
                   </p>
-                  <h1 className="text-5xl font-bold mb-8">Released Now!</h1>
+                  <h1 className="text-5xl font-bold mb-4">Released Now!</h1>
                   <p className="text-2xl mb-2 italic">Our biggest sale ever!</p>
                   <p className="text-5xl font-bold text-[#ffffff]">40% OFF</p>
                 </div>
-                <div className="mt-10 flex items-center  gap-x-6 ">
+                <div className=" flex items-center mt-4 gap-x-6 ">
                   <a
                     href="#"
                     className="rounded-lg bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm w-[40%] text-center"
@@ -129,19 +129,19 @@ const Hero = () => {
 
             <div className=" bg-white  w-[40%]">
               <div className="relative right-[30%] flex gap-10 justify-center items-center">
-                <div className="mt-[9rem]">
+                <div className="mt-[8rem]">
                   <img
                     src="/images/image1.jpeg"
                     alt="Model 1"
-                    className="w-64 h-full object-cover "
+                    className="w-64 h-[65vh] object-cover "
                   />
                 </div>
 
-                <div className="mt-[4rem]">
+                <div className="mt-[5rem]">
                   <img
                     src="/images/image2.jpeg"
                     alt="Model 2"
-                    className="w-64  h-full object-cover "
+                    className="w-64  h-[65vh] object-cover "
                   />
                 </div>
               </div>
