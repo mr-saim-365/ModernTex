@@ -2,8 +2,6 @@ import React from "react";
 import { useEffect, useState } from "react";
 
 const Hero = () => {
-  const AnimatedCounter = ({ target, label, duration = 2000 }) => {
-    const [count, setCount] = useState(0);
     const [hasScrolled, setHasScrolled] = useState(false);
 
     useEffect(() => {
@@ -42,7 +40,7 @@ const Hero = () => {
           {count.toLocaleString()}
         </div>
         <div className="text-sm lg:text-md font-medium">{label}</div>
-
+=======
         <div className="text-5xl font-bold  mb-2">{count.toLocaleString()}</div>
         <div className="text-md font-medium">{label}</div>
 
