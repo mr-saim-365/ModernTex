@@ -22,7 +22,7 @@ const DivisionsSection = () => {
             </p>
           </div>
 
-          <div className="py-10 md:mt-10  md:px-4 flex items-center">
+          <div className="py-10 md:mt-5  md:px-4 flex items-center">
             <div className="w-full md:max-w-6xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-6  text-center text-white">
               <div className="flex flex-col gap-2 items-center">
                 {/* <p className="text-white text-lg 2xl:text-3xl">01</p> */}

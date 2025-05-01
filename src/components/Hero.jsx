@@ -86,13 +86,13 @@ const Hero = () => {
                 </svg>
               </div>
 
-              <div className="text-white max-w-md">
+              <div className="text-white w-full md:max-w-md">
                 <p className="text-2xl text-[#ffffff] mb-2">New Fashion Item</p>
-                <h1 className="text-5xl font-bold mb-4">Released Now!</h1>
+                <h1 className="text-4xl lg:text-5xl font-bold mb-4">Released Now!</h1>
                 <p className="text-2xl mb-2 italic">Our biggest sale ever!</p>
-                <p className="text-5xl font-bold text-[#ffffff]">40% OFF</p>
+                <p className="text-4xl lg:text-5xl font-bold text-[#ffffff]">40% OFF</p>
               </div>
-              <div className="flex items-center mt-4 gap-x-6">
+              <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
                 <a
                   href="#"
                   className="rounded-lg bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm w-[40%] text-center"
@@ -101,14 +101,27 @@ const Hero = () => {
                 </a>
               </div>
 
-              <div className="w-full flex justify-center">
-                <svg
+              <div className="w-full flex justify-end md:justify-center">
+              <svg
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
                   fill="none"
                   xmlns="http://www.w3.org/2000/svg"
+                  className="mb-3"
                 >
+                  <path
+                    d="M0 10 Q 10 0, 20 10 T 40 10 T 60 10 T 80 10 T 100 10"
+                    stroke="#ffffff"
+                    strokeWidth="3"
+                    fill="none"
+                  />
+                  <path
+                    d="M0 20 Q 10 10, 20 20 T 40 20 T 60 20 T 80 20 T 100 20"
+                    stroke="#ffffff"
+                    strokeWidth="3"
+                    fill="none"
+                  />
                   <path
                     d="M0 30 Q 10 20, 20 30 T 40 30 T 60 30 T 80 30 T 100 30"
                     stroke="#ffffff"
