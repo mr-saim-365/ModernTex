@@ -1,13 +1,11 @@
 import React from "react";
-import MissionImage from "/images/MissionImage1.jpg";
-import VisionImage from "/images/VissionImage.jpeg";
 
 import { DotLottieReact } from "@lottiefiles/dotlottie-react";
 
 const MissionandVission = () => {
   return (
     <>
-      <section className="text-[#4D4D4D] py-16 sm:py-20 w-[90%] mx-auto">
+      <section className="text-[#4D4D4D] py-16 sm:py-20 px-3 lg:px-0 w-full lg:w-[90%] mx-auto">
         <div className="flex flex-col md:flex-row gap-10 lg:gap-14  w-full">
           <div className="w-full md:w-1/2">
             <div className="flex items-center">

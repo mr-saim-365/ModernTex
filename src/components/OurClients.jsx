@@ -37,7 +37,7 @@ const clients = [
 const OurClients = () => {
   return (
     <>
-      <section className="w-full lg:w-[90%] lg:mx-auto flex flex-col lg:flex-row gap-5 px-4 lg:px-0 py-20 lg:justify-between lg:gap-0">
+      <section className="w-full lg:w-[90%] lg:mx-auto flex flex-col lg:flex-row gap-5 px-3 lg:px-0 py-20 lg:justify-between lg:gap-0">
         <div className="w-full lg:w-[30%]">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Clients</h1>
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">
@@ -59,7 +59,7 @@ const OurClients = () => {
                 key={`first-${index}`}
                 src={client}
                 alt={`Client ${index + 1}`}
-                className="w-24 sm:w-28 md:w-32 lg:w-36 h-full rounded-lg shadow-md transition-transform duration-300 hover:scale-110"
+                className="w-24 sm:w-28 md:w-32 lg:w-36 h-full  rounded-lg shadow-md transition-transform duration-300 hover:scale-110"
               />
             ))}
           </div>

@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
     <nav
-      className="fixed top-0 left-0 right-0  backdrop-blur-md z-50 shadow-lg bg-white text-[#4D4D4D] w-[90%] mx-auto
+      className="fixed top-0 left-0 right-0  backdrop-blur-md z-50 shadow-lg bg-white text-[#4D4D4D] w-full md:w-[90%] mx-auto
       "
     >
       <div className="px-4 sm:px-6 h-18 lg:px-8">
@@ -79,7 +79,7 @@ const Navbar = () => {
             <Link to="/AboutUS">About Us</Link>
             <Link to="/Contact">Contact Us</Link>
             <Link to="/#faq" onClick={handleFAQClick}>
-              FAQ
+              Our Factory
             </Link>
           </div>
 
@@ -106,6 +106,9 @@ const Navbar = () => {
           </Link>
           <Link to="/Contact" className="block p-4">
             Contact US
+          </Link>
+          <Link to="/OurFactory" className="block p-4">
+            Our Factory
           </Link>
         </div>
       </div>

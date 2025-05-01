@@ -72,8 +72,8 @@ const ContactUs = () => {
           <div className="mt-[8rem]  mb-20">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col lg:flex-row gap-10">
-                <div className="flex-1 p-8 rounded-lg shadow-lg  bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)] w-full lg:w-[30%]">
-                  <h2 className="text-4xl font-semibold mb-6 ">Get in Touch</h2>
+                <div className="flex-1 flex flex-col justify-center py-8 px-4 2xl:p-8 rounded-lg shadow-lg  bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)] w-full lg:w-[40%]">
+                  <h2 className="text-3xl md:text-4xl font-semibold mb-6 ">Get in Touch</h2>
                   <p className="mb-8">
                     Any questions? We would love to hear from you!
                   </p>
@@ -127,7 +127,7 @@ const ContactUs = () => {
                   allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                  className="w-full lg:w-[70%] 2xl:w-[45%] h-[570px]  2xl:h-[60vh]"
+                  className="w-full lg:w-[60%] 2xl:w-[70%] h-[570px]  2xl:h-[60vh]"
                 ></iframe>
               </div>
 
