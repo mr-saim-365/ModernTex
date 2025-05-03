@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 const AnimatedCounter = ({ target, label, duration = 2000 }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [count, setCount] = useState(0);
-  const radius = 120;
+  const radius = 110;
   const stroke = 5;
   const normalizedRadius = radius - stroke * 0.5;
   const circumference = 2 * Math.PI * normalizedRadius;
@@ -39,14 +39,15 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
     return () => cancelAnimationFrame(animate); 
   }, [hasScrolled, target, duration]);
 
-  const progress = count / target;
+  const maxProgress = 0.80; // Only fill 85% of the circle
+  const progress = (count / target) * maxProgress;
   const strokeDashoffset = circumference * (1 - progress);
 
   return (
     <div className="flex flex-col items-center justify-center text-center text-[#ffffff]">
       <svg height={radius * 2} width={radius * 2} className="mb-4">
         <circle
-          stroke="#4B5563"
+          stroke="#333333"
           fill="transparent"
           strokeWidth={stroke}
           r={normalizedRadius}
@@ -54,7 +55,7 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           cy={radius}
         />
         <circle
-          stroke="#333333"
+          stroke="#FFFFFF"
           fill="transparent"
           strokeWidth={stroke}
           strokeLinecap="round"
@@ -63,6 +64,11 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           r={normalizedRadius}
           cx={radius}
           cy={radius}
+          style={{
+           
+            transform: "rotate(-90deg)", // Rotate the circle to start from the top
+            transformOrigin: "50% 50%" // Ensure the circle rotates around the center
+          }}
         />
         <text
           x="50%"
@@ -70,7 +76,7 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           fill="#ffffff"
           dominantBaseline="middle"
           textAnchor="middle"
-          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2"
+          className="text-3xl md:text-4xl font-bold mb-2"
         >
           {count.toLocaleString()}
         </text>
