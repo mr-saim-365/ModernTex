@@ -89,7 +89,7 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
 const Hero = () => {
   return (
     <>
-      <section className="bg-[linear-gradient(to_top_left,_#f48221_50%,_#faa749_95%)]">
+      <section className="bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]">
         <div className="flex flex-col md:flex-row gap-5 overflow-hidden">
           <div className="md:ml-[5rem] 2xl:ml-[15rem] w-full md:w-[60%] mt-28">
             <div className="px-4 md:px-0 flex flex-col gap-5 text-center md:text-start">
@@ -202,7 +202,7 @@ const Hero = () => {
           </div>
         </div>
 
-        <div className="my-0 md:my-16 flow-root">
+        <div className="my-0  flow-root bg-[linear-gradient(to_top_left,_#faa749_30%,_#f48221_60%)]">
           <div className="py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

@@ -1,5 +1,5 @@
-import React from 'react';
-import OurWorkImage from '/images/OurWork.jpg';
+import React from "react";
+import OurWorkImage from "/images/OurWork.jpg";
 
 const Whoarewe = () => {
   return (
@@ -14,30 +14,35 @@ const Whoarewe = () => {
 
             <p className="leading-relaxed  text-justify text-sm md:text-[15px]">
               <span className="block mb-3">
-                <strong>About AH Denim</strong> At AH Denim, we specialize in
-                crafting premium denim and woven apparel, recognized for
-                innovation, quality, and sustainable manufacturing. With over
-                two decades of industry expertise, we have built a reputation
-                for delivering fashion-forward garments to leading global
-                brands, establishing ourselves as a trusted manufacturing
-                partner.
+                Modern Tex has been at the forefront of
+                garment manufacturing since 2010. What began as a humble
+                operation with a monthly production capacity of just 10,000
+                garments has grown into a globally recognized manufacturing
+                unit, now exporting over 150,000 garments every month.
               </span>
               <span className="block mb-3">
-                <strong>Our Commitment to Excellence</strong> We take pride in
-                consistently providing on-trend, high-quality apparel that meets
-                the fast-paced and ever-evolving demands of global fashion
-                brands. Our ability to deliver flexibility, speed, and precision
-                ensures that every piece meets the highest standards without
-                compromising on style, quality, or sustainability.
+                With consistent
+                commitment to quality, ethics, and customer satisfaction, Modern
+                Tex has expanded its reach across the globe—including the Middle
+                East, the United States, the United Kingdom, and Europe. We take
+                pride in being a trusted partner for international brands and
+                retailers, delivering excellence in every stitch.
               </span>
-              <ul className="list-disc list-inside mb-3 space-y-2">
-                <li>
-                  <strong>A Full-Range Apparel Manufacturer:</strong> Our
-                  production spans across men’s, women’s, and kids' apparel,
-                  offering a diverse range of premium, fashion-forward designs
-                  tailored to meet global market trends.
-                </li>
-              </ul>
+              <span className="block mb-3">
+          
+                  Modern Tex operates under the highest standards of social and
+                  environmental responsibility. We are fully certified by SEDEX
+                  and WRAP, and we strictly adhere to international compliance
+                  protocols. Regular audits and checks ensure ongoing
+                  transparency and accountability across all levels of our
+                  operations. We firmly uphold global labor standards and are
+                  committed to ethical employment practices. Our facilities
+                  strictly prohibit the use of child labor and comply with all
+                  applicable labor laws and safety regulations. At Modern Tex,
+                  integrity, innovation, and responsibility define who we
+                  are—today and for the future.
+        
+              </span>
             </p>
           </div>
         </div>
@@ -54,6 +59,5 @@ const Whoarewe = () => {
     </>
   );
 };
-
 
 export default Whoarewe;
