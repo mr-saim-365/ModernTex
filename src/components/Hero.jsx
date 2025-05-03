@@ -3,8 +3,26 @@ import React, { useEffect, useState } from "react";
 const AnimatedCounter = ({ target, label, duration = 2000 }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [count, setCount] = useState(0);
-  const radius = 110;
+  const [radius, setRadius] = useState(110); // default radius
   const stroke = 5;
+
+
+    // Dynamically adjust radius on screen size
+    useEffect(() => {
+      const updateRadius = () => {
+        const width = window.innerWidth;
+        if (width < 640) setRadius(60); // mobile
+        else if (width < 1024) setRadius(80); // tablet
+        else if (width < 1536) setRadius(90); // tablet
+        else setRadius(110); // desktop
+      };
+  
+      updateRadius();
+      window.addEventListener("resize", updateRadius);
+      return () => window.removeEventListener("resize", updateRadius);
+    }, []);
+  
+
   const normalizedRadius = radius - stroke * 0.5;
   const circumference = 2 * Math.PI * normalizedRadius;
 
@@ -76,12 +94,12 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           fill="#ffffff"
           dominantBaseline="middle"
           textAnchor="middle"
-          className="text-3xl md:text-4xl font-bold mb-2"
+          className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl font-bold mb-2"
         >
           {count.toLocaleString()}
         </text>
       </svg>
-      <div className="text-sm lg:text-lg font-medium">{label}</div>
+      <div className="text-sm 2xl:text-lg font-medium whitespace-nowrap">{label}</div>
     </div>
   );
 };
@@ -205,7 +223,7 @@ const Hero = () => {
         <div className="my-0  flow-root bg-[linear-gradient(to_top_left,_#faa749_30%,_#f48221_60%)]">
           <div className="py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <AnimatedCounter target={4800} label="STITCHING (MACHINES)" />
                 <AnimatedCounter
                   target={200000}
