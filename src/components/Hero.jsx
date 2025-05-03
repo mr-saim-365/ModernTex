@@ -3,6 +3,11 @@ import React, { useEffect, useState } from "react";
 const AnimatedCounter = ({ target, label, duration = 2000 }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [count, setCount] = useState(0);
+  const radius = 120;
+  const stroke = 5;
+  const normalizedRadius = radius - stroke * 0.5;
+  const circumference = 2 * Math.PI * normalizedRadius;
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -10,7 +15,6 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
     };
 
     window.addEventListener("scroll", handleScroll, { once: true });
-
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -20,25 +24,58 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
     let start = 0;
     const increment = target / (duration / 16);
 
-    const timer = setInterval(() => {
+    const animate = () => {
       start += increment;
       if (start >= target) {
         setCount(target);
-        clearInterval(timer);
       } else {
         setCount(Math.ceil(start));
+        requestAnimationFrame(animate); 
       }
-    }, 16);
+    };
 
-    return () => clearInterval(timer);
+    requestAnimationFrame(animate);
+
+    return () => cancelAnimationFrame(animate); 
   }, [hasScrolled, target, duration]);
 
+  const progress = count / target;
+  const strokeDashoffset = circumference * (1 - progress);
+
   return (
-    <div className="text-center text-[#ffffff]">
-      <div className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">
-        {count.toLocaleString()}
-      </div>
-      <div className="text-sm lg:text-md font-medium">{label}</div>
+    <div className="flex flex-col items-center justify-center text-center text-[#ffffff]">
+      <svg height={radius * 2} width={radius * 2} className="mb-4">
+        <circle
+          stroke="#4B5563"
+          fill="transparent"
+          strokeWidth={stroke}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <circle
+          stroke="#333333"
+          fill="transparent"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <text
+          x="50%"
+          y="50%"
+          fill="#ffffff"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          className="text-3xl md:text-4xl lg:text-5xl font-bold mb-2"
+        >
+          {count.toLocaleString()}
+        </text>
+      </svg>
+      <div className="text-sm lg:text-lg font-medium">{label}</div>
     </div>
   );
 };

@@ -37,16 +37,16 @@ const DivisionsSection = () => {
                 <p className="font-medium">Fabrication</p>
               </div>
 
-              <div className="flex flex-col  gap-2 items-center">
-                <div className="bg-white rounded-full  w-20 h-20 flex items-center justify-center mx-auto">
+              <div className="flex flex-col gap-2 items-center ">
+                <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto ">
                   <img
-                    src="/images/fabric.png"
-                    alt="fabric"
+                    src="/images/apparel.png"
+                    alt="apparel"
                     className="w-10 h-10"
                   />
                 </div>
 
-                <p className="font-medium">Finishing</p>
+                <p className="font-medium ">Stitching</p>
               </div>
 
               <div className="flex flex-col gap-2 items-center ">
@@ -61,16 +61,16 @@ const DivisionsSection = () => {
                 <p className="font-medium ">Washing</p>
               </div>
 
-              <div className="flex flex-col gap-2 items-center ">
-                <div className="bg-white rounded-full w-20 h-20 flex items-center justify-center mx-auto ">
+              <div className="flex flex-col  gap-2 items-center">
+                <div className="bg-white rounded-full  w-20 h-20 flex items-center justify-center mx-auto">
                   <img
-                    src="/images/apparel.png"
-                    alt="apparel"
+                    src="/images/fabric.png"
+                    alt="fabric"
                     className="w-10 h-10"
                   />
                 </div>
 
-                <p className="font-medium ">Stitching</p>
+                <p className="font-medium">Finishing</p>
               </div>
             </div>
           </div>
