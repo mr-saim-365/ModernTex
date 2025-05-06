@@ -1,4 +1,5 @@
 import React from "react";
+import { FaArrowRight } from "react-icons/fa";
 
 const DivisionsSection = () => {
   return (
@@ -20,6 +21,19 @@ const DivisionsSection = () => {
               step-by-step process combines skilled manpower, advanced
               technology, and a commitment to sustainability.
             </p>
+
+            <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
+              <a
+                href="/DivisionContent"
+                className="rounded-lg bg-black px-3.5 py-2.5 text-sm font-semibold text-white flex gap-2 items-center justify-center shadow-sm w-[20%] "
+              >
+                Learn More
+
+                
+                <FaArrowRight size={20} />
+              </a>
+             
+            </div>
           </div>
 
           <div className="py-10 md:mt-5  md:px-4 flex items-center">
