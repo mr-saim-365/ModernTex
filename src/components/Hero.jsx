@@ -226,12 +226,12 @@ const Hero = () => {
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
                 <AnimatedCounter target={4800} label="STITCHING (MACHINES)" />
                 <AnimatedCounter
-                  target={200000}
+                  target={1000}
                   label="GARMENT PRODUCTION PIECES PER DAY"
                 />
                 <AnimatedCounter
-                  target={120000}
-                  label="FABRIC PRODUCTION IN KG PER DAY"
+                  target={250000}
+                  label="FABRIC PRODUCTION IN KG MONTHLY"
                 />
               </div>
             </div>

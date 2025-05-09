@@ -21,7 +21,7 @@ const MissionandVission = () => {
             </div>
 
             <p className="mt-4 sm:mt-6 text-justify text-sm sm:text-base font-normal leading-relaxed">
-              At AH Denim, we redefine denim with sustainability, ethical
+              At Denim, we redefine denim with sustainability, ethical
               integrity, and innovation. Using organic cotton and eco-conscious
               materials, we minimize waste, reduce our carbon footprint, and
               optimize water & energy efficiency. Our commitment extends beyond
@@ -45,7 +45,7 @@ const MissionandVission = () => {
               </h2>
             </div>
             <p className="mt-4 sm:mt-6 text-justify text-sm sm:text-base leading-relaxed">
-              AH Denim envisions becoming a global leader in manufacturing
+              Denim envisions becoming a global leader in manufacturing
               excellence, setting new standards in quality, efficiency, and
               sustainability. Through innovation and ethical stewardship, we
               drive transformative change—harmonizing fashion with environmental
