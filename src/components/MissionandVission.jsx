@@ -21,7 +21,7 @@ const MissionandVission = () => {
             </div>
 
             <p className="mt-4 sm:mt-6 text-justify text-sm sm:text-base font-normal leading-relaxed">
-              At Denim, we redefine denim with sustainability, ethical
+              At MT, we redefine denim with sustainability, ethical
               integrity, and innovation. Using organic cotton and eco-conscious
               materials, we minimize waste, reduce our carbon footprint, and
               optimize water & energy efficiency. Our commitment extends beyond

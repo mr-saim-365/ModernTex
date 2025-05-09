@@ -224,7 +224,7 @@ const Hero = () => {
           <div className="py-12 px-4 sm:px-6 lg:px-8">
             <div className="max-w-7xl mx-auto">
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-                <AnimatedCounter target={4800} label="STITCHING (MACHINES)" />
+                <AnimatedCounter target={2000} label="SKILLED WORKERS" />
                 <AnimatedCounter
                   target={1000}
                   label="GARMENT PRODUCTION PIECES PER DAY"
