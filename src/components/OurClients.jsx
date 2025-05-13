@@ -1,20 +1,16 @@
 import React from "react";
 
-import Client1 from "/images/Client1.jpg";
-import Client2 from "/images/Client2.jpeg";
-import Client3 from "/images/Client3.jpeg";
-import Client4 from "/images/Client4.jpeg";
-import Client5 from "/images/Client5.jpeg";
-import Client6 from "/images/Client6.jpg";
+import Client1 from "/images/Client1.jpeg";
+import Client2 from "/images/Client2.jpg";
+import Client3 from "/images/Client3.png";
+import Client4 from "/images/Client4.jpg";
+import Client5 from "/images/Client5.png";
+import Client6 from "/images/Client6.png";
 import Client7 from "/images/Client7.jpeg";
 import Client8 from "/images/Client8.jpeg";
 import Client9 from "/images/Client9.jpeg";
 import Client10 from "/images/Client10.jpeg";
-import Client11 from "/images/Client11.jpeg";
-import Client12 from "/images/Client12.jpeg";
-import Client13 from "/images/Client13.jpeg";
-import Client14 from "/images/Client14.png";
-import Client15 from "/images/Client15.jpg";
+
 
 const clients = [
   Client1,
@@ -27,11 +23,7 @@ const clients = [
   Client8,
   Client9,
   Client10,
-  Client11,
-  Client12,
-  Client13,
-  Client14,
-  Client15,
+
 ];
 
 const OurClients = () => {
