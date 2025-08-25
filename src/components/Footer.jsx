@@ -43,10 +43,10 @@ const Footer = () => {
   };
 
   return (
-    <div className="bg-[#222222] ">
+    <div className="bg-[#222222] mt-auto">
       <footer
         id="footer"
-        className=" text-[#ffffff] text-sm relative w-full md:w-[90%] mx-auto"
+        className=" text-[#ffffff] text-sm relative w-full md:w-[90%] mx-auto "
       >
         <div ref={ref} className="w-full flex flex-col items-center">
           <motion.div

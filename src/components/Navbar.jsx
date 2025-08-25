@@ -57,25 +57,32 @@ const Navbar = () => {
           <div className="flex justify-between md:justify-normal w-full md:w-auto items-center">
             <button
               className="md:hidden -ml-2 p-2 flex order-2"
-            
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X size={24} /> : <IoMenuOutline size={25} />}
             </button>
             <div>
-              <img
-                className="w-[70px] h-[70px]"
-                src={logo}
-                alt="Logo"
-              />
+              <img className="w-[70px] h-[70px]" src={logo} alt="Logo" />
             </div>
           </div>
 
-          <div
-            className="hidden md:flex md:w-full md:justify-center font-normal space-x-9 lg:space-x-12 2xl:space-x-20"
-            
-          >
+          <div className="hidden md:flex md:w-full md:justify-center font-normal space-x-9 lg:space-x-12 2xl:space-x-20">
             <Link to="/">Home</Link>
+            <div className="relative flex items-center gap-1 group">
+              <span>Catalog</span>
+              <RiArrowDownSLine size={16} className="mt-1" />
+              <div className="bg-[#222222] text-[#ffffff] py-4 px-2 w-[150px] rounded-lg shadow-lg flex flex-col items-center gap-3 absolute top-[3rem] left-[-45px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
+                <Link className="hover:scale-110" to="/Items?category=Man">
+                  Men
+                </Link>
+                <Link className="hover:scale-110 " to="/Items?category=Woman">
+                  Women
+                </Link>
+                <Link className="hover:scale-110" to="/Items?category=Kids">
+                  Kid
+                </Link>
+              </div>
+            </div>
             <Link to="/AboutUS">About Us</Link>
             <Link to="/Contact">Contact Us</Link>
             <Link to="/#faq" onClick={handleFAQClick}>
@@ -83,9 +90,7 @@ const Navbar = () => {
             </Link>
           </div>
 
-          <div>
-            
-          </div>
+          <div></div>
         </div>
       </div>
 
@@ -101,6 +106,40 @@ const Navbar = () => {
           <Link to="/" className="block p-4">
             Home
           </Link>
+
+          <div className="relative w-[92%]">
+            <button
+              onClick={handleNestedClick}
+              className="flex p-4 items-center gap-1 w-full text-left"
+            >
+              Catalog
+              <RiArrowDownSLine size={16} className="mt-1" />
+            </button>
+            <div
+              className={`overflow-hidden px-2 py-0 rounded-lg shadow-lg flex flex-col bg-[#222222] text-[#ffffff] relative left-[7%] transition-all duration-300 ease-in-out ${
+                open ? "max-h-[150px] opacity-100 py-4" : "max-h-0 opacity-0"
+              } `}
+            >
+              <Link
+                className="hover:scale-110 block p-2"
+                to="/Items?category=Man"
+              >
+                Men
+              </Link>
+              <Link
+                className="hover:scale-110 block p-2"
+                to="/Items?category=Woman"
+              >
+                Women
+              </Link>
+              <Link
+                className="hover:scale-110 block p-2"
+                to="/Items?category=Kids"
+              >
+                Kid
+              </Link>
+            </div>
+          </div>
           <Link to="/AboutUS" className="block p-4">
             About Us
           </Link>
