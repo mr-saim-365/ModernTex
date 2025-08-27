@@ -58,8 +58,8 @@ import image37 from "/images/Image1/back-1.png"
 import image38 from "/images/Image1/back-2.png"
 import image39 from "/images/Image1/back-3.png"
 import image40 from "/images/Image1/back-4.png"
-import image41 from "/images/Image1/bottom.png"
-import image041 from "/images/Image1/upper.png"
+// import image41 from "/images/Image1/bottom.png"
+// import image041 from "/images/Image1/upper.png"
 // import image43 from "/images/woman/08.jpg"
 // import image44 from "/images/woman/09.jpg"
 // import image45 from "/images/woman/10.jpg"
@@ -412,14 +412,14 @@ export const slides = [
         disc: "Upgrade your denim collection with these Classic Straight-Leg Mid-Rise Jeans, designed for effortless style and all-day comfort. Featuring a flattering mid-rise waist, structured yet flexible fabric, and subtle whiskering details, these jeans are perfect for both casual and semi-formal occasions. The straight-leg fit offers a streamlined silhouette that pairs seamlessly with everything from sneakers to heels. Whether you're heading to work or a weekend outing, these versatile jeans will be your go-to wardrobe staple!",
         category :"Woman"
     },
-    {
-        id: "38", 
-        src: [image41,image041],
-        title: "Dual-Waistband Wide-Leg Ombre Jeans – Vintage Wash",
-        fit : "Woman relaxed wide-leg fit with a unique double-waistband design and ombre fade wash.",
-        disc: "Elevate your denim game with these Dual-Waistband Wide-Leg Ombre Jeans, a perfect blend of modern street style and vintage charm. Crafted from premium denim, these high-rise jeans feature a double-button waistband for an edgy, layered look. The ombre wash fades from deep indigo to soft beige, creating a bold yet versatile design. With a relaxed wide-leg fit, these jeans offer all-day comfort while making a statement. Pair them with a cropped top or a fitted blouse for an effortlessly stylish outfit!",
-        category :"Woman"
-    },
+    // {
+    //     id: "38", 
+    //     src: [image41,image041],
+    //     title: "Dual-Waistband Wide-Leg Ombre Jeans – Vintage Wash",
+    //     fit : "Woman relaxed wide-leg fit with a unique double-waistband design and ombre fade wash.",
+    //     disc: "Elevate your denim game with these Dual-Waistband Wide-Leg Ombre Jeans, a perfect blend of modern street style and vintage charm. Crafted from premium denim, these high-rise jeans feature a double-button waistband for an edgy, layered look. The ombre wash fades from deep indigo to soft beige, creating a bold yet versatile design. With a relaxed wide-leg fit, these jeans offer all-day comfort while making a statement. Pair them with a cropped top or a fitted blouse for an effortlessly stylish outfit!",
+    //     category :"Woman"
+    // },
 
     // {
     //     id: "39", 
