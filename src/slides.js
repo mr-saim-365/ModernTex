@@ -1,6 +1,6 @@
 // Man images
-import image1 from "/images/MissionImage.jpeg";
-import image01 from "/images/man/MissionImage1.jpg";
+import image1 from "/images/Image1/033.png";
+import image01 from "/images/Image1/034.png";
 // import image2 from "/images/man/02.jpg";
 // import image02 from "/images/man/02-02.jpg";
 // import image002 from "/images/man/02-03.jpg";
@@ -53,7 +53,7 @@ import image01 from "/images/man/MissionImage1.jpg";
 
 // Woman Images
 
-import image36 from "/images/MissionImage2.png"
+import image36 from "/images/Image1/035.png"
 // import image37 from "/images/woman/02.jpg"
 // import image38 from "/images/woman/03.jpg"
 // import image39 from "/images/woman/04.jpg"
@@ -85,8 +85,8 @@ import image36 from "/images/MissionImage2.png"
 
 // Kids  Images
 
-import image58 from "/images/OurWork.jpg"
-import image058 from "/images/OurWork.jpg"
+import image58 from "/images/Image1/036.png"
+import image058 from "/images/Image1/036.png"
 // import image59 from "/images/Kids/02.jpg"
 // import image60 from "/images/Kids/03.jpg"
 // import image060 from "/images/Kids/03-02.jpg"
