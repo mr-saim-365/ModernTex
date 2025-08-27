@@ -1,6 +1,6 @@
 // Man images
-import image1 from "/images/Image1/033.png";
-import image01 from "/images/Image1/034.png";
+import image1 from "./assets/Image1/033.png";
+import image01 from "./assets/Image1/034.png";
 // import image2 from "/images/man/02.jpg";
 // import image02 from "/images/man/02-02.jpg";
 // import image002 from "/images/man/02-03.jpg";
@@ -53,11 +53,11 @@ import image01 from "/images/Image1/034.png";
 
 // Woman Images
 
-import image36 from "/images/Image1/back.png"
-import image37 from "/images/Image1/back-1.png"
-import image38 from "/images/Image1/back-2.png"
-import image39 from "/images/Image1/back-3.png"
-import image40 from "/images/Image1/back-4.png"
+import image36 from "./assets/Image1/back.png"
+import image37 from "./assets/Image1/back-1.png"
+import image38 from "./assets/Image1/back-2.png"
+import image39 from "./assets/Image1/back-3.png"
+import image40 from "./assets/Image1/back-4.png"
 // import image41 from "/images/Image1/bottom.png"
 // import image041 from "/images/Image1/upper.png"
 // import image43 from "/images/woman/08.jpg"
@@ -85,8 +85,8 @@ import image40 from "/images/Image1/back-4.png"
 
 // Kids  Images
 
-import image58 from "/images/Image1/036.png"
-import image058 from "/images/Image1/036.png"
+import image58 from "./assets/Image1/036.png"
+import image058 from "./assets/Image1/036.png"
 // import image59 from "/images/Kids/02.jpg"
 // import image60 from "/images/Kids/03.jpg"
 // import image060 from "/images/Kids/03-02.jpg"
