@@ -53,13 +53,13 @@ import image01 from "/images/Image1/034.png";
 
 // Woman Images
 
-import image36 from "/images/Image1/035.png"
-// import image37 from "/images/woman/02.jpg"
-// import image38 from "/images/woman/03.jpg"
-// import image39 from "/images/woman/04.jpg"
-// import image40 from "/images/woman/05.jpg"
-// import image41 from "/images/woman/06.jpg"
-// import image041 from "/images/woman/06-02.jpg"
+import image36 from "/images/Image1/back.png"
+import image37 from "/images/Image1/back-1.png"
+import image38 from "/images/Image1/back-2.png"
+import image39 from "/images/Image1/back-3.png"
+import image40 from "/images/Image1/back-4.png"
+import image41 from "/images/Image1/bottom.png"
+import image041 from "/images/Image1/upper.png"
 // import image43 from "/images/woman/08.jpg"
 // import image44 from "/images/woman/09.jpg"
 // import image45 from "/images/woman/10.jpg"
@@ -379,47 +379,47 @@ export const slides = [
         disc: "Elevate your denim game with these High-Waisted Wide-Leg Jeans in a sophisticated Sand Beige hue. Designed to offer a perfect balance between comfort and style, these jeans feature a flattering high-rise waist and a wide-leg cut that drapes beautifully for an effortlessly stylish look. The neutral tone makes them a versatile staple, easily paired with a fitted top and sneakers for a casual look or dressed up with heels and a blouse for a trendy statement. Perfect for any season, these jeans are a must-have for your wardrobe!",
         category :"Woman"
     },
-    // {
-    //     id: "34", 
-    //     src: [image37],
-    //     title: "High-Waisted Distressed Flared Denim – Blue",
-    //     fit : "Woman high-waisted fit with bell-bottom silhouette,distressed details and a front-slit hem.",
-    //     disc: "Step into retro-chic fashion with these High-Waisted Distressed Flared Jeans in a classic blue wash. Designed to accentuate your curves, these jeans feature a snug fit through the hips and thighs, flaring out into a statement-making wide leg with frayed front slits for added movement and style. The subtle distressed detailing gives a modern, worn-in look, perfect for casual outings or bold streetwear aesthetics. Pair them with a cropped top and platform heels for a throwback 70s vibe or keep it casual with sneakers and a tucked-in tee.",
-    //     category :"Woman"
-    // },
+    {
+        id: "34", 
+        src: [image37],
+        title: "High-Waisted Distressed Flared Denim – Blue",
+        fit : "Woman high-waisted fit with bell-bottom silhouette,distressed details and a front-slit hem.",
+        disc: "Step into retro-chic fashion with these High-Waisted Distressed Flared Jeans in a classic blue wash. Designed to accentuate your curves, these jeans feature a snug fit through the hips and thighs, flaring out into a statement-making wide leg with frayed front slits for added movement and style. The subtle distressed detailing gives a modern, worn-in look, perfect for casual outings or bold streetwear aesthetics. Pair them with a cropped top and platform heels for a throwback 70s vibe or keep it casual with sneakers and a tucked-in tee.",
+        category :"Woman"
+    },
 
-    // {
-    //     id: "35", 
-    //     src: [image38],
-    //     title: "High-Waisted Wide-Leg Cuffed Jeans – Dark Brown",
-    //     fit : "Woman high-waisted relaxed wide-leg fit extra-wide cuffs.",
-    //     disc: "Upgrade your wardrobe with these High-Waisted Wide-Leg Cuffed Jeans in a rich dark brown shade. Designed for a relaxed yet polished silhouette, these jeans offer a modern take on vintage-inspired fashion. The extra-wide cuffs add a structured, fashion-forward touch, making them perfect for styling with chunky boots, heels, or casual sneakers. Crafted from premium denim, they provide comfort and durability, making them a versatile staple for both casual and dressy occasions. Pair them with a fitted top or oversized blazer for an effortlessly chic outfit.",
-    //     category :"Woman"
-    // },
-    // {
-    //     id: "36", 
-    //     src: [image39],
-    //     title: "Two-Tone High-Waisted Wide-Leg Jeans – Vintage Wash",
-    //     fit : "Woman high-waisted relaxed fit with a unique contrast panel and raw-edge detailing.",
-    //     disc: "Stand out with these Two-Tone High-Waisted Wide-Leg Jeans, featuring a bold contrast panel design that blends dark and faded washes for a trendy, retro-chic vibe. The angled seam detailing adds a flattering touch, while the wide-leg fit ensures all-day comfort and effortless styling. Crafted from premium denim, these jeans provide durability without compromising on style. Pair them with a fitted crop top, oversized blazer, or casual tee to create an edgy yet versatile look. Perfect for street-style fashion lovers who want to make a statement!",
-    //     category :"Woman"
-    // },
-    // {
-    //     id: "37", 
-    //     src: [image40],
-    //     title: "Classic Straight-Leg Mid-Rise Jeans – Dark Wash",
-    //     fit : "Woman relaxed fit  with subtle whiskering for a sleek and classic dark-wash denim.",
-    //     disc: "Upgrade your denim collection with these Classic Straight-Leg Mid-Rise Jeans, designed for effortless style and all-day comfort. Featuring a flattering mid-rise waist, structured yet flexible fabric, and subtle whiskering details, these jeans are perfect for both casual and semi-formal occasions. The straight-leg fit offers a streamlined silhouette that pairs seamlessly with everything from sneakers to heels. Whether you're heading to work or a weekend outing, these versatile jeans will be your go-to wardrobe staple!",
-    //     category :"Woman"
-    // },
-    // {
-    //     id: "38", 
-    //     src: [image41,image041],
-    //     title: "Dual-Waistband Wide-Leg Ombre Jeans – Vintage Wash",
-    //     fit : "Woman relaxed wide-leg fit with a unique double-waistband design and ombre fade wash.",
-    //     disc: "Elevate your denim game with these Dual-Waistband Wide-Leg Ombre Jeans, a perfect blend of modern street style and vintage charm. Crafted from premium denim, these high-rise jeans feature a double-button waistband for an edgy, layered look. The ombre wash fades from deep indigo to soft beige, creating a bold yet versatile design. With a relaxed wide-leg fit, these jeans offer all-day comfort while making a statement. Pair them with a cropped top or a fitted blouse for an effortlessly stylish outfit!",
-    //     category :"Woman"
-    // },
+    {
+        id: "35", 
+        src: [image38],
+        title: "High-Waisted Wide-Leg Cuffed Jeans – Dark Brown",
+        fit : "Woman high-waisted relaxed wide-leg fit extra-wide cuffs.",
+        disc: "Upgrade your wardrobe with these High-Waisted Wide-Leg Cuffed Jeans in a rich dark brown shade. Designed for a relaxed yet polished silhouette, these jeans offer a modern take on vintage-inspired fashion. The extra-wide cuffs add a structured, fashion-forward touch, making them perfect for styling with chunky boots, heels, or casual sneakers. Crafted from premium denim, they provide comfort and durability, making them a versatile staple for both casual and dressy occasions. Pair them with a fitted top or oversized blazer for an effortlessly chic outfit.",
+        category :"Woman"
+    },
+    {
+        id: "36", 
+        src: [image39],
+        title: "Two-Tone High-Waisted Wide-Leg Jeans – Vintage Wash",
+        fit : "Woman high-waisted relaxed fit with a unique contrast panel and raw-edge detailing.",
+        disc: "Stand out with these Two-Tone High-Waisted Wide-Leg Jeans, featuring a bold contrast panel design that blends dark and faded washes for a trendy, retro-chic vibe. The angled seam detailing adds a flattering touch, while the wide-leg fit ensures all-day comfort and effortless styling. Crafted from premium denim, these jeans provide durability without compromising on style. Pair them with a fitted crop top, oversized blazer, or casual tee to create an edgy yet versatile look. Perfect for street-style fashion lovers who want to make a statement!",
+        category :"Woman"
+    },
+    {
+        id: "37", 
+        src: [image40],
+        title: "Classic Straight-Leg Mid-Rise Jeans – Dark Wash",
+        fit : "Woman relaxed fit  with subtle whiskering for a sleek and classic dark-wash denim.",
+        disc: "Upgrade your denim collection with these Classic Straight-Leg Mid-Rise Jeans, designed for effortless style and all-day comfort. Featuring a flattering mid-rise waist, structured yet flexible fabric, and subtle whiskering details, these jeans are perfect for both casual and semi-formal occasions. The straight-leg fit offers a streamlined silhouette that pairs seamlessly with everything from sneakers to heels. Whether you're heading to work or a weekend outing, these versatile jeans will be your go-to wardrobe staple!",
+        category :"Woman"
+    },
+    {
+        id: "38", 
+        src: [image41,image041],
+        title: "Dual-Waistband Wide-Leg Ombre Jeans – Vintage Wash",
+        fit : "Woman relaxed wide-leg fit with a unique double-waistband design and ombre fade wash.",
+        disc: "Elevate your denim game with these Dual-Waistband Wide-Leg Ombre Jeans, a perfect blend of modern street style and vintage charm. Crafted from premium denim, these high-rise jeans feature a double-button waistband for an edgy, layered look. The ombre wash fades from deep indigo to soft beige, creating a bold yet versatile design. With a relaxed wide-leg fit, these jeans offer all-day comfort while making a statement. Pair them with a cropped top or a fitted blouse for an effortlessly stylish outfit!",
+        category :"Woman"
+    },
 
     // {
     //     id: "39", 
