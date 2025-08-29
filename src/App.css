@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.lazy-wrapper {
+  display: unset !important;   /* removes inline-block, falls back to default */
+}
+
 .logo {
   height: 6em;
   padding: 1.5em;
