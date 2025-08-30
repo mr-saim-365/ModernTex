@@ -294,7 +294,7 @@ const Items = () => {
                         >
                           <LazyLoadImage
                             className="w-full  h-full object-cover transition-all duration-300"
-                            wrapperClassName="display-[unset]"   
+                            wrapperClassName="w-full h-full"   
                             src={product.src[imageIndices[product.id] || 0]}
                             alt={`Product ${index + 1}`}
                             effect="blur" // 👈 adds blur-up effect
