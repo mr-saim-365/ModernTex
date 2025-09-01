@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { Lightbox } from "yet-another-react-lightbox";
 import "yet-another-react-lightbox/styles.css";
@@ -13,6 +12,72 @@ import {
 
 import "yet-another-react-lightbox/plugins/captions.css";
 import Footer from "../components/Footer";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className, onClick }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        rootMargin: "50px 0px", // Start loading 50px before the image enters viewport
+        threshold: 0.1,
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, []);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  return (
+    <div ref={imgRef} className={`relative ${className}`}>
+      {/* Placeholder */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
+          <div className="text-gray-400 text-sm">Loading...</div>
+        </div>
+      )}
+
+      {/* Actual Image */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+          onClick={onClick}
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
+  );
+};
 
 const ProductPage = () => {
   const location = useLocation();
@@ -22,10 +87,87 @@ const ProductPage = () => {
   const product = location.state;
   const category = location.state?.category || "Man";
 
+  const sectionRef = useRef(null);
+  const imagesRef = useRef(null);
+  const detailsRef = useRef(null);
+  const mobileImagesRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    // Animate desktop images
+    if (imagesRef.current) {
+      gsap.fromTo(
+        imagesRef.current.children,
+        { y: 50, opacity: 0, scale: 0.9 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: imagesRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate product details
+    if (detailsRef.current) {
+      gsap.fromTo(
+        detailsRef.current.children,
+        { x: 50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: detailsRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate mobile images
+    if (mobileImagesRef.current) {
+      gsap.fromTo(
+        mobileImagesRef.current.children,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: mobileImagesRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   if (!product)
     return <div className="text-center mt-10 text-2xl">Product not found</div>;
 
-const images = product.src || [];
+  const images = product.src || [];
 
   const [open, setOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -37,7 +179,7 @@ const images = product.src || [];
 
   return (
     <>
-      <div>
+      <div ref={sectionRef}>
         <Navbar />
 
         <div className="min-h-screen mt-[5rem]">
@@ -61,21 +203,25 @@ const images = product.src || [];
           {/* 🖼️ Image Grid */}
           <div className="hidden md:flex gap-20 md:px-5 lg:p-12 2xl:p-16 pb-10">
             <div
+              ref={imagesRef}
               className={`grid w-auto ${
                 images.length > 1 ? "grid-cols-2" : "grid-cols-1"
               } gap-8`}
             >
               {images.map((img, idx) => (
-                <img
-                  onClick={() => openLightbox(idx)}
+                <LazyImage
                   key={idx}
                   src={img}
                   alt={`Product Image ${idx}`}
-                  className="md:w-[250px] md:h-[300px] lg:w-[285px] lg:h-[420px] 2xl:w-[410px] 2xl:h-[600px] object-cover shadow-md"
+                  className="md:w-[250px] md:h-[300px] lg:w-[285px] lg:h-[420px] 2xl:w-[410px] 2xl:h-[600px] object-cover shadow-md cursor-pointer"
+                  onClick={() => openLightbox(idx)}
                 />
               ))}
             </div>
-            <div className="flex flex-col gap-5 md:text-[15px] 2xl:text-[17px] text-[#000000] md:w-[45%] 2xl:w-[55%] mt-5">
+            <div
+              ref={detailsRef}
+              className="flex flex-col gap-5 md:text-[15px] 2xl:text-[17px] text-[#000000] md:w-[45%] 2xl:w-[55%] mt-5"
+            >
               <h2 className=" md:text-[18px] 2xl:text-2xl font-sans font-medium tracking-[3px] uppercase mb-5">
                 {product.title}
               </h2>
@@ -136,10 +282,13 @@ const images = product.src || [];
             </div>
           </div>
 
-          <div className="md:hidden flex flex-col items-center gap-4 px-3 sm:px-4">
+          <div
+            ref={mobileImagesRef}
+            className="md:hidden flex flex-col items-center gap-4 px-3 sm:px-4"
+          >
             {/* 🖼️ Image Carousel */}
             <div className="relative w-full h-[500px] sm:h-[600px]">
-              <img
+              <LazyImage
                 src={images[currentIndex]}
                 alt="Product"
                 className="w-full h-full object-cover shadow-lg"
@@ -148,7 +297,7 @@ const images = product.src || [];
             {/* 🖼️ Thumbnails for Mobile */}
             <div className="flex gap-3 mt-5">
               {images.map((img, idx) => (
-                <img
+                <LazyImage
                   key={idx}
                   src={img}
                   alt={`Thumbnail ${idx}`}

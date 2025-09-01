@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { FaPhoneAlt } from "react-icons/fa";
 import { PiMapPinBold } from "react-icons/pi";
@@ -8,6 +8,11 @@ import { FiSend } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import emailjs from "@emailjs/browser";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const ContactUs = () => {
   const [email, setEmail] = useState("");
@@ -16,6 +21,82 @@ const ContactUs = () => {
   const [message, setMessage] = useState("");
   const [cellNumber, setCellNumber] = useState("");
   const [status, setStatus] = useState("");
+
+  const sectionRef = useRef(null);
+  const contactInfoRef = useRef(null);
+  const mapRef = useRef(null);
+  const formRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    // Animate contact info section
+    if (contactInfoRef.current) {
+      gsap.fromTo(
+        contactInfoRef.current.children,
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: contactInfoRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate map
+    if (mapRef.current) {
+      gsap.fromTo(
+        mapRef.current,
+        { x: 50, opacity: 0, scale: 0.9 },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: mapRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate form
+    if (formRef.current) {
+      gsap.fromTo(
+        formRef.current.children,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: formRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -54,7 +135,7 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div className="">
+      <div ref={sectionRef} className="">
         <div className="w-[90%] mx-auto">
           <div className="h-[70vh]">
             <img
@@ -62,14 +143,17 @@ const ContactUs = () => {
               alt=""
               className="w-full h-full object-cover"
             />
-
-  
           </div>
           <div className="mt-[8rem]  mb-20">
             <div className="flex flex-col gap-10">
               <div className="flex flex-col lg:flex-row gap-10">
-                <div className="flex-1 flex flex-col justify-center py-8 px-4 2xl:p-8 rounded-lg shadow-lg  bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)] w-full lg:w-[40%]">
-                  <h2 className="text-3xl md:text-4xl font-semibold mb-6 ">Get in Touch</h2>
+                <div
+                  ref={contactInfoRef}
+                  className="flex-1 flex flex-col justify-center py-8 px-4 2xl:p-8 rounded-lg shadow-lg  bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)] w-full lg:w-[40%]"
+                >
+                  <h2 className="text-3xl md:text-4xl font-semibold mb-6 ">
+                    Get in Touch
+                  </h2>
                   <p className="mb-8">
                     Any questions? We would love to hear from you!
                   </p>
@@ -118,6 +202,7 @@ const ContactUs = () => {
                 </div>
 
                 <iframe
+                  ref={mapRef}
                   src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d904.1050144316846!2d67.08705906963222!3d24.985838714209358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDU5JzA5LjAiTiA2N8KwMDUnMTUuNyJF!5e0!3m2!1sen!2s!4v1739060046969!5m2!1sen!2s"
                   style={{ border: 0 }}
                   allowFullScreen
@@ -127,7 +212,10 @@ const ContactUs = () => {
                 ></iframe>
               </div>
 
-              <div className=" text-[#4d4d4d] flex-1 shadow-lg p-8 rounded w-full mx-0 lg:w-[50%] lg:mx-auto">
+              <div
+                ref={formRef}
+                className=" text-[#4d4d4d] flex-1 shadow-lg p-8 rounded w-full mx-0 lg:w-[50%] lg:mx-auto"
+              >
                 <form onSubmit={handleSubmit} className="flex flex-col gap-5 ">
                   <div className="flex flex-col md:flex-row gap-4">
                     <input

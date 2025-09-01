@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 
 import Client1 from "/images/Client1.jpeg";
 import Client2 from "/images/Client2.jpg";
@@ -10,7 +10,11 @@ import Client7 from "/images/Client7.jpeg";
 import Client8 from "/images/Client8.jpeg";
 import Client9 from "/images/Client9.jpeg";
 import Client10 from "/images/Client10.jpeg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
 
 const clients = [
   Client1,
@@ -23,14 +27,71 @@ const clients = [
   Client8,
   Client9,
   Client10,
-
 ];
 
 const OurClients = () => {
+  const sectionRef = useRef(null);
+  const textRef = useRef(null);
+  const logosRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    // Animate text content
+    if (textRef.current) {
+      gsap.fromTo(
+        textRef.current.children,
+        { x: -50, opacity: 0 },
+        {
+          x: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate client logos
+    if (logosRef.current) {
+      gsap.fromTo(
+        logosRef.current.children,
+        { y: 50, opacity: 0, scale: 0.8 },
+        {
+          y: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: logosRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <>
-      <section className="w-full lg:w-[90%] lg:mx-auto flex flex-col lg:flex-row gap-5 px-3 lg:px-0 py-20 lg:justify-between lg:gap-0">
-        <div className="w-full lg:w-[30%]">
+      <section
+        ref={sectionRef}
+        className="w-full lg:w-[90%] lg:mx-auto flex flex-col lg:flex-row gap-5 px-3 lg:px-0 py-20 lg:justify-between lg:gap-0"
+      >
+        <div ref={textRef} className="w-full lg:w-[30%]">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Clients</h1>
           <h2 className="text-2xl font-semibold text-gray-700 mb-4">
             We have happy clients all over the world
@@ -45,7 +106,10 @@ const OurClients = () => {
         </div>
 
         <div className="w-full lg:w-[60%]">
-          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 place-items-center 2xl:grid-cols-7 gap-10">
+          <div
+            ref={logosRef}
+            className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 place-items-center 2xl:grid-cols-7 gap-10"
+          >
             {clients.map((client, index) => (
               <img
                 key={`first-${index}`}

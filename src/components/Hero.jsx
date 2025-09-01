@@ -1,68 +1,148 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        rootMargin: "50px 0px",
+        threshold: 0.1,
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, []);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  return (
+    <div ref={imgRef} className={`relative ${className}`}>
+      {/* Placeholder */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
+          <div className="text-gray-400 text-sm">Loading...</div>
+        </div>
+      )}
+
+      {/* Actual Image */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
+  );
+};
 
 const AnimatedCounter = ({ target, label, duration = 2000 }) => {
   const [hasScrolled, setHasScrolled] = useState(false);
   const [count, setCount] = useState(0);
   const [radius, setRadius] = useState(110); // default radius
   const stroke = 5;
+  const counterRef = useRef(null);
 
+  // Dynamically adjust radius on screen size
+  useEffect(() => {
+    const updateRadius = () => {
+      const width = window.innerWidth;
+      if (width < 640) setRadius(60); // mobile
+      else if (width < 1024) setRadius(80); // tablet
+      else if (width < 1536) setRadius(90); // tablet
+      else setRadius(110); // desktop
+    };
 
-    // Dynamically adjust radius on screen size
-    useEffect(() => {
-      const updateRadius = () => {
-        const width = window.innerWidth;
-        if (width < 640) setRadius(60); // mobile
-        else if (width < 1024) setRadius(80); // tablet
-        else if (width < 1536) setRadius(90); // tablet
-        else setRadius(110); // desktop
-      };
-  
-      updateRadius();
-      window.addEventListener("resize", updateRadius);
-      return () => window.removeEventListener("resize", updateRadius);
-    }, []);
-  
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
 
   const normalizedRadius = radius - stroke * 0.5;
   const circumference = 2 * Math.PI * normalizedRadius;
 
-
   useEffect(() => {
-    const handleScroll = () => {
-      setHasScrolled(true);
-    };
+    if (!counterRef.current) return;
 
-    window.addEventListener("scroll", handleScroll, { once: true });
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    // GSAP animation for counter
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: counterRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse",
+      },
+    });
 
-  useEffect(() => {
-    if (!hasScrolled) return;
-
-    let start = 0;
-    const increment = target / (duration / 16);
-
-    const animate = () => {
-      start += increment;
-      if (start >= target) {
-        setCount(target);
-      } else {
-        setCount(Math.ceil(start));
-        requestAnimationFrame(animate); 
+    tl.fromTo(
+      counterRef.current,
+      { scale: 0.8, opacity: 0 },
+      {
+        scale: 1,
+        opacity: 1,
+        duration: 1,
+        ease: "back.out(1.7)",
       }
+    );
+
+    // Animate the counter number
+    tl.fromTo(
+      {},
+      { val: 0 },
+      {
+        val: target,
+        duration: 2,
+        ease: "power2.out",
+        onUpdate: function () {
+          setCount(Math.ceil(this.targets()[0].val));
+        },
+      },
+      "-=0.5"
+    );
+
+    return () => {
+      tl.kill();
     };
+  }, [target]);
 
-    requestAnimationFrame(animate);
-
-    return () => cancelAnimationFrame(animate); 
-  }, [hasScrolled, target, duration]);
-
-  const maxProgress = 0.80; // Only fill 85% of the circle
+  const maxProgress = 0.8; // Only fill 85% of the circle
   const progress = (count / target) * maxProgress;
   const strokeDashoffset = circumference * (1 - progress);
 
   return (
-    <div className="flex flex-col items-center justify-center text-center text-[#ffffff]">
+    <div
+      ref={counterRef}
+      className="flex flex-col items-center justify-center text-center text-[#ffffff]"
+    >
       <svg height={radius * 2} width={radius * 2} className="mb-4">
         <circle
           stroke="#333333"
@@ -83,9 +163,8 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           cx={radius}
           cy={radius}
           style={{
-           
             transform: "rotate(-90deg)", // Rotate the circle to start from the top
-            transformOrigin: "50% 50%" // Ensure the circle rotates around the center
+            transformOrigin: "50% 50%", // Ensure the circle rotates around the center
           }}
         />
         <text
@@ -99,19 +178,104 @@ const AnimatedCounter = ({ target, label, duration = 2000 }) => {
           {count.toLocaleString()}
         </text>
       </svg>
-      <div className="text-sm 2xl:text-lg font-medium whitespace-nowrap">{label}</div>
+      <div className="text-sm 2xl:text-lg font-medium whitespace-nowrap">
+        {label}
+      </div>
     </div>
   );
 };
 
 const Hero = () => {
+  const heroRef = useRef(null);
+  const textRef = useRef(null);
+  const imagesRef = useRef(null);
+  const svgRef = useRef(null);
+
+  useEffect(() => {
+    if (!heroRef.current) return;
+
+    // Animate the main text content
+    if (textRef.current) {
+      gsap.fromTo(
+        textRef.current.children,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.2,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: textRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate the images
+    if (imagesRef.current) {
+      gsap.fromTo(
+        imagesRef.current.children,
+        { x: 100, opacity: 0, scale: 0.8 },
+        {
+          x: 0,
+          opacity: 1,
+          scale: 1,
+          duration: 1.2,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: imagesRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate the decorative SVG elements
+    if (svgRef.current) {
+      gsap.fromTo(
+        svgRef.current.children,
+        { scale: 0, opacity: 0 },
+        {
+          scale: 1,
+          opacity: 1,
+          duration: 0.8,
+          stagger: 0.1,
+          ease: "back.out(1.7)",
+          scrollTrigger: {
+            trigger: svgRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   return (
     <>
-      <section className="bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]">
+      <section
+        ref={heroRef}
+        className="bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]"
+      >
         <div className="flex flex-col md:flex-row gap-5 overflow-hidden">
           <div className="md:ml-[5rem] 2xl:ml-[15rem] w-full md:w-[60%] mt-28">
-            <div className="px-4 md:px-0 flex flex-col gap-5 text-center md:text-start">
-              <div>
+            <div
+              ref={textRef}
+              className="px-4 md:px-0 flex flex-col gap-5 text-center md:text-start"
+            >
+              <div ref={svgRef}>
                 <svg
                   width="100"
                   height="60"
@@ -149,9 +313,13 @@ const Hero = () => {
 
               <div className="text-white w-full md:max-w-md">
                 <p className="text-2xl text-[#ffffff] mb-2">New Fashion Item</p>
-                <h1 className="text-4xl lg:text-5xl font-bold mb-4">Released Now!</h1>
+                <h1 className="text-4xl lg:text-5xl font-bold mb-4">
+                  Released Now!
+                </h1>
                 <p className="text-2xl mb-2 italic">Our biggest sale ever!</p>
-                <p className="text-4xl lg:text-5xl font-bold text-[#ffffff]">40% OFF</p>
+                <p className="text-4xl lg:text-5xl font-bold text-[#ffffff]">
+                  40% OFF
+                </p>
               </div>
               <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
                 <a
@@ -163,7 +331,7 @@ const Hero = () => {
               </div>
 
               <div className="w-full flex justify-end md:justify-center">
-              <svg
+                <svg
                   width="100"
                   height="60"
                   viewBox="0 0 100 60"
@@ -201,16 +369,19 @@ const Hero = () => {
           </div>
 
           <div className="bg-white w-full md:w-[40%]">
-            <div className="md:relative md:right-[20%] lg:right-[30%] flex px-3 md:px-0 gap-5 md:gap-10 justify-center items-center">
+            <div
+              ref={imagesRef}
+              className="md:relative md:right-[20%] lg:right-[30%] flex px-3 md:px-0 gap-5 md:gap-10 justify-center items-center"
+            >
               <div className="mt-[5rem] md:mt-[12rem] mb-[2rem]">
-                <img
+                <LazyImage
                   src="/images/image1.jpeg"
                   alt="Model 1"
                   className="w-64 h-[50vh] object-cover "
                 />
               </div>
               <div>
-                <img
+                <LazyImage
                   src="/images/image2.jpeg"
                   alt="Model 2"
                   className="w-64 h-[50vh] object-cover "

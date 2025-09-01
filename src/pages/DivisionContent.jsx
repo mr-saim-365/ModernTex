@@ -1,12 +1,130 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import ServiceImage1 from "/images/ServiceImage1.jpeg";
 import ServiceImage2 from "/images/ServiceImage2.jpg";
 import ServiceImage3 from "/images/ServiceImage3.jpeg";
 import ServiceImage4 from "/images/ServiceImage4.jpeg";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+// Register ScrollTrigger plugin
+gsap.registerPlugin(ScrollTrigger);
+
+// Lazy Image Component
+const LazyImage = ({ src, alt, className }) => {
+  const [isLoaded, setIsLoaded] = useState(false);
+  const [isInView, setIsInView] = useState(false);
+  const imgRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        rootMargin: "50px 0px",
+        threshold: 0.1,
+      }
+    );
+
+    if (imgRef.current) {
+      observer.observe(imgRef.current);
+    }
+
+    return () => {
+      if (imgRef.current) {
+        observer.unobserve(imgRef.current);
+      }
+    };
+  }, []);
+
+  const handleLoad = () => {
+    setIsLoaded(true);
+  };
+
+  return (
+    <div ref={imgRef} className={`relative ${className}`}>
+      {/* Placeholder */}
+      {!isLoaded && (
+        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
+          <div className="text-gray-400 text-sm">Loading...</div>
+        </div>
+      )}
+
+      {/* Actual Image */}
+      {isInView && (
+        <img
+          src={src}
+          alt={alt}
+          className={`${className} transition-opacity duration-300 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
+          loading="lazy"
+          onLoad={handleLoad}
+        />
+      )}
+    </div>
+  );
+};
 
 const DivisionContent = () => {
+  const sectionRef = useRef(null);
+  const titleRef = useRef(null);
+  const servicesRef = useRef(null);
+
+  useEffect(() => {
+    if (!sectionRef.current) return;
+
+    // Animate title
+    if (titleRef.current) {
+      gsap.fromTo(
+        titleRef.current,
+        { y: 50, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: titleRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    // Animate service sections
+    if (servicesRef.current) {
+      gsap.fromTo(
+        servicesRef.current.children,
+        { y: 100, opacity: 0 },
+        {
+          y: 0,
+          opacity: 1,
+          duration: 1,
+          stagger: 0.3,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: servicesRef.current,
+            start: "top 80%",
+            end: "bottom 20%",
+            toggleActions: "play none none reverse",
+          },
+        }
+      );
+    }
+
+    return () => {
+      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+    };
+  }, []);
+
   const services = [
     {
       id: "01",
@@ -43,12 +161,18 @@ const DivisionContent = () => {
     <>
       <Navbar />
 
-      <div className="px-3 md:px-5 lg:px-0 my-30  text-[#4D4D4D] w-full lg:w-[90%] mx-auto">
-        <h1 className="text-[26px] sm:text-3xl 2xl:text-[40px] mb-12 font-bold font-serif text-center">
+      <div
+        ref={sectionRef}
+        className="px-3 md:px-5 lg:px-0 my-30  text-[#4D4D4D] w-full lg:w-[90%] mx-auto"
+      >
+        <h1
+          ref={titleRef}
+          className="text-[26px] sm:text-3xl 2xl:text-[40px] mb-12 font-bold font-serif text-center"
+        >
           Our Divisions
         </h1>
 
-        <div className="flex flex-col gap-12">
+        <div ref={servicesRef} className="flex flex-col gap-12">
           {services.map((service, index) => (
             <div
               key={service.id}
@@ -57,7 +181,7 @@ const DivisionContent = () => {
               }  bg-white overflow-hidden lg:justify-between`}
             >
               <div className="w-full md:w-1/2 lg:w-[40%] h-[300px] sm:h-[400px] lg:h-[450px] 2xl:h-[500px]">
-                <img
+                <LazyImage
                   src={service.img}
                   alt={service.title}
                   className="w-full h-full object-cover rounded-xl"
