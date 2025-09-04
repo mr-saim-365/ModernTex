@@ -420,9 +420,9 @@ import React from "react";
 const Hero = () => {
   return (
     <>
-      <section className="w-full">
+      {/* <section className="w-full">
 
-        {/* Video Background */}
+    
         <div className="min-h-[420px] md:h-auto  w-full flex flex-col items-center justify-center">
           <video
             className="h-full w-full object-cover"
@@ -433,6 +433,20 @@ const Hero = () => {
             playsInline
           />
         </div>
+
+        
+      </section> */}
+
+      <section className="relative w-full h-[50vh] md:h-[70vh] lg:h-screen overflow-hidden">
+        {/* Video Background */}
+        <video
+          className="absolute inset-0 w-full h-full object-cover"
+          src="/videos/FactoryVideo.mp4"
+          autoPlay
+          muted
+          loop
+          playsInline
+        />
       </section>
     </>
   );
