@@ -4,7 +4,7 @@ import Contact from "./pages/Contact";
 import ProductPage from "./pages/ProductPage";
 import Items from "./pages/Items";
 import React from "react";
-import DivisionContent from "./pages/DivisionContent";
+import DivisionsContent from "./pages/DivisionsContent";
 
 function App() {
   return (
@@ -14,7 +14,7 @@ function App() {
         <Route path="/Contact" element={<Contact />} />
         <Route path="/Items" element={<Items />} />
         <Route path="/ProductPage" element={<ProductPage />} />
-        <Route path="/DivisionContent" element={<DivisionContent />} />
+        <Route path="/DivisionsContent" element={<DivisionsContent/>} />
       </Routes>
     </div>
   );

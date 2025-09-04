@@ -415,25 +415,17 @@
 
 // export default Hero;
 
-import React, { useEffect, useState, useRef } from "react";
-import { gsap } from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
-
-// Register ScrollTrigger plugin
-gsap.registerPlugin(ScrollTrigger);
-
+import React from "react";
 
 const Hero = () => {
-
-
   return (
     <>
-      <section
-        className="bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]"
-      >
-        <div className="w-full h-screen bg-black">
+      <section className="w-full">
+
+        {/* Video Background */}
+        <div className="min-h-[420px] md:h-auto  w-full flex flex-col items-center justify-center">
           <video
-            className="w-full h-full object-cover"
+            className="h-full w-full object-cover"
             src="/videos/FactoryVideo.mp4"
             autoPlay
             muted

@@ -84,7 +84,7 @@ const DivisionsSection = () => {
 
             <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
               <a
-                href="/DivisionContent"
+                href="/DivisionsContent"
                 className="rounded-lg bg-black px-3.5 py-2.5 w-uto text-sm font-semibold text-white flex gap-2 items-center justify-center shadow-sm"
               >
                 Learn More
