@@ -68,7 +68,7 @@ const DivisionsSection = () => {
         style={{ backgroundImage: "url('/images/DivisionImage.png')" }}
         className="z-10 flex flex-col md:flex-row gap-8 text-[#ffffff] bg-cover bg-center bg-no-repeat"
       >
-        <div className="lg:w-[90%] mx-auto w-full px-3 lg:px-0 flex flex-col md:flex-row gap-5 lg:gap-10 py-20">
+        <div className="lg:w-[90%] lg:mx-auto w-full px-3 md:px-6 lg:px-0 flex flex-col md:flex-row gap-5 lg:gap-10 py-20">
           <div ref={textRef} className="md:w-[60%]">
             <h1 className="text-3xl font-bold  mb-4">DIVISIONS</h1>
             <h2 className="text-2xl font-semibold mb-4">
@@ -85,7 +85,7 @@ const DivisionsSection = () => {
             <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
               <a
                 href="/DivisionContent"
-                className="rounded-lg bg-black px-3.5 py-2.5 text-sm font-semibold text-white flex gap-2 items-center justify-center shadow-sm w-[20%] "
+                className="rounded-lg bg-black px-3.5 py-2.5 w-uto text-sm font-semibold text-white flex gap-2 items-center justify-center shadow-sm"
               >
                 Learn More
                 <FaArrowRight size={20} />

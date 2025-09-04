@@ -125,7 +125,7 @@ const Whoarewe = () => {
     <>
       <div
         ref={sectionRef}
-        className="flex flex-col md:flex-row md:gap-[60px] gap-10 lg:px-0 px-3 py-16 md:justify-between w-full lg:w-[90%] mx-auto"
+        className="flex flex-col md:flex-row md:gap-[60px] gap-10 lg:px-0 px-3 py-16 md:px-6 md:justify-between w-full lg:w-[90%] mx-auto"
       >
         {/* Text Section */}
         <div

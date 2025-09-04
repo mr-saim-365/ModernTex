@@ -139,7 +139,7 @@ const ContactUs = () => {
         <div className="w-[90%] mx-auto">
           <div className="h-[70vh]">
             <img
-              src="./assets/images/contact.jpeg"
+              src="/images/contact.jpeg"
               alt=""
               className="w-full h-full object-cover"
             />

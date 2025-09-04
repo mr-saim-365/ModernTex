@@ -1,209 +1,154 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import ServiceImage1 from "/images/ServiceImage1.jpeg";
-import ServiceImage2 from "/images/ServiceImage2.jpg";
-import ServiceImage3 from "/images/ServiceImage3.jpeg";
-import ServiceImage4 from "/images/ServiceImage4.jpeg";
+import fabricationImg from "/images/Fabrication.jpg";
+import stitchingImg from "/images/Stitching.jpg";
+import washingImg from "/images/Washing.jpg";
+import finishingImg from "/images/Finishing.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
 
-// Lazy Image Component
-const LazyImage = ({ src, alt, className }) => {
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [isInView, setIsInView] = useState(false);
-  const imgRef = useRef(null);
+const steps = [
+  {
+    id: 1,
+    title: "Fabrication",
+    description:
+      "We start with premium quality fabrics, carefully sourced and inspected to ensure durability and comfort. Our fabrication process focuses on precision cutting and preparation for stitching.",
+    image: fabricationImg,
+  },
+  {
+    id: 2,
+    title: "Stitching",
+    description:
+      "Our skilled tailors use advanced stitching techniques to bring designs to life with accuracy, strength, and attention to detail. Quality control is maintained at every stage.",
+    image: stitchingImg,
+  },
+  {
+    id: 3,
+    title: "Washing",
+    description:
+      "Each garment goes through specialized washing treatments to achieve the perfect texture, softness, and color tone. This step ensures both style and long-lasting quality.",
+    image: washingImg,
+  },
+  {
+    id: 4,
+    title: "Finishing",
+    description:
+      "The final step involves careful finishing touches including ironing, trimming, and packaging, ensuring the product is delivered in flawless condition.",
+    image: finishingImg,
+  },
+];
+
+const DivisionsContent = () => {
+  const sectionsRef = useRef([]);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsInView(true);
-          observer.unobserve(entry.target);
-        }
-      },
-      {
-        rootMargin: "50px 0px",
-        threshold: 0.1,
-      }
-    );
+    sectionsRef.current.forEach((section) => {
+      if (!section) return;
 
-    if (imgRef.current) {
-      observer.observe(imgRef.current);
-    }
+      const text = section.querySelector(".text-content");
+      const image = section.querySelector(".image-content");
+
+      if (text) {
+        gsap.fromTo(
+          text,
+          { xPercent: -20, opacity: 0 },
+          {
+            xPercent: 0,
+            opacity: 1,
+            duration: 1,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+
+      if (image) {
+        gsap.fromTo(
+          image,
+          { xPercent: 20, opacity: 0, scale: 0.9 },
+          {
+            xPercent: 0,
+            opacity: 1,
+            scale: 1,
+            duration: 1.2,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: section,
+              start: "top 80%",
+              toggleActions: "play none none reverse",
+            },
+          }
+        );
+      }
+    });
 
     return () => {
-      if (imgRef.current) {
-        observer.unobserve(imgRef.current);
-      }
+      ScrollTrigger.getAll().forEach((t) => t.kill());
     };
   }, []);
 
-  const handleLoad = () => {
-    setIsLoaded(true);
-  };
-
   return (
-    <div ref={imgRef} className={`relative ${className}`}>
-      {/* Placeholder */}
-      {!isLoaded && (
-        <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
-          <div className="text-gray-400 text-sm">Loading...</div>
-        </div>
-      )}
-
-      {/* Actual Image */}
-      {isInView && (
-        <img
-          src={src}
-          alt={alt}
-          className={`${className} transition-opacity duration-300 ${
-            isLoaded ? "opacity-100" : "opacity-0"
-          }`}
-          loading="lazy"
-          onLoad={handleLoad}
-        />
-      )}
-    </div>
-  );
-};
-
-const DivisionContent = () => {
-  const sectionRef = useRef(null);
-  const titleRef = useRef(null);
-  const servicesRef = useRef(null);
-
-  useEffect(() => {
-    if (!sectionRef.current) return;
-
-    // Animate title
-    if (titleRef.current) {
-      gsap.fromTo(
-        titleRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: titleRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-
-    // Animate service sections
-    if (servicesRef.current) {
-      gsap.fromTo(
-        servicesRef.current.children,
-        { y: 100, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          stagger: 0.3,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: servicesRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }
-
-    return () => {
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-    };
-  }, []);
-
-  const services = [
-    {
-      id: "01",
-      title: "Fabrication",
-      description:
-        "The foundation of every great garment is the fabric.We source only premium-quality denim and woven fabrics tailored to meet specific client and style requirements.Fabrics are selected based on design, texture, durability, and market trends.Each roll is quality checked before moving into production.",
-      img: ServiceImage1,
-    },
-    {
-      id: "02",
-      title: "Stitching",
-      description:
-        "Our stitching unit combines skilled operators and modern machinery for high-efficiency output.Each production line produces up to 8,000 garments per day.We maintain precision, speed, and in-line quality control throughout the process.Advanced machines ensure clean construction and consistent quality",
-      img: ServiceImage2,
-    },
-    {
-      id: "03",
-      title: "Washing",
-      description:
-        "We have a fully equipped in-house washing unit, staffed with experienced technicians.Our workforce brings years of specialized expertise in denim washing techniques.Only high-quality, eco-friendly chemicals are used to protect both fabric and environment.We focus on sustainable practices, including water-saving technologies and responsible chemical management.",
-      img: ServiceImage3,
-    },
-
-    {
-      id: "04",
-      title: "Finishing",
-      description:
-        "The final stage where every garment is inspected, measured, and packed with care.Skilled finishing staff ensure products meet exact specifications and quality standards.Final checks include labeling, measurements, stitching accuracy, and overall presentation.Packaging is done with precision to protect the garment and deliver a premium unboxing experience.",
-      img: ServiceImage4,
-    },
-  ];
-
-  return (
-    <>
+    <section>
       <Navbar />
+      <div className="bg-gray-50 py-16 lg:px-0 lg:w-[90%] lg:mx-auto md:px-6 px-3 mt-[3rem] overflow-x-hidden">
+        {/* Section Heading */}
+        <div className="text-center mb-12">
+          <h2 className="text-3xl md:text-5xl font-bold text-gray-800">
+            Our 4-Step Process
+          </h2>
+          <p className="mt-4 text-gray-600 text-[15px] sm:text-[16px] md:text-lg">
+            From start to finish, we ensure perfection in every stage of our
+            production.
+          </p>
+        </div>
 
-      <div
-        ref={sectionRef}
-        className="px-3 md:px-5 lg:px-0 my-30  text-[#4D4D4D] w-full lg:w-[90%] mx-auto"
-      >
-        <h1
-          ref={titleRef}
-          className="text-[26px] sm:text-3xl 2xl:text-[40px] mb-12 font-bold font-serif text-center"
-        >
-          Our Divisions
-        </h1>
-
-        <div ref={servicesRef} className="flex flex-col gap-12">
-          {services.map((service, index) => (
+        {/* Steps Grid */}
+        <div className="space-y-16">
+          {steps.map((step, index) => (
             <div
-              key={service.id}
-              className={`flex flex-col md:flex-row md:gap-5 lg:gap-0 ${
+              key={step.id}
+              ref={(el) => {
+                if (el) sectionsRef.current[index] = el;
+              }}
+              className={`flex flex-col md:flex-row md:justify-between items-center gap-8 ${
                 index % 2 !== 0 ? "md:flex-row-reverse" : ""
-              }  bg-white overflow-hidden lg:justify-between`}
+              }`}
             >
-              <div className="w-full md:w-1/2 lg:w-[40%] h-[300px] sm:h-[400px] lg:h-[450px] 2xl:h-[500px]">
-                <LazyImage
-                  src={service.img}
-                  alt={service.title}
-                  className="w-full h-full object-cover rounded-xl"
+              {/* Image */}
+              <div className="image-content w-full md:w-2/5 lg:w-[40%]">
+                <img
+                  src={step.image}
+                  alt={step.title}
+                  className="w-full h-full rounded-lg object-cover shadow-lg"
                 />
               </div>
-              <div className="w-full md:w-1/2 lg:w-[40%] py-6 ">
-                <div className="text-lg font-semibold mb-1">{service.id}</div>
-                <h2 className="text-2xl font-bold font-serif mb-3">
-                  {service.title}
-                </h2>
-                <p className="text-sm md:text-base text-justify">
-                  {service.description}
+
+              {/* Text Content */}
+              <div className="text-content md:w-1/2">
+                <h3 className="text-2xl lg:text-3xl font-semibold text-gray-800 flex items-center">
+                  <span className="text-[rgb(244_130_33)] text-3xl lg:text-4xl font-bold mr-3">
+                    {step.id}.
+                  </span>
+                  {step.title}
+                </h3>
+                <p className="mt-4 text-gray-600 text-[15px] md:text-[16px] lg:text-lg">
+                  {step.description}
                 </p>
               </div>
             </div>
           ))}
         </div>
       </div>
-
       <Footer />
-    </>
+    </section>
   );
 };
 
-export default DivisionContent;
+export default DivisionsContent;

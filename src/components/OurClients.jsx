@@ -89,7 +89,7 @@ const OurClients = () => {
     <>
       <section
         ref={sectionRef}
-        className="w-full lg:w-[90%] lg:mx-auto flex flex-col lg:flex-row gap-5 px-3 lg:px-0 py-20 lg:justify-between lg:gap-0"
+        className="w-full lg:w-[90%] md:px-6 lg:mx-auto flex flex-col lg:flex-row gap-5 px-3 lg:px-0 py-20 lg:justify-between lg:gap-0"
       >
         <div ref={textRef} className="w-full lg:w-[30%]">
           <h1 className="text-3xl font-bold text-gray-800 mb-4">Clients</h1>

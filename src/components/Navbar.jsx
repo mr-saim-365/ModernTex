@@ -92,7 +92,7 @@ const Navbar = () => {
   return (
     <nav
       ref={navbarRef}
-      className="fixed top-0 left-0 right-0  backdrop-blur-md z-50 shadow-lg bg-white text-[#4D4D4D] w-full md:w-[90%] mx-auto
+      className="fixed top-0 left-0 right-0 backdrop-blur-md z-50 shadow-lg bg-white text-[#4D4D4D] md:mx-6 lg:w-[90%] lg:mx-auto
       "
     >
       <div className="px-4 sm:px-6 h-18 lg:px-8">
@@ -119,10 +119,10 @@ const Navbar = () => {
               <RiArrowDownSLine size={16} className="mt-1" />
               <div className="bg-[#222222] text-[#ffffff] py-4 px-2 w-[150px] rounded-lg shadow-lg flex flex-col items-center gap-3 absolute top-[3rem] left-[-45px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
                 <Link className="hover:scale-110" to="/Items?category=Man">
-                  Men
+                  Women
                 </Link>
                 <Link className="hover:scale-110 " to="/Items?category=Woman">
-                  Women
+                  Men
                 </Link>
                 <Link className="hover:scale-110" to="/Items?category=Kids">
                   Kid
@@ -170,13 +170,13 @@ const Navbar = () => {
                 className="hover:scale-110 block p-2"
                 to="/Items?category=Man"
               >
-                Men
+                Women
               </Link>
               <Link
                 className="hover:scale-110 block p-2"
                 to="/Items?category=Woman"
               >
-                Women
+                Men
               </Link>
               <Link
                 className="hover:scale-110 block p-2"

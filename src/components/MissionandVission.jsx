@@ -65,7 +65,7 @@ const MissionandVission = () => {
     <>
       <section
         ref={sectionRef}
-        className="text-[#4D4D4D] py-16 sm:py-20 px-3 lg:px-0 w-full lg:w-[90%] mx-auto"
+        className="text-[#4D4D4D] py-16 sm:py-20 px-3 md:px-6 lg:px-0 w-full lg:w-[90%] mx-auto"
       >
         <div className="flex flex-col md:flex-row gap-10 lg:gap-14  w-full">
           <div ref={missionRef} className="w-full md:w-1/2">

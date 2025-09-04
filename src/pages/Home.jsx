@@ -10,14 +10,10 @@ import OurClients from "../components/OurClients";
 const Home = () => {
   return (
     <>
-      <div className=" h-screen">
+      <div className="h-screen w-full">
         <Navbar />
- 
         <Hero />
-     
-      
         <Whoarewe />
-        
         <MissionandVission />
         <DivisionsSection/>
         <OurClients/>

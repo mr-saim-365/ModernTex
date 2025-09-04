@@ -46,11 +46,11 @@ const Footer = () => {
     <div className="bg-[#222222] mt-auto">
       <footer
         id="footer"
-        className=" text-[#ffffff] text-sm relative w-full md:w-[90%] mx-auto "
+        className=" text-[#ffffff] text-sm relative lg:w-[90%] lg:mx-auto md:px-6 lg:px-0"
       >
         <div ref={ref} className="w-full flex flex-col items-center">
           <motion.div
-            className="py-[40px] md:w-[90%] px-8 md:px-0 flex items-center justify-center"
+            className="py-[40px] w-full px-3 md:px-0 flex items-center justify-center"
             initial="hidden"
             animate={controls}
             variants={containerVariants}
