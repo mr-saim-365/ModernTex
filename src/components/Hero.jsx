@@ -146,7 +146,6 @@ const Hero = () => {
       <section className="relative w-full ">
         {/* Video Background */}
         <div className="relative w-full min-h-[420px] md:min-h-[80vh] lg:min-h-[100vh] overflow-hidden mt-16 md:mt-20">
-
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"
@@ -161,7 +160,7 @@ const Hero = () => {
 
           {/* Theme gradient + subtle dark overlay for contrast */}
           <div className="absolute inset-0 bg-black/30" />
-          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_90%_10%,_#faa74940_0%,_transparent_60%)]" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%60%_at_90%_10%,#faa74940_0%,_transparent_60%)]" />
 
           {/* Mute/Unmute Control */}
           <button
@@ -202,24 +201,10 @@ const Hero = () => {
             )}
           </button>
         </div>
-
-        
-      </section> */}
-
-      <section className="relative w-full h-[50vh] md:h-[70vh] lg:h-screen overflow-hidden">
-        {/* Video Background */}
-        <video
-          className="absolute inset-0 w-full h-full object-cover"
-          src="/videos/FactoryVideo.mp4"
-          autoPlay
-          muted
-          loop
-          playsInline
-        />
       </section>
 
       {/* Spaced Animated Counters on same background */}
-      <div className="mt- md:mt-16 lg:mt-20 py-12 px-4 sm:px-6 lg:px-8 bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]">
+      <div className="mt- md:mt-16 lg:mt-20 py-12 px-4 sm:px-6 lg:px-8 bg-[linear-gradient(to_top_right,#f48221_50%,#faa749_95%)]">
         <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
             <AnimatedCounter target={2000} label="SKILLED WORKERS" />
@@ -238,4 +223,4 @@ const Hero = () => {
   );
 };
 
-export default Hero;
+export default Hero;
