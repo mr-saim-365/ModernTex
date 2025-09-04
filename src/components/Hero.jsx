@@ -434,7 +434,7 @@ const Hero = () => {
         <div className="w-full h-screen bg-black">
           <video
             className="w-full h-full object-cover"
-            src="/videos/FactoryFinal.mp4"
+            src="/videos/FactoryVideo.mp4"
             autoPlay
             muted
             loop
