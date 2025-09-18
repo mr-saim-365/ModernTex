@@ -1,439 +1,263 @@
-// import React, { useEffect, useState, useRef } from "react";
-// import { gsap } from "gsap";
-// import { ScrollTrigger } from "gsap/ScrollTrigger";
+import React, { useEffect, useRef, useState } from "react";
+import { gsap } from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
-// // Register ScrollTrigger plugin
-// gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger);
 
-// // Lazy Image Component
-// const LazyImage = ({ src, alt, className }) => {
-//   const [isLoaded, setIsLoaded] = useState(false);
-//   const [isInView, setIsInView] = useState(false);
-//   const imgRef = useRef(null);
+const AnimatedCounter = ({ target, label, duration = 2000 }) => {
+  const [count, setCount] = useState(0);
+  const [radius, setRadius] = useState(110);
+  const stroke = 5;
+  const counterRef = useRef(null);
 
-//   useEffect(() => {
-//     const observer = new IntersectionObserver(
-//       ([entry]) => {
-//         if (entry.isIntersecting) {
-//           setIsInView(true);
-//           observer.unobserve(entry.target);
-//         }
-//       },
-//       {
-//         rootMargin: "50px 0px",
-//         threshold: 0.1,
-//       }
-//     );
+  useEffect(() => {
+    const updateRadius = () => {
+      const width = window.innerWidth;
+      if (width < 640) setRadius(60);
+      else if (width < 1024) setRadius(80);
+      else if (width < 1536) setRadius(90);
+      else setRadius(110);
+    };
 
-//     if (imgRef.current) {
-//       observer.observe(imgRef.current);
-//     }
+    updateRadius();
+    window.addEventListener("resize", updateRadius);
+    return () => window.removeEventListener("resize", updateRadius);
+  }, []);
 
-//     return () => {
-//       if (imgRef.current) {
-//         observer.unobserve(imgRef.current);
-//       }
-//     };
-//   }, []);
+  const normalizedRadius = radius - stroke * 0.5;
+  const circumference = 2 * Math.PI * normalizedRadius;
 
-//   const handleLoad = () => {
-//     setIsLoaded(true);
-//   };
+  useEffect(() => {
+    if (!counterRef.current) return;
 
-//   return (
-//     <div ref={imgRef} className={`relative ${className}`}>
-//       {/* Placeholder */}
-//       {!isLoaded && (
-//         <div className="absolute inset-0 bg-gray-200 animate-pulse rounded-lg flex items-center justify-center">
-//           <div className="text-gray-400 text-sm">Loading...</div>
-//         </div>
-//       )}
+    const tl = gsap.timeline({
+      scrollTrigger: {
+        trigger: counterRef.current,
+        start: "top 80%",
+        end: "bottom 20%",
+        toggleActions: "play none none reverse",
+      },
+    });
 
-//       {/* Actual Image */}
-//       {isInView && (
-//         <img
-//           src={src}
-//           alt={alt}
-//           className={`${className} transition-opacity duration-300 ${
-//             isLoaded ? "opacity-100" : "opacity-0"
-//           }`}
-//           loading="lazy"
-//           onLoad={handleLoad}
-//         />
-//       )}
-//     </div>
-//   );
-// };
+    tl.fromTo(
+      counterRef.current,
+      { scale: 0.8, opacity: 0 },
+      { scale: 1, opacity: 1, duration: 1, ease: "back.out(1.7)" }
+    );
 
-// const AnimatedCounter = ({ target, label, duration = 2000 }) => {
-//   const [hasScrolled, setHasScrolled] = useState(false);
-//   const [count, setCount] = useState(0);
-//   const [radius, setRadius] = useState(110); // default radius
-//   const stroke = 5;
-//   const counterRef = useRef(null);
+    tl.fromTo(
+      {},
+      { val: 0 },
+      {
+        val: target,
+        duration: duration / 1000,
+        ease: "power2.out",
+        onUpdate: function () {
+          setCount(Math.ceil(this.targets()[0].val));
+        },
+      },
+      "-=0.5"
+    );
 
-//   // Dynamically adjust radius on screen size
-//   useEffect(() => {
-//     const updateRadius = () => {
-//       const width = window.innerWidth;
-//       if (width < 640) setRadius(60); // mobile
-//       else if (width < 1024) setRadius(80); // tablet
-//       else if (width < 1536) setRadius(90); // tablet
-//       else setRadius(110); // desktop
-//     };
+    return () => {
+      tl.kill();
+    };
+  }, [target, duration]);
 
-//     updateRadius();
-//     window.addEventListener("resize", updateRadius);
-//     return () => window.removeEventListener("resize", updateRadius);
-//   }, []);
+  const maxProgress = 0.8; // 80% arc fill
+  const progress = (count / target) * maxProgress;
+  const strokeDashoffset = circumference * (1 - progress);
 
-//   const normalizedRadius = radius - stroke * 0.5;
-//   const circumference = 2 * Math.PI * normalizedRadius;
-
-//   useEffect(() => {
-//     if (!counterRef.current) return;
-
-//     // GSAP animation for counter
-//     const tl = gsap.timeline({
-//       scrollTrigger: {
-//         trigger: counterRef.current,
-//         start: "top 80%",
-//         end: "bottom 20%",
-//         toggleActions: "play none none reverse",
-//       },
-//     });
-
-//     tl.fromTo(
-//       counterRef.current,
-//       { scale: 0.8, opacity: 0 },
-//       {
-//         scale: 1,
-//         opacity: 1,
-//         duration: 1,
-//         ease: "back.out(1.7)",
-//       }
-//     );
-
-//     // Animate the counter number
-//     tl.fromTo(
-//       {},
-//       { val: 0 },
-//       {
-//         val: target,
-//         duration: 2,
-//         ease: "power2.out",
-//         onUpdate: function () {
-//           setCount(Math.ceil(this.targets()[0].val));
-//         },
-//       },
-//       "-=0.5"
-//     );
-
-//     return () => {
-//       tl.kill();
-//     };
-//   }, [target]);
-
-//   const maxProgress = 0.8; // Only fill 85% of the circle
-//   const progress = (count / target) * maxProgress;
-//   const strokeDashoffset = circumference * (1 - progress);
-
-//   return (
-//     <div
-//       ref={counterRef}
-//       className="flex flex-col items-center justify-center text-center text-[#ffffff]"
-//     >
-//       <svg height={radius * 2} width={radius * 2} className="mb-4">
-//         <circle
-//           stroke="#333333"
-//           fill="transparent"
-//           strokeWidth={stroke}
-//           r={normalizedRadius}
-//           cx={radius}
-//           cy={radius}
-//         />
-//         <circle
-//           stroke="#FFFFFF"
-//           fill="transparent"
-//           strokeWidth={stroke}
-//           strokeLinecap="round"
-//           strokeDasharray={circumference}
-//           strokeDashoffset={strokeDashoffset}
-//           r={normalizedRadius}
-//           cx={radius}
-//           cy={radius}
-//           style={{
-//             transform: "rotate(-90deg)", // Rotate the circle to start from the top
-//             transformOrigin: "50% 50%", // Ensure the circle rotates around the center
-//           }}
-//         />
-//         <text
-//           x="50%"
-//           y="50%"
-//           fill="#ffffff"
-//           dominantBaseline="middle"
-//           textAnchor="middle"
-//           className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl font-bold mb-2"
-//         >
-//           {count.toLocaleString()}
-//         </text>
-//       </svg>
-//       <div className="text-sm 2xl:text-lg font-medium whitespace-nowrap">
-//         {label}
-//       </div>
-//     </div>
-//   );
-// };
-
-// const Hero = () => {
-//   const heroRef = useRef(null);
-//   const textRef = useRef(null);
-//   const imagesRef = useRef(null);
-//   const svgRef = useRef(null);
-
-//   useEffect(() => {
-//     if (!heroRef.current) return;
-
-//     // Animate the main text content
-//     if (textRef.current) {
-//       gsap.fromTo(
-//         textRef.current.children,
-//         { y: 50, opacity: 0 },
-//         {
-//           y: 0,
-//           opacity: 1,
-//           duration: 1,
-//           stagger: 0.2,
-//           ease: "power2.out",
-//           scrollTrigger: {
-//             trigger: textRef.current,
-//             start: "top 80%",
-//             end: "bottom 20%",
-//             toggleActions: "play none none reverse",
-//           },
-//         }
-//       );
-//     }
-
-//     // Animate the images
-//     if (imagesRef.current) {
-//       gsap.fromTo(
-//         imagesRef.current.children,
-//         { x: 100, opacity: 0, scale: 0.8 },
-//         {
-//           x: 0,
-//           opacity: 1,
-//           scale: 1,
-//           duration: 1.2,
-//           stagger: 0.3,
-//           ease: "power2.out",
-//           scrollTrigger: {
-//             trigger: imagesRef.current,
-//             start: "top 80%",
-//             end: "bottom 20%",
-//             toggleActions: "play none none reverse",
-//           },
-//         }
-//       );
-//     }
-
-//     // Animate the decorative SVG elements
-//     if (svgRef.current) {
-//       gsap.fromTo(
-//         svgRef.current.children,
-//         { scale: 0, opacity: 0 },
-//         {
-//           scale: 1,
-//           opacity: 1,
-//           duration: 0.8,
-//           stagger: 0.1,
-//           ease: "back.out(1.7)",
-//           scrollTrigger: {
-//             trigger: svgRef.current,
-//             start: "top 80%",
-//             end: "bottom 20%",
-//             toggleActions: "play none none reverse",
-//           },
-//         }
-//       );
-//     }
-
-//     return () => {
-//       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-//     };
-//   }, []);
-
-//   return (
-//     <>
-//       <section
-//         ref={heroRef}
-//         className="bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]"
-//       >
-//         <div className="flex flex-col md:flex-row gap-5 overflow-hidden">
-//           <div className="md:ml-[5rem] 2xl:ml-[15rem] w-full md:w-[60%] mt-28">
-//             <div
-//               ref={textRef}
-//               className="px-4 md:px-0 flex flex-col gap-5 text-center md:text-start"
-//             >
-//               <div ref={svgRef}>
-//                 <svg
-//                   width="100"
-//                   height="60"
-//                   viewBox="0 0 100 60"
-//                   fill="none"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   className="mb-3"
-//                 >
-//                   <path
-//                     d="M0 10 Q 10 0, 20 10 T 40 10 T 60 10 T 80 10 T 100 10"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 20 Q 10 10, 20 20 T 40 20 T 60 20 T 80 20 T 100 20"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 30 Q 10 20, 20 30 T 40 30 T 60 30 T 80 30 T 100 30"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 40 Q 10 30, 20 40 T 40 40 T 60 40 T 80 40 T 100 40"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                 </svg>
-//               </div>
-
-//               <div className="text-white w-full md:max-w-md">
-//                 <p className="text-2xl text-[#ffffff] mb-2">New Fashion Item</p>
-//                 <h1 className="text-4xl lg:text-5xl font-bold mb-4">
-//                   Released Now!
-//                 </h1>
-//                 <p className="text-2xl mb-2 italic">Our biggest sale ever!</p>
-//                 <p className="text-4xl lg:text-5xl font-bold text-[#ffffff]">
-//                   40% OFF
-//                 </p>
-//               </div>
-//               <div className="flex items-center justify-center md:justify-normal mt-4 gap-x-6">
-//                 <a
-//                   href="#"
-//                   className="rounded-lg bg-black px-3.5 py-2.5 text-sm font-semibold text-white shadow-sm w-[40%] text-center"
-//                 >
-//                   Try for free
-//                 </a>
-//               </div>
-
-//               <div className="w-full flex justify-end md:justify-center">
-//                 <svg
-//                   width="100"
-//                   height="60"
-//                   viewBox="0 0 100 60"
-//                   fill="none"
-//                   xmlns="http://www.w3.org/2000/svg"
-//                   className="mb-3"
-//                 >
-//                   <path
-//                     d="M0 10 Q 10 0, 20 10 T 40 10 T 60 10 T 80 10 T 100 10"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 20 Q 10 10, 20 20 T 40 20 T 60 20 T 80 20 T 100 20"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 30 Q 10 20, 20 30 T 40 30 T 60 30 T 80 30 T 100 30"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                   <path
-//                     d="M0 40 Q 10 30, 20 40 T 40 40 T 60 40 T 80 40 T 100 40"
-//                     stroke="#ffffff"
-//                     strokeWidth="3"
-//                     fill="none"
-//                   />
-//                 </svg>
-//               </div>
-//             </div>
-//           </div>
-
-//           <div className="bg-white w-full md:w-[40%]">
-//             <div
-//               ref={imagesRef}
-//               className="md:relative md:right-[20%] lg:right-[30%] flex px-3 md:px-0 gap-5 md:gap-10 justify-center items-center"
-//             >
-//               <div className="mt-[5rem] md:mt-[12rem] mb-[2rem]">
-//                 <LazyImage
-//                   src="/images/image1.jpeg"
-//                   alt="Model 1"
-//                   className="w-64 h-[50vh] object-cover "
-//                 />
-//               </div>
-//               <div>
-//                 <LazyImage
-//                   src="/images/image2.jpeg"
-//                   alt="Model 2"
-//                   className="w-64 h-[50vh] object-cover "
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-
-//         <div className="my-0  flow-root bg-[linear-gradient(to_top_left,_#faa749_30%,_#f48221_60%)]">
-//           <div className="py-12 px-4 sm:px-6 lg:px-8">
-//             <div className="max-w-7xl mx-auto">
-//               <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
-//                 <AnimatedCounter target={2000} label="SKILLED WORKERS" />
-//                 <AnimatedCounter
-//                   target={1000}
-//                   label="GARMENT PRODUCTION PIECES PER DAY"
-//                 />
-//                 <AnimatedCounter
-//                   target={250000}
-//                   label="FABRIC PRODUCTION IN KG MONTHLY"
-//                 />
-//               </div>
-//             </div>
-//           </div>
-//         </div>
-//       </section>
-//     </>
-//   );
-// };
-
-// export default Hero;
-
-import React from "react";
+  return (
+    <div
+      ref={counterRef}
+      className="flex flex-col items-center justify-center text-center text-[#ffffff]"
+    >
+      <svg height={radius * 2} width={radius * 2} className="mb-4">
+        <circle
+          stroke="#333333"
+          fill="transparent"
+          strokeWidth={stroke}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+        />
+        <circle
+          stroke="#FFFFFF"
+          fill="transparent"
+          strokeWidth={stroke}
+          strokeLinecap="round"
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          r={normalizedRadius}
+          cx={radius}
+          cy={radius}
+          style={{ transform: "rotate(-90deg)", transformOrigin: "50% 50%" }}
+        />
+        <text
+          x="50%"
+          y="50%"
+          fill="#ffffff"
+          dominantBaseline="middle"
+          textAnchor="middle"
+          className="text-xl sm:text-2xl md:text-3xl 2xl:text-4xl font-bold mb-2"
+        >
+          {count.toLocaleString()}
+        </text>
+      </svg>
+      <div className="text-sm 2xl:text-lg font-medium whitespace-nowrap">
+        {label}
+      </div>
+    </div>
+  );
+};
 
 const Hero = () => {
+  const videoRef = useRef(null);
+  const [isMuted, setIsMuted] = useState(false);
+  const [showSoundPrompt, setShowSoundPrompt] = useState(false);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      // Attempt to autoplay WITH sound. If blocked, show prompt to enable.
+      videoRef.current.muted = false;
+      const playPromise = videoRef.current.play?.();
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise.catch(() => {
+          setShowSoundPrompt(true);
+        });
+      }
+    }
+  }, []);
+
+  const handleToggleMute = () => {
+    if (!videoRef.current) return;
+    const nextMuted = !isMuted;
+    setIsMuted(nextMuted);
+    videoRef.current.muted = nextMuted;
+    // Ensure playback continues on unmute (counts as user gesture)
+    if (!nextMuted) {
+      const playPromise = videoRef.current.play?.();
+      if (playPromise && typeof playPromise.then === "function") {
+        playPromise.catch(() => {});
+      }
+    }
+  };
+
+  const handleEnableSound = async () => {
+    if (!videoRef.current) return;
+    try {
+      videoRef.current.muted = false;
+      setIsMuted(false);
+      await videoRef.current.play();
+      setShowSoundPrompt(false);
+    } catch (e) {
+      // keep prompt visible if still blocked
+      setShowSoundPrompt(true);
+    }
+  };
+
   return (
     <>
-      <section className="w-full">
-
+      <section className="relative w-full ">
         {/* Video Background */}
-        <div className="min-h-[420px] md:h-auto  w-full flex flex-col items-center justify-center">
+        <div className="relative w-full min-h-[420px] md:min-h-[80vh] lg:min-h-[100vh] overflow-hidden mt-16 md:mt-20">
           <video
-            className="h-full w-full object-cover"
+            ref={videoRef}
+            className="absolute inset-0 h-full w-full object-cover"
             src="/videos/FactoryVideo.mp4"
+            poster="/images/OurWork.jpg"
             autoPlay
-            muted
+            muted={isMuted}
             loop
             playsInline
+            preload="auto"
           />
+
+          {/* Sound prompt overlay if autoplay-with-audio is blocked */}
+          {showSoundPrompt && (
+            <div className="absolute inset-0 z-30 flex items-center justify-center bg-black/60">
+              <button
+                type="button"
+                onClick={handleEnableSound}
+                className="inline-flex items-center gap-2 rounded-full bg-white text-black hover:bg-white/90 px-6 py-3 text-sm md:text-base font-semibold shadow-lg"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path d="M3 10a1 1 0 011-1h3.586l3.707-3.707A1 1 0 0113 6v12a1 1 0 01-1.707.707L7.586 15H4a1 1 0 01-1-1v-4z" />
+                  <path d="M15.536 8.464a5 5 0 010 7.072 1 1 0 101.415 1.415 7 7 0 000-9.9 1 1 0 10-1.415 1.414z" />
+                  <path d="M17.657 6.343a8 8 0 010 11.314 1 1 0 001.415 1.415c4.296-4.296 4.296-11.848 0-16.143a1 1 0 10-1.415 1.414z" />
+                </svg>
+                Enable Sound
+              </button>
+            </div>
+          )}
+
+          {/* Theme gradient + subtle dark overlay for contrast */}
+          <div className="absolute inset-0 bg-black/30" />
+          <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(60%_60%_at_90%_10%,_#faa74940_0%,_transparent_60%)]" />
+
+          {/* Mute/Unmute Control */}
+          <button
+            type="button"
+            onClick={handleToggleMute}
+            aria-pressed={!isMuted}
+            title={isMuted ? "Unmute" : "Mute"}
+            className="absolute z-20 bottom-4 right-4 inline-flex items-center gap-2 rounded-full bg-black/60 hover:bg-black text-white px-4 py-2 text-sm font-medium shadow-md backdrop-blur transition"
+          >
+            {isMuted ? (
+              <>
+                {/* Volume Off Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path d="M3.293 9.293A1 1 0 014 9h3.586l3.707-3.707A1 1 0 0113 6v12a1 1 0 01-1.707.707L7.586 15H4a1 1 0 01-.707-1.707L5.586 10 3.293 7.707a1 1 0 010-1.414z" />
+                </svg>
+                Unmute
+              </>
+            ) : (
+              <>
+                {/* Volume On Icon */}
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="h-5 w-5"
+                >
+                  <path d="M3 10a1 1 0 011-1h3.586l3.707-3.707A1 1 0 0113 6v12a1 1 0 01-1.707.707L7.586 15H4a1 1 0 01-1-1v-4z" />
+                  <path d="M15.536 8.464a5 5 0 010 7.072 1 1 0 101.415 1.415 7 7 0 000-9.9 1 1 0 10-1.415 1.414z" />
+                  <path d="M17.657 6.343a8 8 0 010 11.314 1 1 0 001.415 1.415c4.296-4.296 4.296-11.848 0-16.143a1 1 0 10-1.415 1.414z" />
+                </svg>
+                Mute
+              </>
+            )}
+          </button>
         </div>
       </section>
+
+      {/* Spaced Animated Counters on same background */}
+      <div className="mt- md:mt-16 lg:mt-20 py-12 px-4 sm:px-6 lg:px-8 bg-[linear-gradient(to_top_right,_#f48221_50%,_#faa749_95%)]">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8">
+            <AnimatedCounter target={2000} label="SKILLED WORKERS" />
+            <AnimatedCounter
+              target={1000}
+              label="GARMENT PRODUCTION PIECES PER DAY"
+            />
+            <AnimatedCounter
+              target={250000}
+              label="FABRIC PRODUCTION IN KG MONTHLY"
+            />
+          </div>
+        </div>
+      </div>
     </>
   );
 };

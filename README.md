@@ -47,6 +47,7 @@ A modern, responsive website for ModernTex, a garment manufacturing company, fea
 
    - Text content fade-in animations
    - Division icons scale-in with stagger effect
+     1123
 
 5. **Our Clients** (`src/components/OurClients.jsx`)
 
