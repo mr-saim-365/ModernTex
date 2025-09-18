@@ -1,10 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import fabricationImg from "/images/Fabrication.jpg";
-import stitchingImg from "/images/Stitching.jpg";
-import washingImg from "/images/Washing.jpg";
-import finishingImg from "/images/Finishing.jpg";
+// import fabricationImg from "/images/Fabrication.jpg";
+// import stitchingImg from "/images/Stitching.jpg";
+// import washingImg from "/images/Washing.jpg";
+// import finishingImg from "/images/Finishing.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -16,28 +16,28 @@ const steps = [
     title: "Fabrication",
     description:
       "We start with premium quality fabrics, carefully sourced and inspected to ensure durability and comfort. Our fabrication process focuses on precision cutting and preparation for stitching.",
-    image: fabricationImg,
+    image: "/images/Fabrication.jpg",
   },
   {
     id: 2,
     title: "Stitching",
     description:
       "Our skilled tailors use advanced stitching techniques to bring designs to life with accuracy, strength, and attention to detail. Quality control is maintained at every stage.",
-    image: stitchingImg,
+    image: "/images/Stitching.jpg",
   },
   {
     id: 3,
     title: "Washing",
     description:
       "Each garment goes through specialized washing treatments to achieve the perfect texture, softness, and color tone. This step ensures both style and long-lasting quality.",
-    image: washingImg,
+    image: "/images/Washing.jpg",
   },
   {
     id: 4,
     title: "Finishing",
     description:
       "The final step involves careful finishing touches including ironing, trimming, and packaging, ensuring the product is delivered in flawless condition.",
-    image: finishingImg,
+    image: "/images/Finishing.jpg",
   },
 ];
 

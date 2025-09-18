@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import OurWorkImage from "/images/OurWork.jpg";
+// import OurWorkImage from "/images/OurWork.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -172,7 +172,7 @@ const Whoarewe = () => {
         {/* Image Section */}
         <div ref={imageRef} className="w-full md:w-2/5 lg:w-[40%]">
           <LazyImage
-            src={OurWorkImage}
+            src="/images/OurWork.jpg"
             className="w-full h-full rounded-lg object-cover"
             alt="Our Work"
           />

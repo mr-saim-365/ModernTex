@@ -1,33 +1,23 @@
 import React, { useEffect, useRef } from "react";
 
-import Client1 from "/images/Client1.jpeg";
-import Client2 from "/images/Client2.jpg";
-import Client3 from "/images/Client3.png";
-import Client4 from "/images/Client4.jpg";
-import Client5 from "/images/Client5.png";
-import Client6 from "/images/Client6.png";
-import Client7 from "/images/Client7.jpeg";
-import Client8 from "/images/Client8.jpeg";
-import Client9 from "/images/Client9.jpeg";
-import Client10 from "/images/Client10.jpeg";
+// Remove importing from public; use direct public URLs to avoid ?import
+const clients = [
+  "/images/Client1.jpeg",
+  "/images/Client2.jpg",
+  "/images/Client3.png",
+  "/images/Client4.jpg",
+  "/images/Client5.png",
+  "/images/Client6.png",
+  "/images/Client7.jpeg",
+  "/images/Client8.jpeg",
+  "/images/Client9.jpeg",
+  "/images/Client10.jpeg",
+];
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
-
-const clients = [
-  Client1,
-  Client2,
-  Client3,
-  Client4,
-  Client5,
-  Client6,
-  Client7,
-  Client8,
-  Client9,
-  Client10,
-];
 
 const OurClients = () => {
   const sectionRef = useRef(null);

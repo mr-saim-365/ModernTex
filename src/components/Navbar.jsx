@@ -3,7 +3,7 @@ import React from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
 import { IoMenuOutline } from "react-icons/io5";
 import { X } from "lucide-react";
-import logo from "/images/logo.png";
+// import logo from "/images/logo.png";
 import { Link } from "react-router-dom";
 import { useLocation, useNavigate } from "react-router-dom";
 import { gsap } from "gsap";
@@ -105,7 +105,11 @@ const Navbar = () => {
               {isMenuOpen ? <X size={24} /> : <IoMenuOutline size={25} />}
             </button>
             <div ref={logoRef}>
-              <img className="w-[70px] h-[70px]" src={logo} alt="Logo" />
+              <img
+                className="w-[70px] h-[70px]"
+                src="/images/logo.png"
+                alt="Logo"
+              />
             </div>
           </div>
 
