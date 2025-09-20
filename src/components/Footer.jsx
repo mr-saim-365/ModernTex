@@ -108,34 +108,7 @@ const Footer = () => {
                 </ul>
               </motion.div>
 
-              <motion.div
-                className="flex-1 min-w-[200px]"
-                variants={itemVariants}
-              >
-                <h4 className="text-base font-bold pb-3 uppercase">
-                  Our Services
-                </h4>
-                <ul className="space-y-2">
-                  <li>
-                    <Link to="#">Web Development</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Logo Design</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Software Consultancy</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Graphic Designing</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Digital Marketing</Link>
-                  </li>
-                  <li>
-                    <Link to="#">Accounts Consultancy</Link>
-                  </li>
-                </ul>
-              </motion.div>
+
 
               <motion.div
                 className="flex-1 min-w-[250px]"

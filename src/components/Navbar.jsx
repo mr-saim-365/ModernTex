@@ -133,11 +133,9 @@ const Navbar = () => {
                 </Link>
               </div>
             </div>
-            <Link to="/AboutUS">About Us</Link>
+            <Link to="/AboutUs">About Us</Link>
             <Link to="/Contact">Contact Us</Link>
-            <Link to="/#faq" onClick={handleFAQClick}>
-              Our Factory
-            </Link>
+            <Link to="/OurCertificates">Our Certificates</Link>
           </div>
 
           <div></div>
@@ -190,14 +188,14 @@ const Navbar = () => {
               </Link>
             </div>
           </div>
-          <Link to="/AboutUS" className="block p-4">
+          <Link to="/AboutUs" className="block p-4">
             About Us
           </Link>
           <Link to="/Contact" className="block p-4">
             Contact US
           </Link>
-          <Link to="/OurFactory" className="block p-4">
-            Our Factory
+          <Link to="/OurCertificates" className="block p-4">
+            Our Certificates
           </Link>
         </div>
       </div>
