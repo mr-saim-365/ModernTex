@@ -6,7 +6,7 @@ import Whoarewe from "../components/Whoarewe";
 import Hero from "../components/Hero";
 import DivisionsSection from "../components/Divisions";
 import OurClients from "../components/OurClients";
-import DenimImage from "../components/denimImage";
+import DenimImage from "../components/DenimImage";
 
 const Home = () => {
   return (
