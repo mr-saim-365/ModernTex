@@ -15,31 +15,32 @@ const steps = [
     id: 1,
     title: "Fabrication",
     description:
-      "We start with premium quality fabrics, carefully sourced and inspected to ensure durability and comfort. Our fabrication process focuses on precision cutting and preparation for stitching.",
+      "We begin with premium quality fabrics, carefully sourced from trusted suppliers and thoroughly inspected for strength, durability, and comfort. Our fabrication process ensures precise cutting, accurate measurements, and proper preparation, laying the foundation for high-quality denim garments that stand the test of time.",
     image: "/images/Fabrication.jpg",
   },
   {
     id: 2,
     title: "Stitching",
     description:
-      "Our skilled tailors use advanced stitching techniques to bring designs to life with accuracy, strength, and attention to detail. Quality control is maintained at every stage.",
+      "Our skilled tailors combine craftsmanship with advanced stitching techniques to transform fabric into perfectly structured garments. Every seam is reinforced for strength and precision, while continuous quality checks ensure flawless construction. This process guarantees denim products that meet both durability and modern fashion standards.",
     image: "/images/Stitching.jpg",
   },
   {
     id: 3,
     title: "Washing",
     description:
-      "Each garment goes through specialized washing treatments to achieve the perfect texture, softness, and color tone. This step ensures both style and long-lasting quality.",
+      "Each garment undergoes specialized washing treatments designed to achieve the right softness, texture, and lasting color tones. From stone-wash to enzyme finishes, every technique is carefully applied. This stage enhances comfort, ensures fabric quality, and delivers a fashionable look that defines our denim collection.",
     image: "/images/Washing.jpg",
   },
   {
     id: 4,
     title: "Finishing",
     description:
-      "The final step involves careful finishing touches including ironing, trimming, and packaging, ensuring the product is delivered in flawless condition.",
+      "The finishing stage ensures every piece is flawless before delivery. Our process includes ironing, trimming, labeling, and precise packaging. By focusing on every small detail, we guarantee denim products that not only look exceptional but also reflect professionalism and care in every shipment.",
     image: "/images/Finishing.jpg",
   },
 ];
+
 
 const DivisionsContent = () => {
   const sectionsRef = useRef([]);

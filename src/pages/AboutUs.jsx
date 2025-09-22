@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Button from "../components/BackButton"
 import AboutUsImage from "/images/AboutUsImage.jpg";
 import image1 from "/images/image1.jpeg";
 import image2 from "/images/image2.jpeg";
@@ -17,6 +18,7 @@ const AboutUs = () => {
           id="about-us"
           className="px-3 md:px-6 text-[#4D4D4D] lg:px-12 2xl:px-0 2xl:w-[90%] mt-24 mb-10 mx-auto"
         >
+          <Button/>
           <div className="flex flex-col md:flex-row gap-20 mx-auto">
             <div className="w-full">
               <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] mt-5 font-bold font-serif mb-4 text-[#4D4D4D]">
@@ -110,7 +112,7 @@ const AboutUs = () => {
 
                 <img
                   src={image1}
-                  className=" w-full h-[65vh] md:h-[60vh] rounded-lg object-cover transform group-hover:scale-100 transition duration-500"
+                  className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
                   alt="Team Member"
                 />
  
@@ -129,7 +131,7 @@ const AboutUs = () => {
               <img
                 src={image2} // replace with your team image
                 alt="Team Member"
-                    className=" w-full h-[65vh] md:h-[60vh] rounded-lg object-cover transform group-hover:scale-100 transition duration-500"
+                    className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
               />
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-gray-800">
@@ -144,7 +146,7 @@ const AboutUs = () => {
               <img
                 src={image3} // replace with your team image
                 alt="Team Member"
-                     className=" w-full h-[65vh] md:h-[60vh] rounded-lg object-cover transform group-hover:scale-100 transition duration-500"
+                     className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
               />
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-gray-800">

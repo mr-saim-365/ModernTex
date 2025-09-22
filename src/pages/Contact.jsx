@@ -7,6 +7,7 @@ import { FaFacebookF } from "react-icons/fa";
 import { FiSend } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
+import Button from "../components/BackButton"
 import emailjs from "@emailjs/browser";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -137,14 +138,9 @@ const ContactUs = () => {
       <Navbar />
       <div ref={sectionRef} className="">
         <div className="w-[90%] mx-auto">
-          <div className="h-[70vh]">
-            <img
-              src="/images/contact.jpeg"
-              alt=""
-              className="w-full h-full object-cover"
-            />
-          </div>
-          <div className="mt-[8rem]  mb-20">
+
+          <div className="mt-[6rem]  mb-20">
+            <Button />
             <div className="flex flex-col gap-10">
               <div className="flex flex-col lg:flex-row gap-10">
                 <div
@@ -267,11 +263,10 @@ const ContactUs = () => {
 
                   {status && (
                     <p
-                      className={`text-center mt-4 ${
-                        status.includes("success")
+                      className={`text-center mt-4 ${status.includes("success")
                           ? "text-green-600"
                           : "text-red-500"
-                      }`}
+                        }`}
                     >
                       {status}
                     </p>
