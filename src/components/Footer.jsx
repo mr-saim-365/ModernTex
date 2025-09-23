@@ -150,7 +150,7 @@ const Footer = () => {
             animate={controls}
             variants={itemVariants}
           >
-            <motion.div className="mx-auto md:w-[90%] w-full px-4 md:px-0 flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
+            <motion.div className="w-full px-4 md:px-0 flex flex-col md:flex-row gap-5 md:gap-0 justify-between items-center">
               <p className="mb-1">
                 © <span>Copyright</span>{" "}
                 <strong className="px-1">Impact</strong>{" "}
