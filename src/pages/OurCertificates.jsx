@@ -1,7 +1,7 @@
 import React from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Button from "../components/BackButton"
+import Button from "../components/BackButton";
 import certificate1 from "/images/certificate1.jpg";
 import certificate2 from "/images/certificate2.jpg";
 import certificate3 from "/images/certificate3.jpg";
@@ -18,20 +18,19 @@ const Certificates = () => {
         className="relative bg-fixed bg-center bg-cover py-20 px-3 md:px-6 lg:px-12"
         style={{ backgroundImage: "url('/images/backImage.jpg')" }}
       >
-
-
-         <Button />
+        <Button />
         <div className="relative z-10 max-w-6xl mx-auto text-center text-white">
- 
           {/* Page Heading */}
-          <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px]  font-bold font-serif mb-6">
-            Our Certificates
-          </h2>
-          <p className="max-w-2xl mx-auto mb-12 text-sm sm:text-base leading-relaxed">
-            At Modern Tex, we are committed to excellence, sustainability, and
-            ethical manufacturing. Our certifications reflect our dedication to
-            global standards, responsible production, and customer trust.
-          </p>
+          <div className="bg-white/70 rounded-2xl p-6 mb-12">
+            <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] text-[#4D4D4D] font-bold font-serif mb-6">
+              Our Certificates
+            </h2>
+            <p className="max-w-2xl mx-auto text-sm text-gray-600 sm:text-base leading-relaxed">
+              At Modern Tex, we are committed to excellence, sustainability, and
+              ethical manufacturing. Our certifications reflect our dedication
+              to global standards, responsible production, and customer trust.
+            </p>
+          </div>
 
           {/* Certificates Grid */}
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
@@ -47,7 +46,8 @@ const Certificates = () => {
                 The QESI certification reflects our strong standards in quality,
                 environment, safety, and innovation. It ensures that Modern Tex
                 maintains sustainable production while delivering denim products
-                that meet international expectations with responsibility and care.
+                that meet international expectations with responsibility and
+                care.
               </p>
             </div>
 
@@ -58,12 +58,15 @@ const Certificates = () => {
                 alt="Sedex Certification"
                 className="w-40 h-30 mx-auto object-contain mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">Sedex Certification</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                Sedex Certification
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 Sedex certification confirms our commitment to ethical trade,
                 transparency, and responsible sourcing. It highlights fair labor
                 practices and safe workplaces, ensuring that every denim product
-                reflects accountability across our supply chain and global partners.
+                reflects accountability across our supply chain and global
+                partners.
               </p>
             </div>
 
@@ -90,7 +93,9 @@ const Certificates = () => {
                 alt="amfori BSCI Certification"
                 className="w-48 h-30 mx-auto object-contain mb-4"
               />
-              <h3 className="text-lg font-semibold mb-2">amfori BSCI Certification</h3>
+              <h3 className="text-lg font-semibold mb-2">
+                amfori BSCI Certification
+              </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
                 amfori BSCI certification demonstrates our focus on fair wages,
                 employee rights, and safe workplaces. It highlights Modern Tex’s
@@ -111,7 +116,8 @@ const Certificates = () => {
                 ISO certifications confirm our strong quality management and
                 environmental responsibility. They recognize that Modern Tex
                 delivers denim products with consistent standards, reduced
-                environmental impact, and a focus on efficiency and sustainability.
+                environmental impact, and a focus on efficiency and
+                sustainability.
               </p>
             </div>
 
@@ -126,19 +132,16 @@ const Certificates = () => {
               <p className="text-sm text-gray-600 leading-relaxed">
                 The Better Cotton Initiative ensures sustainable cotton sourcing
                 and reduced environmental impact. It improves farmer livelihoods
-                and supports fair practices, allowing Modern Tex to deliver denim
-                that is better for both people and the planet.
+                and supports fair practices, allowing Modern Tex to deliver
+                denim that is better for both people and the planet.
               </p>
             </div>
           </div>
-
-
         </div>
       </section>
 
       <Footer />
     </>
-
   );
 };
 
