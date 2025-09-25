@@ -2,8 +2,8 @@ import sharp from "sharp";
 import fs from "fs";
 import path from "path";
 
-const inputDir = "./src/assets/Man";
-const outputDir = "./src/assets/Man-webp";
+const inputDir = "./src/assets/Women";
+const outputDir = "./src/assets/Women-webp";
 
 if (!fs.existsSync(outputDir)) fs.mkdirSync(outputDir);
 
