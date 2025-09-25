@@ -1,15 +1,15 @@
 // Man images
-import image1 from "./assets/Man/028.png";
-import image01 from "./assets/Man/028_back.png";
-import image001 from "./assets/Man/028_close.png";
-import image2 from "./assets/Man/029.png";
-import image02 from "./assets/Man/029_back.png";
-import image3 from "./assets/Man/030.png";
-import image03 from "./assets/Man/030_back.png";
-import image4 from "./assets/Man/031.png";
-import image04 from "./assets/Man/031_back.png";
-import image5 from "./assets/Man/032.png";
-import image05 from "./assets/Man/032_back.png";
+import image1 from "./assets/Man/028.webp";
+import image01 from "./assets/Man/028_back.webp";
+import image001 from "./assets/Man/028_close.webp";
+import image2 from "./assets/Man/029.webp";
+import image02 from "./assets/Man/029_back.webp";
+import image3 from "./assets/Man/030.webp";
+import image03 from "./assets/Man/030_back.webp";
+import image4 from "./assets/Man/031.webp";
+import image04 from "./assets/Man/031_back.webp";
+import image5 from "./assets/Man/032.webp";
+import image05 from "./assets/Man/032_back.webp";
 
 
 // Woman Images
@@ -114,11 +114,11 @@ import image078 from "./assets/Women/075_back.png";
 
 // Kids  Images
 
-import image79 from "./assets/Kids/076.png";
-import image80 from "./assets/Kids/077.png";
-import image81 from "./assets/Kids/078.png";
-import image82 from "./assets/Kids/079.png";
-import image082 from "./assets/Kids/079_back.png";
+import image79 from "./assets/Kids/076.webp";
+import image80 from "./assets/Kids/077.webp";
+import image81 from "./assets/Kids/078.webp";
+import image82 from "./assets/Kids/079.webp";
+import image082 from "./assets/Kids/079_back.webp";
 
 
 export const slides = [
