@@ -159,14 +159,21 @@ const ContactUs = () => {
                       <div className="bg-white text-black p-3 rounded-full">
                         <FaPhoneAlt size={20} />
                       </div>
-                      <p className=" text-[15px]">+92 324 8270610</p>
+                      <div className="flex flex-col gap-2">
+                        <p className=" text-[15px]">+92 301-2530621</p>
+                        <p className=" text-[15px]">+92 311-1259882</p>
+                      </div>
+
                     </div>
 
                     <div className="flex items-center gap-4">
                       <div className="bg-white text-black p-3 rounded-full">
                         <LuMail size={20} />
                       </div>
-                      <p className=" text-[15px]">Natalia@ahdenim.net</p>
+                      <div className="flex flex-col  gap-2">
+                        <p className="text-[15px]">siraj@moderntex1.com</p>
+                        <p className="text-[15px]">nadeem@moderntex1.com</p>
+                      </div>
                     </div>
 
                     <div className="flex items-start gap-4">
@@ -174,9 +181,9 @@ const ContactUs = () => {
                         <PiMapPinBold size={20} />
                       </div>
                       <p className="text-[15px]">
-                        Plot No. 19/5, Sector No. 12-C North Karachi,
+                        Plot # 38, Sector 12-C North Karachi,
                         <br />
-                        Industrial Area, Karachi Pakistan.75850
+                        Industrial Area, Karachi Pakistan.
                       </p>
                     </div>
 
@@ -196,10 +203,10 @@ const ContactUs = () => {
                     </div>
                   </div>
                 </div>
-
+ 
                 <iframe
                   ref={mapRef}
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d904.1050144316846!2d67.08705906963222!3d24.985838714209358!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDU5JzA5LjAiTiA2N8KwMDUnMTUuNyJF!5e0!3m2!1sen!2s!4v1739060046969!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d226.03632902006737!2d67.09001268009065!3d24.980357473130905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDU4JzU0LjciTiA2N8KwMDUnMjMuMCJF!5e0!3m2!1sen!2s!4v1759785493073!5m2!1sen!2s"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
@@ -264,8 +271,8 @@ const ContactUs = () => {
                   {status && (
                     <p
                       className={`text-center mt-4 ${status.includes("success")
-                          ? "text-green-600"
-                          : "text-red-500"
+                        ? "text-green-600"
+                        : "text-red-500"
                         }`}
                     >
                       {status}

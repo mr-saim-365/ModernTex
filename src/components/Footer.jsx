@@ -118,28 +118,32 @@ const Footer = () => {
                   Contact Us
                 </h4>
 
-                <div className="my-4  flex items-center gap-2">
-                  <div>
-                    <strong>Phone: </strong>
+                <div className="flex flex-col gap-4">
+                  <div className="flex items-center gap-2">
+                    <div>
+                      <strong>Phone: </strong>
+                    </div>
+
+                    <div className="flex flex-col ">
+                      <span>+92 301-2530621</span>
+                      <span>+92 311-1259882</span>
+
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-4">
+                    <div>
+                      <strong>Email: </strong>
+                    </div>
+
+                    <div className="flex flex-col ">
+                      <span>nadeem@moderntex1.com</span>
+
+                      <span>siraj@moderntex1.com</span>
+                    </div>
                   </div>
 
-                  <div className="flex flex-col ">
-                    <span>+92 311 1259882</span>
-
-                    <span>+92 301 2530621</span>
-                  </div>
                 </div>
-                <div className="flex items-center gap-4">
-                  <div>
-                    <strong>Email: </strong>
-                  </div>
 
-                  <div className="flex flex-col ">
-                    <span>nadeem@moderntex1.com</span>
-
-                    <span>Siraj@moderntex1.com</span>
-                  </div>
-                </div>
               </motion.div>
             </motion.div>
           </motion.div>

@@ -3,9 +3,9 @@ import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import Button from "../components/BackButton"
 import AboutUsImage from "/images/AboutUsImage.jpg";
-import image1 from "/images/image1.jpeg";
-import image2 from "/images/image2.jpeg";
-import image3 from "/images/VissionImage.jpeg";
+import image1 from "/images/ownerImage1.jpg";
+import image2 from "/images/ownerImage2.jpg";
+
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
@@ -18,7 +18,7 @@ const AboutUs = () => {
           id="about-us"
           className="px-3 md:px-6 text-[#4D4D4D] lg:px-12 2xl:px-0 2xl:w-[90%] mt-24 mb-10 mx-auto"
         >
-          <Button/>
+          <Button />
           <div className="flex flex-col md:flex-row gap-20 mx-auto">
             <div className="w-full">
               <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] mt-5 font-bold font-serif mb-4 text-[#4D4D4D]">
@@ -93,68 +93,57 @@ const AboutUs = () => {
           id="our-team"
           className="px-3 md:px-6 lg:px-12 2xl:px-0 my-10 2xl:w-[90%] mt-24 mx-auto text-center"
         >
-          <div className="mb-12">
+          <div className="mb-12 text-center">
             <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] font-bold font-serif text-[#4D4D4D]">
-              Meet Our Expert Team
+              Meet Our Founders
             </h2>
             <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              At Modern Tex, our strength lies in the creativity and expertise
-              of our people. Our team of designers, textile specialists, and
-              innovators work together to bring world-class fabric and apparel
-              solutions to life.
+              Modern Tex was founded by <span className="font-semibold text-gray-800">Nadeem Ahmed</span> and
+              <span className="font-semibold text-gray-800"> Siraj Ahmed</span> — two visionary leaders driven by
+              innovation, craftsmanship, and a deep passion for textiles. Together, they have built a company
+              that blends creativity with quality, bringing world-class fabric and apparel solutions to life.
             </p>
           </div>
 
-          {/* Team Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 place-items-center gap-10">
-            {/* Team Member 1 */}
-            <div className="bg-white w-full md:w-[80%] rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
 
-                <img
-                  src={image1}
-                  className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
-                  alt="Team Member"
-                />
- 
+          <div className="flex flex-col sm:flex-row gap-20 items-center justify-center">
+
+            <div className="bg-white w-full md:w-auto rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
+
+
+              <img
+                src={image1}
+                alt="Team Member"
+                className="w-full h-auto max-h-[60vh] object-contain rounded-t-lg transition-transform duration-500 group-hover:scale-105"
+              />
+
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  Ali Raza
+                  Nadeem Ahmed
                 </h3>
                 <p className="text-sm text-gray-500">
-                  Head of Fabric Innovation
+                  Founder
                 </p>
               </div>
             </div>
 
-            {/* Team Member 2 */}
-            <div className="bg-white w-full md:w-[80%]  rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
+
+            <div className="bg-white w-full md:w-auto rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
+
               <img
-                src={image2} // replace with your team image
+                src={image2}
                 alt="Team Member"
-                    className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
+                className="w-full h-auto max-h-[60vh] object-contain rounded-t-lg transition-transform duration-500 group-hover:scale-105"
               />
+
               <div className="p-5">
                 <h3 className="text-lg font-semibold text-gray-800">
-                  Maria Khan
+                  Siraj Ahmed
                 </h3>
-                <p className="text-sm text-gray-500">Creative Director</p>
+                <p className="text-sm text-gray-500">Co-Founder</p>
               </div>
             </div>
 
-            {/* Team Member 3 */}
-            <div className="bg-white w-full md:w-[80%]  rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
-              <img
-                src={image3} // replace with your team image
-                alt="Team Member"
-                     className=" w-full h-[65vh] md:h-[60vh] rounded-tl-lg rounded-tr-lg object-cover transform group-hover:scale-100 transition duration-500"
-              />
-              <div className="p-5">
-                <h3 className="text-lg font-semibold text-gray-800">
-                  Hassan Ahmed
-                </h3>
-                <p className="text-sm text-gray-500">Production Manager</p>
-              </div>
-            </div>
           </div>
         </section>
       </div>

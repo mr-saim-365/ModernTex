@@ -122,10 +122,10 @@ const Navbar = () => {
               <span>Catalog</span>
               <RiArrowDownSLine size={16} className="mt-1" />
               <div className="bg-[#222222] text-[#ffffff] py-4 px-2 w-[150px] rounded-lg shadow-lg flex flex-col items-center gap-3 absolute top-[3rem] left-[-45px] opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-                <Link className="hover:scale-110" to="/Items?category=Man">
+                <Link className="hover:scale-110" to="/Items?category=Woman">
                   Women
                 </Link>
-                <Link className="hover:scale-110 " to="/Items?category=Woman">
+                <Link className="hover:scale-110 " to="/Items?category=Man">
                   Men
                 </Link>
                 <Link className="hover:scale-110" to="/Items?category=Kids">
@@ -170,13 +170,13 @@ const Navbar = () => {
             >
               <Link
                 className="hover:scale-110 block p-2"
-                to="/Items?category=Man"
+                to="/Items?category=Woman"
               >
                 Women
               </Link>
               <Link
                 className="hover:scale-110 block p-2"
-                to="/Items?category=Woman"
+                to="/Items?category=Man"
               >
                 Men
               </Link>

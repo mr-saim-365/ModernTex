@@ -249,7 +249,7 @@ const Hero = () => {
             <AnimatedCounter target={2000} label="SKILLED WORKERS" />
             <AnimatedCounter
               target={1000}
-              label="GARMENT PRODUCTION PIECES PER DAY"
+              label="GARMENT PRODUCTION PIECES PER LINE"
             />
             <AnimatedCounter
               target={250000}
