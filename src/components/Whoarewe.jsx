@@ -69,7 +69,10 @@ const LazyImage = ({ src, alt, className }) => {
 const Whoarewe = () => {
   const sectionRef = useRef(null);
   const textRef = useRef(null);
-  const imageRef = useRef(null);
+  const imageContainerRef = useRef(null);
+  const image1Ref = useRef(null);
+  const image2Ref = useRef(null);
+  const image3Ref = useRef(null);
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -95,25 +98,45 @@ const Whoarewe = () => {
       );
     }
 
-    // Animate image
-    if (imageRef.current) {
-      gsap.fromTo(
-        imageRef.current,
-        { x: 50, opacity: 0, scale: 0.8 },
-        {
-          x: 0,
-          opacity: 1,
-          scale: 1,
-          duration: 1.2,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: imageRef.current,
-            start: "top 80%",
-            end: "bottom 20%",
-            toggleActions: "play none none reverse",
-          },
+    // Animate images with different directions
+    if (imageContainerRef.current) {
+      const images = [image1Ref.current, image2Ref.current, image3Ref.current];
+      const directions = [
+        { x: 100, y: -50, rotation: 5 }, // Top-right
+        { x: -80, y: 30, rotation: -3 }, // Middle-left
+        { x: 60, y: 80, rotation: 2 }    // Bottom-right
+      ];
+
+      images.forEach((image, index) => {
+        if (image) {
+          gsap.fromTo(
+            image,
+            { 
+              x: directions[index].x, 
+              y: directions[index].y, 
+              opacity: 0, 
+              scale: 0.8,
+              rotation: directions[index].rotation
+            },
+            {
+              x: 0,
+              y: 0,
+              opacity: 1,
+              scale: 1,
+              rotation: 0,
+              duration: 1.2,
+              delay: index * 0.3,
+              ease: "power2.out",
+              scrollTrigger: {
+                trigger: imageContainerRef.current,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse",
+              },
+            }
+          );
         }
-      );
+      });
     }
 
     return () => {
@@ -125,57 +148,74 @@ const Whoarewe = () => {
     <>
       <div
         ref={sectionRef}
-        className="flex flex-col md:flex-row md:gap-[60px] gap-10 lg:px-0 px-3 py-16 md:px-6 md:justify-between w-full lg:w-[90%] mx-auto"
+        className="flex flex-col md:flex-row md:gap-[60px] gap-10 py-16 lg:px-10 px-3 md:px-6 md:justify-between w-full lg:w-[80%] mx-auto"
       >
         {/* Text Section */}
         <div
           ref={textRef}
-          className="text-[#4D4D4D] flex flex-col md:w-[60%] lg:px-0 lg:w-[50%]"
+          className="text-[#4D4D4D] flex flex-col md:w-[60%] lg:px-0 lg:w-[50%] justify-center items-center"
         >
           <div className="flex flex-col gap-4 md:gap-5 ">
             <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] text-center font-semibold not-italic">
               Who are we
             </h2>
 
-            <p className="leading-relaxed  text-justify text-sm md:text-[15px]">
+            <p className="leading-relaxed text-justify text-sm md:text-[15px]">
               <span className="block mb-3">
-                Modern Tex has been at the forefront of garment manufacturing
-                since 2010. What began as a humble operation with a monthly
-                production capacity of just 10,000 garments has grown into a
-                globally recognized manufacturing unit, now exporting over
-                150,000 garments every month.
+              Founded in <strong className="text-orange-500">2010</strong>, Modern Tex is a leading garment manufacturer in Pakistan, growing from <strong className="text-orange-500">10,000 to 150,000+ garments monthly</strong>. We export globally with <strong className="text-orange-500">state-of-the-art facilities</strong> and <strong className="text-orange-500">skilled professionals</strong>.
               </span>
               <span className="block mb-3">
-                With consistent commitment to quality, ethics, and customer
-                satisfaction, Modern Tex has expanded its reach across the
-                globe—including the Middle East, the United States, the United
-                Kingdom, and Europe. We take pride in being a trusted partner
-                for international brands and retailers, delivering excellence in
-                every stitch.
+              Our success is built on <strong className="text-orange-500">innovation, ethical practices, and advanced manufacturing</strong>. We ensure <strong className="text-orange-500">superior quality, flexibility, and competitive value</strong> for international clients through our customer-centric approach.
               </span>
               <span className="block mb-3">
-                Modern Tex operates under the highest standards of social and
-                environmental responsibility. We are fully certified by SEDEX
-                and WRAP, and we strictly adhere to international compliance
-                protocols. Regular audits and checks ensure ongoing transparency
-                and accountability across all levels of our operations. We
-                firmly uphold global labor standards and are committed to
-                ethical employment practices. Our facilities strictly prohibit
-                the use of child labor and comply with all applicable labor laws
-                and safety regulations. At Modern Tex, integrity, innovation,
-                and responsibility define who we are—today and for the future.
+              We proudly hold <strong className="text-orange-500">SEDEX and WRAP certifications</strong>, maintaining full compliance with international standards. Our operations are built on <strong className="text-orange-500">integrity, transparency, and accountability</strong>—strictly prohibiting child labor and promoting fair employment.
+              </span>
+              <span className="block mb-3">
+              Today, we export to <strong className="text-orange-500">Middle East, USA, UK, and Europe</strong>, continuing our journey of responsible growth and global excellence in the apparel industry.
               </span>
             </p>
           </div>
         </div>
 
-        {/* Image Section */}
-        <div ref={imageRef} className="w-full md:w-2/5 lg:w-[40%]">
-          <LazyImage
-            src="/images/OurWork.jpg"
-            className="w-full h-full rounded-lg object-cover"
-            alt="Our Work"
-          />
+        {/* 3-Image Layout Section */}
+        <div ref={imageContainerRef} className="w-full md:w-2/5 lg:w-[40%] relative">
+          <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
+            {/* Image 1 - Top Right */}
+            <div 
+              ref={image1Ref}
+              className="absolute top-0 right-0 w-[60%] sm:w-[55%] h-[40%] sm:h-[45%] z-10 transform transition-all duration-300 hover:scale-105 hover:z-20"
+            >
+              <LazyImage
+                src="/images/denimImage.jpg"
+                className="w-full h-full rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
+                alt="Denim Manufacturing"
+              />
+            </div>
+
+            {/* Image 2 - Middle Left */}
+            <div 
+              ref={image2Ref}
+              className="absolute top-[20%] sm:top-[25%] left-0 w-[55%] sm:w-[50%] h-[50%] sm:h-[55%] z-20 transform transition-all duration-300 hover:scale-105 hover:z-30"
+            >
+              <LazyImage
+                src="/images/Stitching.jpg"
+                className="w-full h-full rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
+                alt="Stitching Process"
+              />
+            </div>
+
+            {/* Image 3 - Bottom Right */}
+            <div 
+              ref={image3Ref}
+              className="absolute bottom-0 right-[5%] sm:right-[10%] w-[65%] sm:w-[60%] h-[35%] sm:h-[40%] z-10 transform transition-all duration-300 hover:scale-105 hover:z-20"
+            >
+              <LazyImage
+                src="/images/Fabrication.jpg"
+                className="w-full h-full rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
+                alt="Fabrication Process"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </>

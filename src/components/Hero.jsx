@@ -159,9 +159,9 @@ const Hero = () => {
 
   return (
     <>
-      <section className="relative w-full ">
+      <section className="relative w-full mt-32 md:mt-40">
         {/* Video Background */}
-        <div className="relative w-full min-h-[420px] md:min-h-[80vh] lg:min-h-[100vh] overflow-hidden mt-16 md:mt-20">
+        <div className="relative w-full min-h-[420px] md:min-h-[80vh] lg:min-h-[100vh] overflow-hidden">
           <video
             ref={videoRef}
             className="absolute inset-0 h-full w-full object-cover"

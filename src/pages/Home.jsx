@@ -7,6 +7,7 @@ import Hero from "../components/Hero";
 import DivisionsSection from "../components/Divisions";
 import OurClients from "../components/OurClients";
 import DenimImage from "../components/DenimImage";
+import OurProcess from "../components/OurProcess";
 
 const Home = () => {
   return (
@@ -15,7 +16,8 @@ const Home = () => {
         <Navbar />
         <Hero />
         <Whoarewe />
-        <DenimImage/>
+        <OurProcess />
+        {/* <DenimImage/> */}
         <MissionandVission />
         <DivisionsSection />
         <OurClients />
