@@ -1,19 +1,34 @@
 import React, { useEffect, useRef } from "react";
-import Navbar from "../components/Navbar";
-import Footer from "../components/Footer";
-import Button from "../components/BackButton";
-import AboutUsImage from "/images/AboutUsImage.jpg";
 import image1 from "/images/ownerImage1.jpg";
 import image2 from "/images/ownerImage2.jpg";
-
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
+
 
 const AboutUs = () => {
+
+  const location = useLocation();
+
+  // Scroll to section if URL contains a hash (#)
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const section = document.getElementById(sectionId);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
+
+
   return (
     <>
       {/* <Navbar /> */}
-      <div className="text-[15px] sm:text-[16px]">
+      <div id="about" className="text-[15px] sm:text-[16px]">
         {/* <section
           id="about-us"
           className="px-3 md:px-6 text-[#4D4D4D] lg:px-12 2xl:px-0 2xl:w-[90%] mt-24 mb-10 mx-auto"

@@ -15,7 +15,7 @@ const Certificates = () => {
       <Navbar />
       <section
         id="certificates"
-        className="relative bg-fixed bg-center bg-cover py-20 px-3 md:px-6 lg:px-12"
+        className="relative bg-fixed bg-center bg-cover pt-50 pb-10 px-3 md:px-6 lg:px-12"
         style={{ backgroundImage: "url('/images/backImage.jpg')" }}
       >
         <Button />

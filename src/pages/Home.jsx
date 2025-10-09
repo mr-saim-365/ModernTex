@@ -9,7 +9,7 @@ import OurClients from "../components/OurClients";
 import DenimImage from "../components/DenimImage";
 import OurProcess from "../components/OurProcess";
 import DivisionsContent from "./DivisionsContent";
-import AboutUs from "./AboutUs";
+import AboutUs from "../components/AboutUs";
 
 const Home = () => {
   return (

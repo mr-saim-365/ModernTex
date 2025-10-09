@@ -79,32 +79,59 @@ const Navbar = () => {
     window.scrollTo(0, scrollPos);
   }, [open]);
 
+
   const location = useLocation();
   const navigate = useNavigate();
 
-  const handleFAQClick = () => {
+
+  // Custom smooth scroll when clicking a link on the same page
+  const handleLinkClick = (e, sectionId) => {
     if (location.pathname === "/") {
-      document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
+      e.preventDefault(); // prevent navigation
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
     } else {
-      navigate("/");
-      setTimeout(() => {
-        document.getElementById("faq")?.scrollIntoView({ behavior: "smooth" });
-      }, 500);
+      // navigate to home with hash if not already there
+      e.preventDefault();
+      navigate(`/#${sectionId}`);
     }
   };
+
+  // Highlight active section when scrolling
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+
+    const sections = document.querySelectorAll("section[id]");
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { threshold: 0.5 }
+    );
+
+    sections.forEach((sec) => observer.observe(sec));
+    return () => observer.disconnect();
+  }, [location.pathname]);
+
+
 
   return (
     <>
       {/* Desktop Navbar */}
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isInVideoSection
-            ? "opacity-0 pointer-events-none"
-            : isScrolled
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${isInVideoSection
+          ? "opacity-0 pointer-events-none"
+          : isScrolled
             ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
             : "bg-gray-100 pb-6 pt-2"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Mobile Menu Button */}
@@ -132,11 +159,11 @@ const Navbar = () => {
                   src="/images/logo.png"
                   alt="Logo"
                 />
-                
+
                 {/* Text Content */}
                 <div className="flex flex-col items-start">
-                    {/* MODERN TEX */}
-                    <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium tracking-wide">
+                  {/* MODERN TEX */}
+                  <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 font-medium tracking-wide">
                     MODERN TEX
                   </h2>
                   {/* Est. 1989 with decorative lines */}
@@ -147,8 +174,8 @@ const Navbar = () => {
                     </span>
                     <div className="w-6 sm:w-8 h-px bg-orange-500 ml-2 sm:ml-3"></div>
                   </div>
-                  
-                
+
+
                 </div>
 
               </div>
@@ -158,9 +185,8 @@ const Navbar = () => {
           {/* Navigation Links */}
           <div
             ref={navItemsRef}
-            className={`hidden md:flex justify-center font-medium text-gray-700 space-x-8 lg:space-x-12 xl:space-x-16 ${
-              isScrolled ? "text-sm" : "text-base"
-            }`}
+            className={`hidden md:flex justify-center font-medium text-gray-700 space-x-8 lg:space-x-12 xl:space-x-16 ${isScrolled ? "text-sm" : "text-base"
+              }`}
           >
             <Link
               to="/"
@@ -168,7 +194,12 @@ const Navbar = () => {
             >
               HOME
             </Link>
-            <div className="relative flex items-center gap-1 group">
+
+            <Link to="/#whoarewe" onClick={(e) => handleLinkClick(e, "whoarewe")} className="hover:text-blue-600 transition-colors duration-200">
+              WHO ARE WE
+            </Link>
+
+            {/* <div className="relative flex items-center gap-1 group">
               <span className="hover:text-blue-600 transition-colors duration-200">
                 WHO WE ARE
               </span>
@@ -193,47 +224,40 @@ const Navbar = () => {
                   Kid
                 </Link>
               </div>
-            </div>
-            <Link
-              to="/AboutUs"
-              className="hover:text-blue-600 transition-colors duration-200"
-            >
-              WHAT WE DO
+            </div> */}
+            <Link to="/#about" onClick={(e) => handleLinkClick(e, "about")} className="hover:text-blue-600 transition-colors duration-200">
+              OUR FOUNDERS
+            </Link>
+
+            <Link to="/#howwedo" onClick={(e) => handleLinkClick(e, "howwedo")} className="hover:text-blue-600 transition-colors duration-200">
+              HOW WE DO
             </Link>
             <Link
-              to="/Contact"
-              className="hover:text-blue-600 transition-colors duration-200"
+              to="/#clients" onClick={(e) => handleLinkClick(e, "clients")} className="hover:text-blue-600 transition-colors duration-200"
             >
-              HOW WE DO
+              OUR CLIENTS
             </Link>
             <Link
               to="/OurCertificates"
               className="hover:text-blue-600 transition-colors duration-200"
             >
-              WE CARE
-            </Link>
-            <Link
-              to="/"
-              className="hover:text-blue-600 transition-colors duration-200"
-            >
-              WE ARE SOCIAL
+              OUR CERTIFICATES
             </Link>
             <Link
               to="/Contact"
               className="hover:text-blue-600 transition-colors duration-200"
             >
-              GET IN TOUCH
+              CONTACT US
             </Link>
           </div>
         </div>
 
         {/* Mobile Menu */}
         <div
-          className={`md:hidden ${
-            isMenuOpen
-              ? "max-h-[500px] opacity-100 visible transition-all duration-300 ease-in"
-              : "max-h-0 opacity-0 invisible transition-all duration-300 ease-out"
-          }`}
+          className={`md:hidden ${isMenuOpen
+            ? "max-h-[500px] opacity-100 visible transition-all duration-300 ease-in"
+            : "max-h-0 opacity-0 invisible transition-all duration-300 ease-out"
+            }`}
         >
           <div className="px-4 pt-4 pb-4 font-medium bg-white shadow-lg">
             <Link
@@ -242,8 +266,12 @@ const Navbar = () => {
             >
               HOME
             </Link>
+            
+            <Link to="/#whoarewe" onClick={(e) => handleLinkClick(e, "whoarewe")} className="block p-4 text-gray-700 hover:text-blue-600">
+              WHO ARE WE
+            </Link>
 
-            <div className="relative">
+            {/* <div className="relative">
               <button
                 onClick={handleNestedClick}
                 className="flex p-4 items-center gap-1 w-full text-left text-gray-700 hover:text-blue-600"
@@ -252,9 +280,8 @@ const Navbar = () => {
                 <RiArrowDownSLine size={16} className="mt-1" />
               </button>
               <div
-                className={`overflow-hidden px-2 py-0 rounded-lg shadow-lg flex flex-col bg-gray-800 text-white transition-all duration-300 ease-in-out ${
-                  open ? "max-h-[150px] opacity-100 py-4" : "max-h-0 opacity-0"
-                }`}
+                className={`overflow-hidden px-2 py-0 rounded-lg shadow-lg flex flex-col bg-gray-800 text-white transition-all duration-300 ease-in-out ${open ? "max-h-[150px] opacity-100 py-4" : "max-h-0 opacity-0"
+                  }`}
               >
                 <Link
                   className="hover:scale-110 block p-2 transition-transform"
@@ -275,36 +302,33 @@ const Navbar = () => {
                   Kid
                 </Link>
               </div>
-            </div>
-            <Link
-              to="/AboutUs"
-              className="block p-4 text-gray-700 hover:text-blue-600"
-            >
-              WHAT WE DO
+            </div> */}
+
+            
+          <Link to="/#about" onClick={(e) => handleLinkClick(e, "about")} className="block p-4 text-gray-700 hover:text-blue-600">
+              OUR FOUNDERS
             </Link>
-            <Link
-              to="/Contact"
-              className="block p-4 text-gray-700 hover:text-blue-600"
-            >
+
+            <Link to="/#howwedo" onClick={(e) => handleLinkClick(e, "howwedo")} className="block p-4 text-gray-700 hover:text-blue-600">
               HOW WE DO
+            </Link>
+
+            <Link
+              to="/#clients" onClick={(e) => handleLinkClick(e, "clients")} className="block p-4 text-gray-700 hover:text-blue-600"
+            >
+              OUR CLIENTS
             </Link>
             <Link
               to="/OurCertificates"
               className="block p-4 text-gray-700 hover:text-blue-600"
             >
-              WE CARE
-            </Link>
-            <Link
-              to="/"
-              className="block p-4 text-gray-700 hover:text-blue-600"
-            >
-              WE ARE SOCIAL
+              OUR CERTIFICATES
             </Link>
             <Link
               to="/Contact"
               className="block p-4 text-gray-700 hover:text-blue-600"
             >
-              GET IN TOUCH
+              CONTACT US
             </Link>
           </div>
         </div>

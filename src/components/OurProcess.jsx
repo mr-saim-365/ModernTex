@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -213,7 +214,7 @@ const OurProcess = () => {
       src: "/images/denimImage.jpg",
       alt: "Denim Finish",
       size: "w-48 h-36",
-      position: { top: "70%", left: "45%" },
+      position: { top: "70%", left: "50%" },
       zIndex: 4,
       rotation: -2,
     },
@@ -228,7 +229,7 @@ const OurProcess = () => {
     },
     {
       type: "image",
-      src: "/images/image1.jpeg",
+      src: "/images/Drying.jpg",
       alt: "Manufacturing",
       size: "w-48 h-36",
       position: { top: "70%", right: "45%" },
@@ -239,7 +240,7 @@ const OurProcess = () => {
     // Bottom row - final images
     {
       type: "image",
-      src: "/images/image2.jpeg",
+      src: "/images/pants.jpg",
       alt: "Production",
       size: "w-40 h-32",
       position: { top: "85%", left: "20%" },
@@ -248,16 +249,16 @@ const OurProcess = () => {
     },
     {
       type: "image",
-      src: "/images/yarn.png",
+      src: "/images/circle.jpg",
       alt: "Yarn Production",
       size: "w-40 h-32",
-      position: { top: "85%", left: "50%" },
+      position: { top: "88%", left: "50%" },
       zIndex: 2,
       rotation: 1,
     },
     {
       type: "image",
-      src: "/images/fabric.png",
+      src: "/images/jacket.webp",
       alt: "Fabric Roll",
       size: "w-40 h-32",
       position: { top: "85%", right: "20%" },
@@ -378,8 +379,24 @@ const OurProcess = () => {
     };
   }, []);
 
+
+   const location = useLocation();
+
+  // Scroll to section if URL contains a hash (#)
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const section = document.getElementById(sectionId);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
   return (
-    <div ref={sectionRef} className="w-full bg-white py-20 lg:py-24">
+    <div id="howwedo" ref={sectionRef} className="w-full bg-white py-20 lg:py-24">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Section */}
         <div ref={titleRef} className="text-center mb-20">

@@ -136,10 +136,7 @@ const ContactUs = () => {
   return (
     <>
       <Navbar />
-      <div ref={sectionRef} className="">
-        <div className="w-[90%] mx-auto">
-
-          <div className="mt-[6rem]  mb-20">
+        <section ref={sectionRef} className="w-[90%] mx-auto mt-50 mb-10">
             <Button />
             <div className="flex flex-col gap-10">
               <div className="flex flex-col lg:flex-row gap-10">
@@ -281,9 +278,9 @@ const ContactUs = () => {
                 </form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
+       
+        </section>
+    
 
       <Footer />
     </>

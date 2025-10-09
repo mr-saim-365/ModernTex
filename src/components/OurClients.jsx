@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-
+import { useLocation } from "react-router-dom";
 // Remove importing from public; use direct public URLs to avoid ?import
 const clients = [
   "/images/Client1.jpeg",
@@ -75,9 +75,24 @@ const OurClients = () => {
     };
   }, []);
 
+    const location = useLocation();
+
+  // Scroll to section if URL contains a hash (#)
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const section = document.getElementById(sectionId);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
   return (
     <>
-      <section className="w-full lg:w-[90%] px-4 md:px-6 lg:px-0 py-20 lg:mx-auto">
+      <section id="clients" className="w-full lg:w-[90%] px-4 md:px-6 lg:px-0 py-20 lg:mx-auto">
         <div ref={textRef} className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D2D] mb-6 tracking-tight">
             OUR CLIENTS

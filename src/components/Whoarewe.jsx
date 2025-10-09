@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 // import OurWorkImage from "/images/OurWork.jpg";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLocation } from "react-router-dom";
 
 // Register ScrollTrigger plugin
 gsap.registerPlugin(ScrollTrigger);
@@ -144,9 +145,25 @@ const Whoarewe = () => {
     };
   }, []);
 
+    const location = useLocation();
+
+  // Scroll to section if URL contains a hash (#)
+  useEffect(() => {
+    if (location.hash) {
+      const sectionId = location.hash.replace("#", "");
+      const section = document.getElementById(sectionId);
+      if (section) {
+        setTimeout(() => {
+          section.scrollIntoView({ behavior: "smooth" });
+        }, 200);
+      }
+    }
+  }, [location]);
+
   return (
     <>
       <div
+      id="whoarewe"
         ref={sectionRef}
         className="flex flex-col md:flex-row md:gap-[60px] gap-10 py-16 lg:px-10 px-3 md:px-6 md:justify-between w-full lg:w-[80%] mx-auto"
       >
