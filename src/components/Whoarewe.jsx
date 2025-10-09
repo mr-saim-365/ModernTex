@@ -104,19 +104,19 @@ const Whoarewe = () => {
       const directions = [
         { x: 100, y: -50, rotation: 5 }, // Top-right
         { x: -80, y: 30, rotation: -3 }, // Middle-left
-        { x: 60, y: 80, rotation: 2 }    // Bottom-right
+        { x: 60, y: 80, rotation: 2 }, // Bottom-right
       ];
 
       images.forEach((image, index) => {
         if (image) {
           gsap.fromTo(
             image,
-            { 
-              x: directions[index].x, 
-              y: directions[index].y, 
-              opacity: 0, 
+            {
+              x: directions[index].x,
+              y: directions[index].y,
+              opacity: 0,
               scale: 0.8,
-              rotation: directions[index].rotation
+              rotation: directions[index].rotation,
             },
             {
               x: 0,
@@ -156,32 +156,73 @@ const Whoarewe = () => {
           className="text-[#4D4D4D] flex flex-col md:w-[60%] lg:px-0 lg:w-[50%] justify-center items-center"
         >
           <div className="flex flex-col gap-4 md:gap-5 ">
-            <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] text-center font-semibold not-italic">
+            <h2 className="text-3xl text-center mb-10 md:text-5xl font-bold text-gray-800 relative">
               Who are we
+              {/* Decorative accent line */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
             </h2>
 
             <p className="leading-relaxed text-justify text-sm md:text-[15px]">
               <span className="block mb-3">
-              Founded in <strong className="text-orange-500">2010</strong>, Modern Tex is a leading garment manufacturer in Pakistan, growing from <strong className="text-orange-500">10,000 to 150,000+ garments monthly</strong>. We export globally with <strong className="text-orange-500">state-of-the-art facilities</strong> and <strong className="text-orange-500">skilled professionals</strong>.
+                Founded in <strong className="text-orange-500">2010</strong>,
+                Modern Tex is a leading garment manufacturer in Pakistan,
+                growing from{" "}
+                <strong className="text-orange-500">
+                  10,000 to 150,000+ garments monthly
+                </strong>
+                . We export globally with{" "}
+                <strong className="text-orange-500">
+                  state-of-the-art facilities
+                </strong>{" "}
+                and{" "}
+                <strong className="text-orange-500">
+                  skilled professionals
+                </strong>
+                .
               </span>
               <span className="block mb-3">
-              Our success is built on <strong className="text-orange-500">innovation, ethical practices, and advanced manufacturing</strong>. We ensure <strong className="text-orange-500">superior quality, flexibility, and competitive value</strong> for international clients through our customer-centric approach.
+                Our success is built on{" "}
+                <strong className="text-orange-500">
+                  innovation, ethical practices, and advanced manufacturing
+                </strong>
+                . We ensure{" "}
+                <strong className="text-orange-500">
+                  superior quality, flexibility, and competitive value
+                </strong>{" "}
+                for international clients through our customer-centric approach.
               </span>
               <span className="block mb-3">
-              We proudly hold <strong className="text-orange-500">SEDEX and WRAP certifications</strong>, maintaining full compliance with international standards. Our operations are built on <strong className="text-orange-500">integrity, transparency, and accountability</strong>—strictly prohibiting child labor and promoting fair employment.
+                We proudly hold{" "}
+                <strong className="text-orange-500">
+                  SEDEX and WRAP certifications
+                </strong>
+                , maintaining full compliance with international standards. Our
+                operations are built on{" "}
+                <strong className="text-orange-500">
+                  integrity, transparency, and accountability
+                </strong>
+                —strictly prohibiting child labor and promoting fair employment.
               </span>
               <span className="block mb-3">
-              Today, we export to <strong className="text-orange-500">Middle East, USA, UK, and Europe</strong>, continuing our journey of responsible growth and global excellence in the apparel industry.
+                Today, we export to{" "}
+                <strong className="text-orange-500">
+                  Middle East, USA, UK, and Europe
+                </strong>
+                , continuing our journey of responsible growth and global
+                excellence in the apparel industry.
               </span>
             </p>
           </div>
         </div>
 
         {/* 3-Image Layout Section */}
-        <div ref={imageContainerRef} className="w-full md:w-2/5 lg:w-[40%] relative">
+        <div
+          ref={imageContainerRef}
+          className="w-full md:w-2/5 lg:w-[40%] relative"
+        >
           <div className="relative w-full h-[400px] sm:h-[500px] md:h-[600px] lg:h-[650px]">
             {/* Image 1 - Top Right */}
-            <div 
+            <div
               ref={image1Ref}
               className="absolute top-0 right-0 w-[60%] sm:w-[55%] h-[40%] sm:h-[45%] z-10 transform transition-all duration-300 hover:scale-105 hover:z-20"
             >
@@ -193,7 +234,7 @@ const Whoarewe = () => {
             </div>
 
             {/* Image 2 - Middle Left */}
-            <div 
+            <div
               ref={image2Ref}
               className="absolute top-[20%] sm:top-[25%] left-0 w-[55%] sm:w-[50%] h-[50%] sm:h-[55%] z-20 transform transition-all duration-300 hover:scale-105 hover:z-30"
             >
@@ -205,7 +246,7 @@ const Whoarewe = () => {
             </div>
 
             {/* Image 3 - Bottom Right */}
-            <div 
+            <div
               ref={image3Ref}
               className="absolute bottom-0 right-[5%] sm:right-[10%] w-[65%] sm:w-[60%] h-[35%] sm:h-[40%] z-10 transform transition-all duration-300 hover:scale-105 hover:z-20"
             >

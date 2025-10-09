@@ -8,6 +8,8 @@ import DivisionsSection from "../components/Divisions";
 import OurClients from "../components/OurClients";
 import DenimImage from "../components/DenimImage";
 import OurProcess from "../components/OurProcess";
+import DivisionsContent from "./DivisionsContent";
+import AboutUs from "./AboutUs";
 
 const Home = () => {
   return (
@@ -18,8 +20,10 @@ const Home = () => {
         <Whoarewe />
         <OurProcess />
         {/* <DenimImage/> */}
-        <MissionandVission />
-        <DivisionsSection />
+        <DivisionsContent />
+        {/* <MissionandVission /> */}
+        {/* <DivisionsSection /> */}
+        <AboutUs />
         <OurClients />
         <Footer />
       </div>

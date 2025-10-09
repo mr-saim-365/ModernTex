@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
-import Button from "../components/BackButton"
+import Button from "../components/BackButton";
 import AboutUsImage from "/images/AboutUsImage.jpg";
 import image1 from "/images/ownerImage1.jpg";
 import image2 from "/images/ownerImage2.jpg";
@@ -12,9 +12,9 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 const AboutUs = () => {
   return (
     <>
-      <Navbar />
+      {/* <Navbar /> */}
       <div className="text-[15px] sm:text-[16px]">
-        <section
+        {/* <section
           id="about-us"
           className="px-3 md:px-6 text-[#4D4D4D] lg:px-12 2xl:px-0 2xl:w-[90%] mt-24 mb-10 mx-auto"
         >
@@ -78,7 +78,6 @@ const AboutUs = () => {
                 </span>
               </p>
             </div>
-            {/* Image Section */}
             <div className="w-full md:w-1/2 lg:w-1/2">
               <img
                 src={AboutUsImage}
@@ -87,30 +86,35 @@ const AboutUs = () => {
               />
             </div>
           </div>
-        </section>
+        </section> */}
 
         <section
           id="our-team"
           className="px-3 md:px-6 lg:px-12 2xl:px-0 my-10 2xl:w-[90%] mt-24 mx-auto text-center"
         >
           <div className="mb-12 text-center">
-            <h2 className="text-[26px] sm:text-3xl 2xl:text-[40px] font-bold font-serif text-[#4D4D4D]">
+            <h2 className="text-3xl text-center mb-10 md:text-5xl font-bold text-gray-800 relative">
               Meet Our Founders
+              {/* Decorative accent line */}
+              <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
             </h2>
             <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
-              Modern Tex was founded by <span className="font-semibold text-gray-800">Nadeem Ahmed</span> and
-              <span className="font-semibold text-gray-800"> Siraj Ahmed</span> — two visionary leaders driven by
-              innovation, craftsmanship, and a deep passion for textiles. Together, they have built a company
-              that blends creativity with quality, bringing world-class fabric and apparel solutions to life.
+              Modern Tex was founded by{" "}
+              <span className="font-semibold text-gray-800">Nadeem Ahmed</span>{" "}
+              and
+              <span className="font-semibold text-gray-800">
+                {" "}
+                Siraj Ahmed
+              </span>{" "}
+              — two visionary leaders driven by innovation, craftsmanship, and a
+              deep passion for textiles. Together, they have built a company
+              that blends creativity with quality, bringing world-class fabric
+              and apparel solutions to life.
             </p>
           </div>
 
-
           <div className="flex flex-col sm:flex-row gap-20 items-center justify-center">
-
             <div className="bg-white w-full md:w-auto rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
-
-
               <img
                 src={image1}
                 alt="Team Member"
@@ -121,15 +125,11 @@ const AboutUs = () => {
                 <h3 className="text-lg font-semibold text-gray-800">
                   Nadeem Ahmed
                 </h3>
-                <p className="text-sm text-gray-500">
-                  Founder
-                </p>
+                <p className="text-sm text-gray-500">Founder</p>
               </div>
             </div>
 
-
             <div className="bg-white w-full md:w-auto rounded-lg shadow-lg overflow-hidden group transition transform hover:-translate-y-2 hover:shadow-2xl duration-500">
-
               <img
                 src={image2}
                 alt="Team Member"
@@ -143,12 +143,11 @@ const AboutUs = () => {
                 <p className="text-sm text-gray-500">Co-Founder</p>
               </div>
             </div>
-
           </div>
         </section>
       </div>
 
-      <Footer />
+      {/* <Footer /> */}
     </>
   );
 };

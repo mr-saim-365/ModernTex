@@ -41,7 +41,6 @@ const steps = [
   },
 ];
 
-
 const DivisionsContent = () => {
   const sectionsRef = useRef([]);
 
@@ -97,12 +96,14 @@ const DivisionsContent = () => {
 
   return (
     <section>
-      <Navbar />
-      <div className="bg-gray-50 py-16 lg:px-0 lg:w-[90%] lg:mx-auto md:px-6 px-3 mt-[3rem] overflow-x-hidden">
+      {/* <Navbar /> */}
+      <div className="py-16 lg:px-0 lg:w-[90%] lg:mx-auto md:px-6 px-3 mt-[3rem] overflow-x-hidden">
         {/* Section Heading */}
         <div className="text-center mb-12">
-          <h2 className="text-3xl md:text-5xl font-bold text-gray-800">
+          <h2 className="text-3xl text-center mb-10 md:text-5xl font-bold text-gray-800 relative">
             Our 4-Step Process
+            {/* Decorative accent line */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
           </h2>
           <p className="mt-4 text-gray-600 text-[15px] sm:text-[16px] md:text-lg">
             From start to finish, we ensure perfection in every stage of our
@@ -147,7 +148,7 @@ const DivisionsContent = () => {
           ))}
         </div>
       </div>
-      <Footer />
+      {/* <Footer /> */}
     </section>
   );
 };

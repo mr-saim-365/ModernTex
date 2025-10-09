@@ -105,31 +105,165 @@ const OurProcess = () => {
   // Collage data matching the exact reference layout
   const collageItems = [
     // Top row - larger images
-    { type: "image", src: "/images/Stitching.jpg", alt: "Sewing Factory", size: "w-64 h-48", position: { top: "5%", left: "8%" }, zIndex: 10, rotation: -2 },
-    { type: "image", src: "/images/Fabrication.jpg", alt: "Fabric Storage", size: "w-64 h-48", position: { top: "5%", right: "8%" }, zIndex: 10, rotation: 2 },
-    
+    {
+      type: "image",
+      src: "/images/Stitching.jpg",
+      alt: "Sewing Factory",
+      size: "w-64 h-48",
+      position: { top: "5%", left: "8%" },
+      zIndex: 10,
+      rotation: -2,
+    },
+    {
+      type: "image",
+      src: "/images/Fabrication.jpg",
+      alt: "Fabric Storage",
+      size: "w-64 h-48",
+      position: { top: "5%", right: "8%" },
+      zIndex: 10,
+      rotation: 2,
+    },
+
     // Second row - medium images with graphics
-    { type: "image", src: "/images/Washing.jpg", alt: "Washing Process", size: "w-52 h-40", position: { top: "25%", left: "15%" }, zIndex: 8, rotation: 1 },
-    { type: "graphic", graphicType: "waves", size: "w-16 h-16", position: { top: "30%", left: "45%" }, zIndex: 9, rotation: 0 },
-    { type: "image", src: "/images/Finishing.jpg", alt: "Finishing Process", size: "w-52 h-40", position: { top: "25%", right: "15%" }, zIndex: 8, rotation: -1 },
-    { type: "graphic", graphicType: "lines", size: "w-14 h-14", position: { top: "30%", right: "45%" }, zIndex: 9, rotation: 0 },
-    
+    {
+      type: "image",
+      src: "/images/Washing.jpg",
+      alt: "Washing Process",
+      size: "w-52 h-40",
+      position: { top: "25%", left: "15%" },
+      zIndex: 8,
+      rotation: 1,
+    },
+    {
+      type: "graphic",
+      graphicType: "waves",
+      size: "w-16 h-16",
+      position: { top: "30%", left: "45%" },
+      zIndex: 9,
+      rotation: 0,
+    },
+    {
+      type: "image",
+      src: "/images/Finishing.jpg",
+      alt: "Finishing Process",
+      size: "w-52 h-40",
+      position: { top: "25%", right: "15%" },
+      zIndex: 8,
+      rotation: -1,
+    },
+    {
+      type: "graphic",
+      graphicType: "lines",
+      size: "w-14 h-14",
+      position: { top: "30%", right: "45%" },
+      zIndex: 9,
+      rotation: 0,
+    },
+
     // Third row - smaller images
-    { type: "image", src: "/images/ServiceImage1.jpeg", alt: "Service Process 1", size: "w-44 h-36", position: { top: "45%", left: "5%" }, zIndex: 6, rotation: -3 },
-    { type: "image", src: "/images/ServiceImage2.jpg", alt: "Service Process 2", size: "w-44 h-36", position: { top: "45%", left: "35%" }, zIndex: 7, rotation: 2 },
-    { type: "image", src: "/images/ServiceImage3.jpeg", alt: "Service Process 3", size: "w-44 h-36", position: { top: "45%", right: "35%" }, zIndex: 6, rotation: -2 },
-    { type: "image", src: "/images/ServiceImage4.jpeg", alt: "Service Process 4", size: "w-44 h-36", position: { top: "45%", right: "5%" }, zIndex: 7, rotation: 3 },
-    
+    {
+      type: "image",
+      src: "/images/ServiceImage1.jpeg",
+      alt: "Service Process 1",
+      size: "w-44 h-36",
+      position: { top: "45%", left: "5%" },
+      zIndex: 6,
+      rotation: -3,
+    },
+    {
+      type: "image",
+      src: "/images/ServiceImage2.jpg",
+      alt: "Service Process 2",
+      size: "w-44 h-36",
+      position: { top: "45%", left: "35%" },
+      zIndex: 7,
+      rotation: 2,
+    },
+    {
+      type: "image",
+      src: "/images/ServiceImage3.jpeg",
+      alt: "Service Process 3",
+      size: "w-44 h-36",
+      position: { top: "45%", right: "35%" },
+      zIndex: 6,
+      rotation: -2,
+    },
+    {
+      type: "image",
+      src: "/images/ServiceImage4.jpeg",
+      alt: "Service Process 4",
+      size: "w-44 h-36",
+      position: { top: "45%", right: "5%" },
+      zIndex: 7,
+      rotation: 3,
+    },
+
     // Fourth row - denim and fabric images
-    { type: "image", src: "/images/denim.jpg", alt: "Denim Production", size: "w-56 h-44", position: { top: "65%", left: "10%" }, zIndex: 5, rotation: 1 },
-    { type: "image", src: "/images/denimImage.jpg", alt: "Denim Finish", size: "w-48 h-36", position: { top: "70%", left: "45%" }, zIndex: 4, rotation: -2 },
-    { type: "image", src: "/images/OurWork.jpg", alt: "Our Work", size: "w-56 h-44", position: { top: "65%", right: "10%" }, zIndex: 5, rotation: -1 },
-    { type: "image", src: "/images/image1.jpeg", alt: "Manufacturing", size: "w-48 h-36", position: { top: "70%", right: "45%" }, zIndex: 4, rotation: 2 },
-    
+    {
+      type: "image",
+      src: "/images/denim.jpg",
+      alt: "Denim Production",
+      size: "w-56 h-44",
+      position: { top: "65%", left: "10%" },
+      zIndex: 5,
+      rotation: 1,
+    },
+    {
+      type: "image",
+      src: "/images/denimImage.jpg",
+      alt: "Denim Finish",
+      size: "w-48 h-36",
+      position: { top: "70%", left: "45%" },
+      zIndex: 4,
+      rotation: -2,
+    },
+    {
+      type: "image",
+      src: "/images/OurWork.jpg",
+      alt: "Our Work",
+      size: "w-56 h-44",
+      position: { top: "65%", right: "10%" },
+      zIndex: 5,
+      rotation: -1,
+    },
+    {
+      type: "image",
+      src: "/images/image1.jpeg",
+      alt: "Manufacturing",
+      size: "w-48 h-36",
+      position: { top: "70%", right: "45%" },
+      zIndex: 4,
+      rotation: 2,
+    },
+
     // Bottom row - final images
-    { type: "image", src: "/images/image2.jpeg", alt: "Production", size: "w-40 h-32", position: { top: "85%", left: "20%" }, zIndex: 3, rotation: -1 },
-    { type: "image", src: "/images/yarn.png", alt: "Yarn Production", size: "w-40 h-32", position: { top: "85%", left: "50%" }, zIndex: 2, rotation: 1 },
-    { type: "image", src: "/images/fabric.png", alt: "Fabric Roll", size: "w-40 h-32", position: { top: "85%", right: "20%" }, zIndex: 3, rotation: -2 },
+    {
+      type: "image",
+      src: "/images/image2.jpeg",
+      alt: "Production",
+      size: "w-40 h-32",
+      position: { top: "85%", left: "20%" },
+      zIndex: 3,
+      rotation: -1,
+    },
+    {
+      type: "image",
+      src: "/images/yarn.png",
+      alt: "Yarn Production",
+      size: "w-40 h-32",
+      position: { top: "85%", left: "50%" },
+      zIndex: 2,
+      rotation: 1,
+    },
+    {
+      type: "image",
+      src: "/images/fabric.png",
+      alt: "Fabric Roll",
+      size: "w-40 h-32",
+      position: { top: "85%", right: "20%" },
+      zIndex: 3,
+      rotation: -2,
+    },
   ];
 
   useEffect(() => {
@@ -158,23 +292,27 @@ const OurProcess = () => {
 
     // Animate top section elements
     if (topSectionRef.current) {
-      const elements = [leftImageRef.current, textBlockRef.current, rightImageRef.current];
+      const elements = [
+        leftImageRef.current,
+        textBlockRef.current,
+        rightImageRef.current,
+      ];
       const directions = [
         { x: -100, y: 0, rotation: -5 },
         { y: 50, opacity: 0 },
-        { x: 100, y: 0, rotation: 5 }
+        { x: 100, y: 0, rotation: 5 },
       ];
 
       elements.forEach((element, index) => {
         if (element) {
           gsap.fromTo(
             element,
-            { 
-              x: directions[index].x || 0, 
-              y: directions[index].y || 0, 
-              opacity: directions[index].opacity || 0, 
+            {
+              x: directions[index].x || 0,
+              y: directions[index].y || 0,
+              opacity: directions[index].opacity || 0,
               scale: 0.9,
-              rotation: directions[index].rotation || 0
+              rotation: directions[index].rotation || 0,
             },
             {
               x: 0,
@@ -199,21 +337,21 @@ const OurProcess = () => {
 
     // Animate collage items
     if (leftCollageRef.current) {
-      const items = leftCollageRef.current.querySelectorAll('.collage-item');
-      
+      const items = leftCollageRef.current.querySelectorAll(".collage-item");
+
       items.forEach((item, index) => {
         const randomX = (Math.random() - 0.5) * 200;
         const randomY = (Math.random() - 0.5) * 200;
         const randomRotation = (Math.random() - 0.5) * 30;
-        
+
         gsap.fromTo(
           item,
-          { 
-            x: randomX, 
-            y: randomY, 
-            opacity: 0, 
+          {
+            x: randomX,
+            y: randomY,
+            opacity: 0,
             scale: 0.5,
-            rotation: randomRotation
+            rotation: randomRotation,
           },
           {
             x: 0,
@@ -245,17 +383,21 @@ const OurProcess = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Section */}
         <div ref={titleRef} className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D2D] mb-6 tracking-tight">
+          <h2 className="text-3xl text-center mb-10 md:text-5xl font-bold text-gray-800 relative">
             HOW WE DO
+            {/* Decorative accent line */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
           </h2>
-          <div className="w-20 h-1 bg-[#2D2D2D] mx-auto mb-6"></div>
           <h3 className="text-2xl sm:text-3xl lg:text-4xl font-light text-[#2D2D2D] italic">
             Our Process
           </h3>
         </div>
 
         {/* Top Section */}
-        <div ref={topSectionRef} className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-24">
+        <div
+          ref={topSectionRef}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-24"
+        >
           {/* Left Image */}
           <div ref={leftImageRef} className="lg:col-span-1">
             <LazyImage
@@ -266,22 +408,37 @@ const OurProcess = () => {
           </div>
 
           {/* Center Text Block */}
-          <div ref={textBlockRef} className="lg:col-span-1 flex flex-col justify-center px-4">
+          <div
+            ref={textBlockRef}
+            className="lg:col-span-1 flex flex-col justify-center px-4"
+          >
             <h4 className="text-2xl sm:text-3xl font-bold text-[#2D2D2D] mb-8 uppercase tracking-wider">
               OUR PROCESS
             </h4>
             <ul className="space-y-4 text-[#2D2D2D]">
               <li className="text-lg sm:text-xl flex items-center group">
                 <span className="w-3 h-3 bg-orange-500 rounded-full mr-4 group-hover:scale-125 transition-transform duration-300"></span>
-                <span className="group-hover:text-orange-600 transition-colors duration-300">Dye House</span>
+                <span className="group-hover:text-orange-600 transition-colors duration-300">
+                  Fabrication
+                </span>
               </li>
               <li className="text-lg sm:text-xl flex items-center group">
                 <span className="w-3 h-3 bg-orange-500 rounded-full mr-4 group-hover:scale-125 transition-transform duration-300"></span>
-                <span className="group-hover:text-orange-600 transition-colors duration-300">Rotary Printing</span>
+                <span className="group-hover:text-orange-600 transition-colors duration-300">
+                  Stitching
+                </span>
               </li>
               <li className="text-lg sm:text-xl flex items-center group">
                 <span className="w-3 h-3 bg-orange-500 rounded-full mr-4 group-hover:scale-125 transition-transform duration-300"></span>
-                <span className="group-hover:text-orange-600 transition-colors duration-300">Fabric Finishing</span>
+                <span className="group-hover:text-orange-600 transition-colors duration-300">
+                  Washing
+                </span>
+              </li>
+              <li className="text-lg sm:text-xl flex items-center group">
+                <span className="w-3 h-3 bg-orange-500 rounded-full mr-4 group-hover:scale-125 transition-transform duration-300"></span>
+                <span className="group-hover:text-orange-600 transition-colors duration-300">
+                  Finishing
+                </span>
               </li>
             </ul>
           </div>
@@ -298,17 +455,20 @@ const OurProcess = () => {
 
         {/* Bottom Collage Section - Single Organic Shape */}
         <div className="relative">
-          <div ref={leftCollageRef} className="relative w-full h-[800px] lg:h-[900px] mx-auto">
+          <div
+            ref={leftCollageRef}
+            className="relative w-full h-[800px] lg:h-[900px] mx-auto"
+          >
             {collageItems.map((item, index) => (
               <div
                 key={index}
                 className={`collage-item absolute ${item.size} transform transition-all duration-500 hover:scale-110 hover:z-50 cursor-pointer`}
-                style={{ 
+                style={{
                   zIndex: item.zIndex,
                   top: item.position.top,
                   left: item.position.left,
                   right: item.position.right,
-                  transform: `rotate(${item.rotation}deg)`
+                  transform: `rotate(${item.rotation}deg)`,
                 }}
               >
                 {item.type === "image" ? (
@@ -318,9 +478,9 @@ const OurProcess = () => {
                     className="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
                   />
                 ) : (
-                  <OrangeGraphic 
-                    type={item.graphicType} 
-                    className="w-full h-full hover:scale-110 transition-transform duration-300" 
+                  <OrangeGraphic
+                    type={item.graphicType}
+                    className="w-full h-full hover:scale-110 transition-transform duration-300"
                   />
                 )}
               </div>
