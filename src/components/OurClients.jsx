@@ -92,7 +92,10 @@ const OurClients = () => {
 
   return (
     <>
-      <section id="clients" className="w-full lg:w-[90%] px-4 md:px-6 lg:px-0 py-20 lg:mx-auto">
+      <section
+        id="clients"
+        className="w-full lg:w-[90%] px-4 md:px-6 lg:px-0 py-20 lg:mx-auto"
+      >
         <div ref={textRef} className="text-center mb-20">
           <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D2D] mb-6 tracking-tight">
             OUR CLIENTS
@@ -108,12 +111,13 @@ const OurClients = () => {
             <h2 className="text-2xl font-semibold text-gray-700 mb-4">
               We have happy clients all over the world
             </h2>
-            <p className="text-gray-600 mb-6">
-              We are leaders in creating, developing and manufacturing of
-              knitted apparel products right from basic to highly fashioned
-              garments thus responding to emerging trends in the industry. We
-              translate conceptual ideas of our customers into reality and shape
-              them through our technical bent and professional acumen.
+            <p class="text-gray-800 leading-relaxed">
+              We are leaders in creating, developing and
+              <strong class="text-orange-500"> manufacturing</strong> of knitted
+              apparel products right from basic to highly fashioned <strong className="text-orange-500" > garments, </strong>
+              thus responding to emerging trends in the industry. We translate
+              conceptual ideas of our customers into reality and shape them
+              through our technical bent and professional acumen.
             </p>
           </div>
 

@@ -115,9 +115,9 @@ const AboutUs = () => {
             </h2>
             <p className="mt-4 text-sm sm:text-base text-gray-600 max-w-2xl mx-auto leading-relaxed">
               Modern Tex was founded by{" "}
-              <span className="font-semibold text-gray-800">Nadeem Ahmed</span>{" "}
+              <span className="font-semibold text-orange-500">Nadeem Ahmed</span>{" "}
               and
-              <span className="font-semibold text-gray-800">
+              <span className="font-semibold text-orange-500">
                 {" "}
                 Siraj Ahmed
               </span>{" "}
