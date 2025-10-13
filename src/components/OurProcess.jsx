@@ -729,7 +729,7 @@ const OurProcess = () => {
       rotation: -2,
     },
     {
-      src: "/images/Fabrication.jpg",
+      src: "/images/Rolls.jpg",
       alt: "Fabric Storage",
       size: "w-64 h-48",
       position: { top: "5%", right: "8%" },
@@ -785,7 +785,7 @@ const OurProcess = () => {
       rotation: 3,
     },
     {
-      src: "/images/Chemicals.jpg",
+      src: "/images/Designs.jpg",
       alt: "Denim Production",
       size: "w-56 h-44",
       position: { top: "65%", left: "10%" },
@@ -825,7 +825,7 @@ const OurProcess = () => {
       rotation: -1,
     },
     {
-      src: "/images/Alert.jpg",
+      src: "/images/Fabrication2.jpg",
       alt: "Alert",
       size: "w-40 h-32",
       position: { top: "88%", left: "50%" },
@@ -1018,7 +1018,7 @@ const OurProcess = () => {
           {/* Left Image */}
           <div ref={leftImageRef} className="lg:col-span-1">
             <LazyImage
-              src="/images/Stitching.jpg"
+              src="/images/Stitching1.jpg"
               alt="Garment Manufacturing Facility"
               className="w-full h-[350px] lg:h-[450px] object-cover rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105"
             />
@@ -1063,7 +1063,7 @@ const OurProcess = () => {
           {/* Right Image */}
           <div ref={rightImageRef} className="lg:col-span-1">
             <LazyImage
-              src="/images/Fabrication.jpg"
+              src="/images/LiftedPant.jpg"
               alt="Fabric Storage Warehouse"
               className="w-full h-[350px] lg:h-[450px] object-cover rounded-2xl shadow-2xl hover:shadow-3xl transition-all duration-500 hover:scale-105"
             />

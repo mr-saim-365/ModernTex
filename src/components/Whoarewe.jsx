@@ -244,7 +244,7 @@ const Whoarewe = () => {
               className="absolute top-0 right-0 w-[60%] sm:w-[55%] h-[40%] sm:h-[45%] z-10 transform transition-all duration-300 hover:scale-105 hover:z-20"
             >
               <LazyImage
-                src="/images/denimImage.jpg"
+                src="/images/OurWork.jpg"
                 className="w-full h-full rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
                 alt="Denim Manufacturing"
               />
@@ -256,7 +256,7 @@ const Whoarewe = () => {
               className="absolute top-[20%] sm:top-[25%] left-0 w-[55%] sm:w-[50%] h-[50%] sm:h-[55%] z-20 transform transition-all duration-300 hover:scale-105 hover:z-30"
             >
               <LazyImage
-                src="/images/Stitching.jpg"
+                src="/images/Office.jpg"
                 className="w-full h-full rounded-2xl object-cover shadow-lg hover:shadow-xl transition-shadow duration-300"
                 alt="Stitching Process"
               />
