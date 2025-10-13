@@ -75,7 +75,7 @@ const OurClients = () => {
     };
   }, []);
 
-    const location = useLocation();
+  const location = useLocation();
 
   // Scroll to section if URL contains a hash (#)
   useEffect(() => {
@@ -97,10 +97,12 @@ const OurClients = () => {
         className="w-full lg:w-[90%] px-4 md:px-6 lg:px-0 py-20 lg:mx-auto"
       >
         <div ref={textRef} className="text-center mb-20">
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#2D2D2D] mb-6 tracking-tight">
-            OUR CLIENTS
+
+          <h2 className="text-3xl text-center  md:text-5xl lg:text-6xl  font-bold text-[#2D2D2D] mb-10 tracking-tight relative">
+              OUR CLIENTS
+            {/* Decorative accent line */}
+            <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
           </h2>
-          <div className="w-20 h-1 bg-[#2D2D2D] mx-auto mb-6"></div>
         </div>
         <div
           ref={sectionRef}
@@ -114,7 +116,8 @@ const OurClients = () => {
             <p class="text-gray-800 leading-relaxed">
               We are leaders in creating, developing and
               <strong class="text-orange-500"> manufacturing</strong> of knitted
-              apparel products right from basic to highly fashioned <strong className="text-orange-500" > garments, </strong>
+              apparel products right from basic to highly fashioned{" "}
+              <strong className="text-orange-500"> garments, </strong>
               thus responding to emerging trends in the industry. We translate
               conceptual ideas of our customers into reality and shape them
               through our technical bent and professional acumen.

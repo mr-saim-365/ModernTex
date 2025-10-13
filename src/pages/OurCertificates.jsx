@@ -26,7 +26,7 @@ const Certificates = () => {
               Our Certificates
             </h2>
             <p className="max-w-2xl mx-auto text-sm text-gray-600 sm:text-base leading-relaxed">
-              At Modern Tex, we are committed to excellence, sustainability, and
+              At <strong className="text-orange-500"> Modern Tex,</strong> we are committed to excellence, sustainability, and
               ethical manufacturing. Our certifications reflect our dedication
               to global standards, responsible production, and customer trust.
             </p>
