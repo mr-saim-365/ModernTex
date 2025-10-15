@@ -7,7 +7,6 @@
 // // import LazyImage from "./LazyImage"; // your existing component
 // // import OrangeGraphic from "./OrangeGraphic"; // your existing graphic component
 
-
 // // Register ScrollTrigger plugin
 // gsap.registerPlugin(ScrollTrigger);
 
@@ -384,7 +383,6 @@
 //     };
 //   }, []);
 
-
 //    const location = useLocation();
 
 //   // Scroll to section if URL contains a hash (#)
@@ -429,7 +427,6 @@
 //       prev === collageImages.length - 1 ? 0 : prev + 1
 //     );
 //   };
-
 
 //   return (
 //     <div id="howwedo" ref={sectionRef} className="w-full bg-white py-20 lg:py-24">
@@ -604,10 +601,6 @@
 
 // export default OurProcess;
 
-
-
-
-
 import React from "react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
@@ -615,7 +608,6 @@ import { useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { FaTimes, FaArrowLeft, FaArrowRight } from "react-icons/fa";
-
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -668,8 +660,9 @@ const LazyImage = ({ src, alt, className }) => {
         <img
           src={src}
           alt={alt}
-          className={`${className} transition-all duration-500 ${isLoaded ? "opacity-100" : "opacity-0"
-            }`}
+          className={`${className} transition-all duration-500 ${
+            isLoaded ? "opacity-100" : "opacity-0"
+          }`}
           loading="lazy"
           onLoad={handleLoad}
         />
@@ -690,9 +683,9 @@ const LazyImage = ({ src, alt, className }) => {
 //         </div>
 //       )}
 //       {type === "camera" && (
-//         <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
-//           <div className="w-6 h-6 border-2 border-white rounded"></div>
-//         </div>
+// <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center">
+//   <div className="w-6 h-6 border-2 border-white rounded"></div>
+// </div>
 //       )}
 //       {type === "lines" && (
 //         <div className="w-14 h-14 bg-orange-500 rounded-full flex flex-col items-center justify-center space-y-1">
@@ -842,7 +835,6 @@ const OurProcess = () => {
     },
   ];
 
-
   const openModal = (index) => {
     setCurrentIndex(index);
     setIsModalOpen(true);
@@ -852,15 +844,17 @@ const OurProcess = () => {
 
   const prevImage = (e) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === 0 ? collageItems.length - 1 : prev - 1));
+    setCurrentIndex((prev) =>
+      prev === 0 ? collageItems.length - 1 : prev - 1
+    );
   };
 
   const nextImage = (e) => {
     e.stopPropagation();
-    setCurrentIndex((prev) => (prev === collageItems.length - 1 ? 0 : prev + 1));
+    setCurrentIndex((prev) =>
+      prev === collageItems.length - 1 ? 0 : prev + 1
+    );
   };
-
-
 
   useEffect(() => {
     if (!sectionRef.current) return;
@@ -974,7 +968,6 @@ const OurProcess = () => {
     };
   }, []);
 
-
   // Keyboard control
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -1001,7 +994,11 @@ const OurProcess = () => {
   }, [location]);
 
   return (
-    <div id="howwedo" ref={sectionRef} className="w-full bg-white py-20 lg:py-24">
+    <div
+      id="howwedo"
+      ref={sectionRef}
+      className="w-full bg-white py-20 lg:py-24"
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Title Section */}
         <div ref={titleRef} className="text-center mb-20">
@@ -1010,11 +1007,13 @@ const OurProcess = () => {
             {/* Decorative accent line */}
             <div className="absolute -bottom-4 left-1/2 -translate-x-1/2 w-24 h-1 bg-gradient-to-r from-transparent via-orange-500 to-transparent"></div>
           </h2>
-
         </div>
 
         {/* Top Section */}
-        <div ref={topSectionRef} className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-24">
+        <div
+          ref={topSectionRef}
+          className="grid grid-cols-1 lg:grid-cols-3 gap-12 lg:gap-16 mb-24"
+        >
           {/* Left Image */}
           <div ref={leftImageRef} className="lg:col-span-1">
             <LazyImage
@@ -1078,24 +1077,60 @@ const OurProcess = () => {
             className="hidden md:block relative w-full h-[800px] lg:h-[900px] mx-auto"
           >
             {collageItems.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => openModal(index)}
-                className={`collage-item absolute ${item.size} transform transition-all duration-500 hover:scale-110 hover:z-50 cursor-pointer`}
-                style={{
-                  zIndex: item.zIndex,
-                  top: item.position.top,
-                  left: item.position.left,
-                  right: item.position.right,
-                  transform: `rotate(${item.rotation}deg)`,
-                }}
-              >
-                <LazyImage
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                />
-              </div>
+              <React.Fragment key={index}>
+                <div
+                  onClick={() => openModal(index)}
+                  className={`collage-item absolute ${item.size} transform transition-all duration-500 hover:scale-110 hover:z-50 cursor-pointer`}
+                  style={{
+                    zIndex: item.zIndex,
+                    top: item.position.top,
+                    left: item.position.left,
+                    right: item.position.right,
+                    transform: `rotate(${item.rotation}deg)`,
+                  }}
+                >
+                  <LazyImage
+                    src={item.src}
+                    alt={item.alt}
+                    className="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
+                  />
+                </div>
+
+                {index === 0 && (
+                  <div
+                    className="absolute top-[10%] left-1/2 -translate-x-1/2 flex flex-col lg:flex-row items-center justify-center gap-4 lg:gap-6 
+               z-50 pointer-events-none"
+                  >
+                    {/* Stitching Machine Icon */}
+                    <div className="flex flex-col items-center pointer-events-auto">
+                      <div
+                        className="group w-16 h-16 lg:w-18 lg:h-18 bg-orange-500 rounded-full flex items-center justify-center
+                   transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)] hover:bg-orange-500 cursor-pointer"
+                      >
+                        <img
+                          src="/images/sewing.png"
+                          alt="Stitching Machine"
+                          className="w-8 h-8 lg:w-10 lg:h-10 object-contain transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+
+                    {/* Fabric Roll Icon */}
+                    <div className="flex flex-col items-center pointer-events-auto">
+                      <div
+                        className="group w-16 h-16 lg:w-18 lg:h-18 bg-orange-500 rounded-full flex items-center justify-center
+                   transition-all duration-500 hover:scale-110 hover:shadow-[0_0_25px_rgba(249,115,22,0.6)] hover:bg-orange-500 cursor-pointer"
+                      >
+                        <img
+                          src="/images/fabric.png"
+                          alt="Fabric Roll"
+                          className="w-8 h-8 lg:w-10 lg:h-10 object-contain transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
+                        />
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </React.Fragment>
             ))}
           </div>
 
@@ -1107,7 +1142,9 @@ const OurProcess = () => {
                 onClick={() => openModal(index)}
                 className="w-[45%] sm:w-[40%] h-auto rounded-xl shadow-lg cursor-pointer transform transition-transform duration-500 hover:scale-105"
                 style={{
-                  transform: `rotate(${index % 2 === 0 ? -3 : 3}deg) translateY(${(index % 3) * 4}px)`,
+                  transform: `rotate(${
+                    index % 2 === 0 ? -3 : 3
+                  }deg) translateY(${(index % 3) * 4}px)`,
                   zIndex: 5 + (index % 3),
                 }}
               >
@@ -1120,31 +1157,6 @@ const OurProcess = () => {
             ))}
           </div>
         </div>
-
-        {/* <div className="relative">
-          <div ref={leftCollageRef} className="relative w-full h-[800px] lg:h-[900px] mx-auto">
-            {collageItems.map((item, index) => (
-              <div
-                key={index}
-                onClick={() => openModal(index)}
-                className={`collage-item absolute ${item.size} transform transition-all duration-500 hover:scale-110 hover:z-50 cursor-pointer`}
-                style={{
-                  zIndex: item.zIndex,
-                  top: item.position.top,
-                  left: item.position.left,
-                  right: item.position.right,
-                  transform: `rotate(${item.rotation}deg)`,
-                }}
-              >
-                <LazyImage
-                  src={item.src}
-                  alt={item.alt}
-                  className="w-full h-full object-cover rounded-xl shadow-lg hover:shadow-2xl transition-all duration-500"
-                />
-              </div>
-            ))}
-          </div>
-        </div> */}
       </div>
 
       {/* Lightbox Modal */}
@@ -1207,4 +1219,3 @@ const OurProcess = () => {
 };
 
 export default OurProcess;
-
