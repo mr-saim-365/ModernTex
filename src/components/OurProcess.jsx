@@ -1110,6 +1110,7 @@ const OurProcess = () => {
                         <img
                           src="/images/sewing.png"
                           alt="Stitching Machine"
+                                 style={{ filter: "invert(1)" }}
                           className="w-8 h-8 lg:w-10 lg:h-10 object-contain transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
                         />
                       </div>
@@ -1123,6 +1124,7 @@ const OurProcess = () => {
                       >
                         <img
                           src="/images/fabric.png"
+                          style={{ filter: "invert(1)" }}
                           alt="Fabric Roll"
                           className="w-8 h-8 lg:w-10 lg:h-10 object-contain transition-transform duration-500 group-hover:rotate-6 group-hover:scale-110"
                         />
