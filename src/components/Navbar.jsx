@@ -1,6 +1,3 @@
-
-
-
 import { useState, useEffect, useRef } from "react";
 import React from "react";
 import { RiArrowDownSLine } from "react-icons/ri";
@@ -82,10 +79,8 @@ const Navbar = () => {
     window.scrollTo(0, scrollPos);
   }, [open]);
 
-
   const location = useLocation();
   const navigate = useNavigate();
-
 
   // Custom smooth scroll when clicking a link on the same page
   const handleLinkClick = (e, sectionId) => {
@@ -122,23 +117,21 @@ const Navbar = () => {
     return () => observer.disconnect();
   }, [location.pathname]);
 
-
-
   return (
     <>
       {/* Desktop Navbar */}
 
       <nav
         ref={navbarRef}
-        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${isInVideoSection
+        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-500 ${
+          isInVideoSection
             ? "opacity-0 pointer-events-none"
             : isScrolled
-              ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
-              : "bg-gray-100 pb-6 pt-2"
-          }`}
+            ? "bg-white/95 backdrop-blur-md shadow-lg py-2"
+            : "bg-gray-100 pb-6 pt-2"
+        }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-4 lg:px-8">
-
           {/* ✅ Mobile Header Row */}
           <div className="flex items-center justify-between md:hidden relative">
             {/* Toggle Button */}
@@ -180,7 +173,7 @@ const Navbar = () => {
                   <div className="flex items-center mb-2">
                     <div className="w-6 sm:w-8 h-px bg-orange-500 mr-2 sm:mr-3"></div>
                     <span className="text-xs sm:text-sm md:text-base text-gray-600 font-medium">
-                      Est. 1989
+                      Est. 2010
                     </span>
                     <div className="w-6 sm:w-8 h-px bg-orange-500 ml-2 sm:ml-3"></div>
                   </div>
@@ -192,10 +185,14 @@ const Navbar = () => {
           {/* Desktop Navigation */}
           <div
             ref={navItemsRef}
-            className={`hidden md:flex justify-center font-medium text-gray-700 md:text-[13px] md:space-x-6 lg:space-x-12 xl:space-x-16 ${isScrolled ? "lg:text-sm" : "lg:text-[15px]"
-              }`}
+            className={`hidden md:flex justify-center font-medium text-gray-700 md:text-[13px] md:space-x-6 lg:space-x-12 xl:space-x-16 ${
+              isScrolled ? "lg:text-sm" : "lg:text-[15px]"
+            }`}
           >
-            <Link to="/" className="hover:text-[#b48a4a] transition-colors duration-200">
+            <Link
+              to="/"
+              className="hover:text-[#b48a4a] transition-colors duration-200"
+            >
               HOME
             </Link>
             <Link
@@ -243,13 +240,17 @@ const Navbar = () => {
 
         {/* Mobile Dropdown Menu */}
         <div
-          className={`md:hidden overflow-hidden transition-all duration-300 ${isMenuOpen
+          className={`md:hidden overflow-hidden transition-all duration-300 ${
+            isMenuOpen
               ? "max-h-[500px] opacity-100 visible ease-in"
               : "max-h-0 opacity-0 invisible ease-out"
-            }`}
+          }`}
         >
           <div className="px-4 pt-4 pb-4 font-medium bg-white shadow-lg space-y-2">
-            <Link to="/" className="block p-2 text-gray-700 hover:text-[#b48a4a]">
+            <Link
+              to="/"
+              className="block p-2 text-gray-700 hover:text-[#b48a4a]"
+            >
               HOME
             </Link>
             <Link
@@ -295,7 +296,6 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-
     </>
   );
 };
