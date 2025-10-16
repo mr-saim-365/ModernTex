@@ -135,10 +135,9 @@ const Footer = () => {
                       <strong>Email: </strong>
                     </div>
 
-                    <div className="flex flex-col ">
-                      <span>nadeem@moderntex1.com</span>
+                    <div>
+                      <span>Info@moderntex1.com</span>
 
-                      <span>siraj@moderntex1.com</span>
                     </div>
                   </div>
 
