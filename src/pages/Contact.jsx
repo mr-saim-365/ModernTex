@@ -203,7 +203,7 @@ const ContactUs = () => {
  
                 <iframe
                   ref={mapRef}
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d226.03632902006737!2d67.09001268009065!3d24.980357473130905!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjTCsDU4JzU0LjciTiA2N8KwMDUnMjMuMCJF!5e0!3m2!1sen!2s!4v1759785493073!5m2!1sen!2s"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3616.562989446891!2d67.0903586!3d24.980978900000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3eb341e6a2f7995f%3A0xb6a78f2265f0afe4!2sModern%20Tex!5e0!3m2!1sen!2s!4v1761286348765!5m2!1sen!2s"
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"

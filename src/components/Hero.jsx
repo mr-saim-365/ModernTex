@@ -253,7 +253,7 @@ const Hero = () => {
             />
             <AnimatedCounter
               target={250000}
-              label="FABRIC PRODUCTION IN KG MONTHLY"
+              label="MONTHLY GARMENTS PRODUCTION"
             />
           </div>
         </div>
