@@ -107,9 +107,9 @@ const ContactUs = () => {
       return;
     }
 
-    const serviceId = "service_rmw1h2s";
-    const templateId = "template_f6exg3r";
-    const publicKey = "1T9xbZKxb37vbLUVd";
+    const serviceId = "service_s8kw0kx";
+    const templateId = "template_4ao8g0k";
+    const publicKey = "vZF8CwBnZYjQu-H4t";
 
     const templateParams = {
       from_firstName: firstName,
@@ -260,7 +260,7 @@ const ContactUs = () => {
 
                   <button
                     type="submit"
-                    className="flex items-center justify-center gap-2 bg-black text-white py-3 rounded-lg hover:bg-gray-800 transition"
+                    className="flex items-center justify-center gap-2 bg-[#f48221!important] cursor-pointer text-white py-3 rounded-lg hover:scale-105 transition"
                   >
                     Send Message <FiSend />
                   </button>
