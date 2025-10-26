@@ -190,7 +190,7 @@ const OurProcess = () => {
       rotation: -1,
     },
     {
-      src: "/images/ShadedPant.jpg",
+      src: "/images/Fabrics.jpg",
       alt: "Alert",
       size: "w-45 h-38",
       position: { top: "88%", left: "46%" },
