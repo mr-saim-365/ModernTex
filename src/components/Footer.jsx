@@ -192,7 +192,12 @@ const Footer = () => {
                     </div>
 
                     <div>
-                      <span>Info@moderntex1.com</span>
+                      <a
+                        href="mailto:info@moderntex1.com"
+                        className="text-blue-300"
+                      >
+                        info@moderntex1.com
+                      </a>
                     </div>
                   </div>
                 </div>
