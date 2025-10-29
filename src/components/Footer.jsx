@@ -5,6 +5,7 @@ import { IoLogoInstagram } from "react-icons/io5";
 import { motion, useAnimation } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -40,6 +41,24 @@ const Footer = () => {
         ease: "easeOut",
       },
     },
+  };
+
+  const location = useLocation();
+  const navigate = useNavigate();
+
+  // Custom smooth scroll when clicking a link on the same page
+  const handleLinkClick = (e, sectionId) => {
+    if (location.pathname === "/") {
+      e.preventDefault(); // prevent navigation
+      const section = document.getElementById(sectionId);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+      }
+    } else {
+      // navigate to home with hash if not already there
+      e.preventDefault();
+      navigate(`/#${sectionId}`);
+    }
   };
 
   return (
@@ -80,35 +99,73 @@ const Footer = () => {
                 </h4>
                 <ul className="space-y-2">
                   <li>
-                    <Link to="/">Home</Link>
-                  </li>
-                  <li>
                     <Link
-                      to={{
-                        pathname: "/",
-                        query: { scrollTo: "services" },
-                      }}
+                      to="/"
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
                     >
-                      0ur Services
+                      HOME
                     </Link>
                   </li>
+
                   <li>
                     <Link
-                      to={{
-                        pathname: "/",
-                        query: { scrollTo: "AboutUs" },
-                      }}
+                      to="/#whoarewe"
+                      onClick={(e) => handleLinkClick(e, "whoarewe")}
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
                     >
-                      About Us
+                      WHO ARE WE
                     </Link>
                   </li>
+
                   <li>
-                    <Link to="/Contact">Contact Us</Link>
+                    <Link
+                      to="/#howwedo"
+                      onClick={(e) => handleLinkClick(e, "howwedo")}
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
+                    >
+                      HOW WE DO
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="/#about"
+                      onClick={(e) => handleLinkClick(e, "about")}
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
+                    >
+                      OUR FOUNDERS
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="/#clients"
+                      onClick={(e) => handleLinkClick(e, "clients")}
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
+                    >
+                      OUR CLIENTS
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="/OurCertificates"
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
+                    >
+                      OUR CERTIFICATES
+                    </Link>
+                  </li>
+
+                  <li>
+                    <Link
+                      to="/Contact"
+                      className="hover:text-[#b48a4a] transition-colors duration-200"
+                    >
+                      CONTACT US
+                    </Link>
                   </li>
                 </ul>
               </motion.div>
-
-
 
               <motion.div
                 className="flex-1 min-w-[250px]"
@@ -127,7 +184,6 @@ const Footer = () => {
                     <div className="flex flex-col ">
                       <span>+92 301-2530621</span>
                       <span>+92 311-1259882</span>
-
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
@@ -137,12 +193,9 @@ const Footer = () => {
 
                     <div>
                       <span>Info@moderntex1.com</span>
-
                     </div>
                   </div>
-
                 </div>
-
               </motion.div>
             </motion.div>
           </motion.div>
